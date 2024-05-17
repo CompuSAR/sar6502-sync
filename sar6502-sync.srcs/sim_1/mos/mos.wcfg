@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="mos_top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="mos_top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="154.601 ns"></ZoomEndTime>
+      <Cursor1Time time="35.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="183"></NameColumnWidth>
+      <ValueColumnWidth column_width="69"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="8" />
+   <wvobject type="logic" fp_name="/mos_top/top/clock">
+      <obj_property name="ElementShortName">clock</obj_property>
+      <obj_property name="ObjectShortName">clock</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/mos_top/top/cpu_req_valid">
+      <obj_property name="ElementShortName">cpu_req_valid</obj_property>
+      <obj_property name="ObjectShortName">cpu_req_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/mos_top/top/cpu_req_ack">
+      <obj_property name="ElementShortName">cpu_req_ack</obj_property>
+      <obj_property name="ObjectShortName">cpu_req_ack</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/mos_top/top/cpu_req_write">
+      <obj_property name="ElementShortName">cpu_req_write</obj_property>
+      <obj_property name="ObjectShortName">cpu_req_write</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mos_top/top/cpu_req_address">
+      <obj_property name="ElementShortName">cpu_req_address[15:0]</obj_property>
+      <obj_property name="ObjectShortName">cpu_req_address[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mos_top/top/cpu_req_data">
+      <obj_property name="ElementShortName">cpu_req_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">cpu_req_data[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/mos_top/top/cpu_rsp_valid">
+      <obj_property name="ElementShortName">cpu_rsp_valid</obj_property>
+      <obj_property name="ObjectShortName">cpu_rsp_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mos_top/top/cpu_rsp_data">
+      <obj_property name="ElementShortName">cpu_rsp_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">cpu_rsp_data[7:0]</obj_property>
+   </wvobject>
+</wave_config>
