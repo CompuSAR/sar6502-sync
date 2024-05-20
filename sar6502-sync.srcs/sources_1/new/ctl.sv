@@ -72,11 +72,16 @@ typedef enum {
 */
 
 typedef enum {
+    O_ADH_0,
+    O_ADH_1_7,
     PCL_PCL,
     ADL_PCL,
     I_PC,
     PCH_PCH,
     ADH_PCH,
+    O_ADL_0,
+    O_ADL_1,
+    O_ADL_2,
     SB_AC,
     SB_X,
     SB_Y,

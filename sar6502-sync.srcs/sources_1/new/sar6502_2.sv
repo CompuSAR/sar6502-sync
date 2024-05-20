@@ -119,6 +119,12 @@ end
 
 endgenerate
 
+wire [7:0] adh_generated_values;
+adh_gen adh_generator( .ctrl(control_signals[ctl::O_ADH_1_7:ctl::O_ADH_0]), .out(adh_generated_values) );
+
+wire [7:0] adl_generated_values;
+adl_gen adl_generator( .ctrl(control_signals[ctl::O_ADL_2:ctl::O_ADL_0]), .out(adl_generated_values) );
+
 assign regs[RegA].data_in = special_bus;        // XXX Actually a BCD adjustment unit
 assign regs[RegA].ctl_store = control_signals[ctl::SB_AC];
 
@@ -183,7 +189,7 @@ wire [7:0] adh_inputs[address_bus_high_source.last() + 1];
 
 assign adh_inputs[ctl::SB_ADH] = special_bus;
 assign adh_inputs[ctl::PCH_ADH] = regs[RegPcH].data_out;
-assign adh_inputs[ctl::GEN_ADH] = 8'bX; // XXX generated addresses
+assign adh_inputs[ctl::GEN_ADH] = adh_generated_values;
 assign adh_inputs[ctl::DL_ADH] = regs[RegDl].data_out;
 
 assign addr_bus_high = adh_inputs[address_bus_high_source];
@@ -193,7 +199,7 @@ wire [7:0] adl_inputs[address_bus_low_source.last() + 1];
 
 assign adl_inputs[ctl::ADD_ADL] = 8'bX; // XXX ALU output
 assign adl_inputs[ctl::S_ADL] = regs[RegS].data_out;
-assign adl_inputs[ctl::GEN_ADL] = 8'bX; // XXX generated addresses
+assign adl_inputs[ctl::GEN_ADL] = adl_generated_values;
 assign adl_inputs[ctl::PCL_ADL] = regs[RegPcL].data_out;
 assign adl_inputs[ctl::DL_ADL] = regs[RegDl].data_out;
 
