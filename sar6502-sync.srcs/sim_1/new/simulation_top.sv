@@ -80,6 +80,11 @@ initial forever begin
     ;
 end
 
+initial begin
+    cpu_reset = 1'b1;
+    #200 cpu_reset = 1'b0;
+end
+
 int cycles_since_bus = 0;
 int cycle_num = 0;
 
@@ -94,7 +99,9 @@ always_ff@(posedge clock) begin
     cpu_rsp_valid <= 1'b0;
     cpu_rsp_data <= 8'hXX;
 
-    if( cpu_req_valid && cpu_req_ack ) begin
+    if( cpu_reset ) begin
+        cycles_since_bus <= 0;
+    end else if( cpu_req_valid && cpu_req_ack ) begin
         cycles_since_bus <= 0;
 
         handle_bus_op();

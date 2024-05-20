@@ -5,24 +5,29 @@
    <db_ref_list>
       <db_ref path="mos_top_behav.wdb" id="1">
          <top_modules>
+            <top_module name="ctl" />
             <top_module name="glbl" />
             <top_module name="mos_top" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="154.601 ns"></ZoomEndTime>
-      <Cursor1Time time="35.000 ns"></Cursor1Time>
+      <ZoomStartTime time="1,864.174 ns"></ZoomStartTime>
+      <ZoomEndTime time="2,069.166 ns"></ZoomEndTime>
+      <Cursor1Time time="2,035.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="183"></NameColumnWidth>
-      <ValueColumnWidth column_width="69"></ValueColumnWidth>
+      <ValueColumnWidth column_width="65"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="8" />
+   <WVObjectSize size="9" />
    <wvobject type="logic" fp_name="/mos_top/top/clock">
       <obj_property name="ElementShortName">clock</obj_property>
       <obj_property name="ObjectShortName">clock</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/mos_top/top/cpu_reset">
+      <obj_property name="ElementShortName">cpu_reset</obj_property>
+      <obj_property name="ObjectShortName">cpu_reset</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/mos_top/top/cpu_req_valid">
       <obj_property name="ElementShortName">cpu_req_valid</obj_property>

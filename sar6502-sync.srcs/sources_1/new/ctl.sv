@@ -90,7 +90,7 @@ typedef enum {
     NumCtlSignals
 } ControlSignals;
 
-typedef enum [2:0] {
+typedef enum {
     AC_DB,
     P_DB,
     SB_DB,
@@ -99,7 +99,7 @@ typedef enum [2:0] {
     DL_DB
 } DBSrc;
 
-typedef enum [2:0] {
+typedef enum {
     AC_SB,
     Y_SB,
     X_SB,
@@ -107,14 +107,14 @@ typedef enum [2:0] {
     S_SB
 } SBSrc;
 
-typedef enum [1:0] {
+typedef enum {
     SB_ADH,
     PCH_ADH,
     GEN_ADH,
     DL_ADH
 } ADHSrc;
 
-typedef enum [2:0] {
+typedef enum {
     ADD_ADL,
     S_ADL,
     GEN_ADL,

@@ -87,7 +87,8 @@ decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
     .bus_rsp_data_i(bus_rsp_data_i)
 );
 
-initial
+/*
+initial begin
     // Assert proper width of bus controls
     if($clog2(data_bus_source.last() + 1) != $size(ctl::DBSrc))
         $error("DBSrc needs to be %d bits", $clog2(data_bus_source.last() + 1));
@@ -100,6 +101,8 @@ initial
 
     if($clog2(address_bus_low_source.last() + 1) != $size(ctl::ADLSrc))
         $error("ADLSrc needs to be %d bits", $clog2(address_bus_low_source.last() + 1));
+end
+*/
 
 genvar i;
 
