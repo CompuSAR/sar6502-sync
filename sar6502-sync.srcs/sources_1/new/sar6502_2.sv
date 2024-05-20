@@ -63,10 +63,27 @@ ctl::SBSrc special_bus_source;
 ctl::ADHSrc address_bus_high_source;
 ctl::ADLSrc address_bus_low_source;
 
-assign data_bus_source = ctl::AC_DB;
-assign special_bus_source = ctl::AC_SB;
-assign address_bus_high_source = ctl::PCH_ADH;
-assign address_bus_low_source = ctl::PCL_ADL;
+decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
+    .clock_i(clock_i),
+    .reset_i(reset_i),
+    .irq_i(irq_i),
+    .nmi_i(nmi_i),
+    .memory_lock_o(memory_lock_o),
+    .sync_o(sync_o),
+    .vector_pull_o(vector_pull_o),
+
+    .control_signals_o(control_signals),
+    .db_src_o(data_bus_source),
+    .sb_src_o(special_bus_source),
+    .adl_src_o(address_bus_low_source),
+    .adh_src_o(address_bus_high_source),
+
+    .bus_req_ack_i(bus_req_ack_i),
+    .bus_req_valid_o(bus_req_valid_o),
+    .bus_req_write_o(bus_req_write_o),
+    .bus_rsp_valid_i(bus_rsp_valid_i),
+    .bus_rsp_data_i(bus_rsp_data_i)
+);
 
 initial
     // Assert proper width of bus controls
@@ -90,7 +107,7 @@ for( i=0; i<NumRegisters; ++i ) begin : regs
     wire [7:0] data_in, data_out;
     wire ctl_store;
 
-    register(
+    register register(
         .clock_i(clock_i),
         .data_i(data_in),
         .ctl_store_i(ctl_store),
@@ -119,7 +136,7 @@ assign regs[RegDl].data_in = bus_rsp_data_i;
 assign regs[RegDl].ctl_store = bus_rsp_valid_i;
 
 
-wire [7:0] db_inputs[data_bus_source.last()];
+wire [7:0] db_inputs[data_bus_source.last() + 1];
 
 assign db_inputs[ctl::AC_DB] = regs[RegA].data_out;
 assign db_inputs[ctl::P_DB] = 8'bX;     // XXX Flags register
@@ -131,7 +148,7 @@ assign db_inputs[ctl::DL_DB] = regs[RegDl].data_out;
 assign data_bus = db_inputs[data_bus_source];
 
 
-wire [7:0] sb_inputs[special_bus_source.last()];
+wire [7:0] sb_inputs[special_bus_source.last() + 1];
 
 assign sb_inputs[ctl::AC_SB] = regs[RegA].data_out;
 assign sb_inputs[ctl::Y_SB] = regs[RegY].data_out;
@@ -142,7 +159,7 @@ assign sb_inputs[ctl::S_SB] = regs[RegS].data_out;
 assign special_bus = sb_inputs[special_bus_source];
 
 
-wire [7:0] adh_inputs[address_bus_high_source.last()];
+wire [7:0] adh_inputs[address_bus_high_source.last() + 1];
 
 assign adh_inputs[ctl::SB_ADH] = special_bus;
 assign adh_inputs[ctl::PCH_ADH] = regs[RegPcH].data_out;
@@ -152,7 +169,7 @@ assign adh_inputs[ctl::DL_ADH] = regs[RegDl].data_out;
 assign addr_bus_high = adh_inputs[address_bus_high_source];
 
 
-wire [7:0] adl_inputs[address_bus_low_source.last()];
+wire [7:0] adl_inputs[address_bus_low_source.last() + 1];
 
 assign adl_inputs[ctl::ADD_ADL] = 8'bX; // XXX ALU output
 assign adl_inputs[ctl::S_ADL] = regs[RegS].data_out;
@@ -164,5 +181,6 @@ assign addr_bus_low = adl_inputs[address_bus_low_source];
 
 
 assign bus_req_data_o = data_bus;
+assign bus_req_address_o = { addr_bus_high, addr_bus_low };
 
 endmodule
