@@ -118,7 +118,7 @@ task handle_bus_op();
     end
 
     assert_state( cpu_req_address, plan_line[31:16], "Address bus" );
-    assert_state( cpu_req_write, plan_line[0], "Read/write" );
+    assert_state( cpu_req_write, !plan_line[0], "Read/write" );
     //assert_state( sync, plan_line[1], "Sync" );
     //assert_state( vector_pull, !plan_line[3], "Vector pull" );
 

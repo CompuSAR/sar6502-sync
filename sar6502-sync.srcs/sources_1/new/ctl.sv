@@ -90,8 +90,10 @@ typedef enum {
     NumCtlSignals
 } ControlSignals;
 
-typedef enum {
-    AC_DB,
+typedef enum logic[2:0] {
+    DB_INVALID = 'X,
+
+    AC_DB = 0,
     P_DB,
     SB_DB,
     PCH_DB,
@@ -99,23 +101,29 @@ typedef enum {
     DL_DB
 } DBSrc;
 
-typedef enum {
-    AC_SB,
+typedef enum logic[2:0] {
+    SB_INVALID = 'X,
+
+    AC_SB = 0,
     Y_SB,
     X_SB,
     ADD_SB,
     S_SB
 } SBSrc;
 
-typedef enum {
-    SB_ADH,
+typedef enum logic[1:0] {
+    ADH_INVALID = 'X,
+
+    SB_ADH = 0,
     PCH_ADH,
     GEN_ADH,
     DL_ADH
 } ADHSrc;
 
-typedef enum {
-    ADD_ADL,
+typedef enum logic[2:0] {
+    ADL_INVALID = 'X,
+
+    ADD_ADL = 0,
     S_ADL,
     GEN_ADL,
     PCL_ADL,
