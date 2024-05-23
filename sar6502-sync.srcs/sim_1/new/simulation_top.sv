@@ -90,7 +90,7 @@ int cycle_num = 0;
 
 always_ff@(posedge clock) begin
     if( cycles_since_bus==MaxCyclesPerBus ) begin
-        $display("Too many cycles since last bus operation on cycle %d time %t", cycle_num, $time);
+        $error("Too many cycles since last bus operation on cycle %d time %t", cycle_num, $time);
         $finish();
     end
 
@@ -111,9 +111,11 @@ end
 wire [35:0] plan_line = test_plan[cycle_num];
 
 task handle_bus_op();
-    if( cycle_num==0 && cpu_req_address!=16'hfffc ) begin
+    if( cycle_num==0 && cpu_req_address!==16'hfffc ) begin
         $display("Pre-test cycle %s address %04x data %02x time %t", cpu_req_write ? "write" : "read", cpu_req_address, cpu_req_data, $time);
 
+        cpu_rsp_data <= 8'hXX;
+        cpu_rsp_valid <= cpu_req_valid;
         return;
     end
 

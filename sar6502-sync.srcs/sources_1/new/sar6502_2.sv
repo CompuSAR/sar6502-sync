@@ -142,7 +142,7 @@ assign regs[RegS].ctl_store = control_signals[ctl::SB_S];
 
 assign regs[RegPcLSelect].data_in = control_signals[ctl::ADL_PCL] ? addr_bus_low : regs[RegPcL].data_out;
 assign regs[RegPcLSelect].ctl_store = control_signals[ctl::ADL_PCL] || control_signals[ctl::PCL_PCL];
-// No clock delay passthrough
+// No clock-delay passthrough
 wire [7:0] pcl_select = regs[RegPcLSelect].ctl_store ? regs[RegPcLSelect].data_in : regs[RegPcLSelect].data_out;
 wire [8:0] pcl_select_increment = pcl_select + (control_signals[ctl::I_PC] ? 8'h01 : 8'h00);
 wire pcl_carry = pcl_select_increment[8];
@@ -153,7 +153,7 @@ assign regs[RegPcL].ctl_store = 1'b1;
 
 assign regs[RegPcHSelect].data_in = control_signals[ctl::ADH_PCH] ? addr_bus_high : regs[RegPcH].data_out;
 assign regs[RegPcHSelect].ctl_store = control_signals[ctl::ADH_PCH] || control_signals[ctl::PCH_PCH];
-// No clock delay passthrough
+// No clock-delay passthrough
 wire [7:0] pch_select = regs[RegPcHSelect].ctl_store ? regs[RegPcHSelect].data_in : regs[RegPcHSelect].data_out;
 
 assign regs[RegPcH].data_in = pch_select + pcl_carry;
