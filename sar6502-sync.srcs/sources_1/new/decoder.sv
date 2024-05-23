@@ -47,7 +47,7 @@ module decoder#(CPU_VARIANT = 0)
 
 enum logic[31:0] {
     C_INVALID   = 32'bX,
-    C_INVALID2  = 32'b00000000000000000000000000000000,
+    C_NO_MATCH  = 32'b00000000000000000000000000000000,
     C_FETCH1    = 32'b00000000000000000000000000000001,
     C_FETCH2    = 32'b00000000000000000000000000000010,
     C_ADDR1     = 32'b00000000000000000000000000000100,
@@ -57,12 +57,13 @@ enum logic[31:0] {
     C_ADDR5     = 32'b00000000000000000000000001000000,
     C_ADDR6     = 32'b00000000000000000000000010000000,
     C_ADDR7     = 32'b00000000000000000000000100000000,
-    C_PENDING1  = 32'b00000000000000000000001000000000,
-    C_PENDING2  = 32'b00000000000000000000010000000000,
-    C_PENDING3  = 32'b00000000000000000000100000000000,
-    C_PENDING4  = 32'b00000000000000000001000000000000,
-    C_PENDING5  = 32'b00000000000000000010000000000000,
-    C_PENDING6  = 32'b00000000000000000100000000000000,
+    C_ADDR_MASK = 32'b00000000000000000000000111111100,
+    C_OP1       = 32'b00000000000000000000001000000000,
+    C_OP2       = 32'b00000000000000000000010000000000,
+    C_OP3       = 32'b00000000000000000000100000000000,
+    C_OP4       = 32'b00000000000000000001000000000000,
+    C_OP5       = 32'b00000000000000000010000000000000,
+    C_OP6       = 32'b00000000000000000100000000000000,
     C_PENDING7  = 32'b00000000000000001000000000000000,
     C_PENDING8  = 32'b00000000000000010000000000000000,
     C_PENDING9  = 32'b00000000000000100000000000000000,
@@ -149,7 +150,8 @@ end
 function void handle_op();
     $display("handle_op called inst %02X cycle %x", instruction_register, instruction_counter );
     case( instruction_register )
-        8'h00: begin handle_brk(); end
+        8'h00: begin handle_op_brk(); end
+        8'ha2: begin handle_addr_imm(); handle_op_ldx(); end
         default: begin
             $error("Invalid opcode in instruction register %x time %t", instruction_register, $time());
             set_invalid_state();
@@ -160,10 +162,7 @@ endfunction
 function void handle_fetch();
     case(instruction_counter)
         C_FETCH1: begin
-            adl_src_o = ctl::PCL_ADL;
-            adh_src_o = ctl::PCH_ADH;
-
-            bus_req_valid_o = 1'b1;
+            read_pc();
 
             int_pending_next = IntNone;
 
@@ -174,68 +173,50 @@ function void handle_fetch();
             end else begin
                 int_active_next = IntNone;
 
-                // Advance PC
-                control_signals_o[ctl::PCL_PCL] = 1'b1;
-                control_signals_o[ctl::PCH_PCH] = 1'b1;
-
-                control_signals_o[ctl::I_PC] = 1'b1;
+                advance_pc();
             end
         end
         C_FETCH2: begin
+            read_pc();
+
             if( int_active!=IntNone )
                 instruction_register_next = 8'h00;      // BRK
             else
+                /* In theory, we need here "if( bus_rsp_valid_i )".
+                 * In practice, since this cycle never issues a request, the
+                 * only reason to stall here is because the response has not
+                 * yet arrived. As such, as soon as a response did arrive,
+                 * we're guaranteed to advance to the next cycle.
+                 */
                 instruction_register_next = bus_rsp_data_i;
         end
         default: set_invalid_state();
     endcase
 endfunction
 
-function void handle_brk();
-    $display("handle_brk cycle %s", instruction_counter.name());
-    case( instruction_counter )
-        C_ADDR1: begin
-            adl_src_o = ctl::GEN_ADL;
-            control_signals_o[ctl::O_ADL_0] = 1'b1;
-            control_signals_o[ctl::O_ADL_1] = 1'b1;
-            control_signals_o[ctl::O_ADL_2] = 1'b0;
+`include "decoder_addr.vh"
+`include "decoder_ops.vh"
 
-            adh_src_o = ctl::GEN_ADH;
-            control_signals_o[ctl::O_ADH_0] = 1'b0;
-            control_signals_o[ctl::O_ADH_1_7] = 1'b0;
+function void read_pc();
+    adl_src_o = ctl::PCL_ADL;
+    adh_src_o = ctl::PCH_ADH;
 
-            bus_req_valid_o = 1'b1;
-        end
-        C_ADDR2: begin end
-        C_ADDR3: begin
-            adl_src_o = ctl::DL_ADL;
-            control_signals_o[ctl::ADL_PCL] = 1'b1;
-        end
-        C_ADDR4: begin
-            adl_src_o = ctl::GEN_ADL;
-            control_signals_o[ctl::O_ADL_0] = 1'b0;
-            control_signals_o[ctl::O_ADL_1] = 1'b1;
-            control_signals_o[ctl::O_ADL_2] = 1'b0;
+    bus_req_valid_o = 1'b1;
 
-            adh_src_o = ctl::GEN_ADH;
-            control_signals_o[ctl::O_ADH_0] = 1'b0;
-            control_signals_o[ctl::O_ADH_1_7] = 1'b0;
+    control_signals_o[ctl::ADH_ABH] = 1'b1;
+    control_signals_o[ctl::ADL_ABL] = 1'b1;
+endfunction
 
-            bus_req_valid_o = 1'b1;
-        end
-        C_ADDR5: begin end
-        C_ADDR6: begin
-            new_instruction();
-
-            adh_src_o = ctl::DL_ADH;
-            control_signals_o[ctl::ADH_PCH] = 1'b1;
-        end
-        default: set_invalid_state();
-    endcase
+function void advance_pc();
+    control_signals_o[ctl::I_PC] = 1'b1;
 endfunction
 
 function void new_instruction();
     instruction_counter_next = C_FETCH1;
+endfunction
+
+function addr_cycle();
+    addr_cycle = (instruction_counter & C_ADDR_MASK) != C_NO_MATCH;
 endfunction
 
 always_ff@(posedge clock_i) begin
@@ -244,8 +225,12 @@ always_ff@(posedge clock_i) begin
         instruction_register <= 8'h00;
         int_pending <= IntReset;
     end else begin
-        instruction_register <= instruction_register_next;
-        instruction_counter <= instruction_counter_next;
+        if( bus_req_valid_o && ! bus_req_ack_i ) begin
+            // Request cannot be served
+        end else begin
+            instruction_register <= instruction_register_next;
+            instruction_counter <= instruction_counter_next;
+        end
 
         int_pending <= int_pending_next;
         int_active <= int_active_next;

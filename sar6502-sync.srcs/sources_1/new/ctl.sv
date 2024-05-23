@@ -74,10 +74,10 @@ typedef enum {
 typedef enum {
     O_ADH_0,
     O_ADH_1_7,
-    PCL_PCL,
+    ADH_ABH,
+    ADL_ABL,
     ADL_PCL,
     I_PC,
-    PCH_PCH,
     ADH_PCH,
     O_ADL_0,
     O_ADL_1,
@@ -108,7 +108,9 @@ typedef enum logic[2:0] {
     Y_SB,
     X_SB,
     ADD_SB,
-    S_SB
+    S_SB,
+    DB_SB,
+    DL_SB
 } SBSrc;
 
 typedef enum logic[1:0] {

@@ -46,9 +46,7 @@ typedef enum {
     RegX,
     RegY,
     RegS,
-    RegPcLSelect,
     RegPcL,
-    RegPcHSelect,
     RegPcH,
     RegDl,              // Input data latch
 
@@ -140,10 +138,7 @@ assign regs[RegS].data_in = special_bus;
 assign regs[RegS].ctl_store = control_signals[ctl::SB_S];
 
 
-assign regs[RegPcLSelect].data_in = control_signals[ctl::ADL_PCL] ? addr_bus_low : regs[RegPcL].data_out;
-assign regs[RegPcLSelect].ctl_store = control_signals[ctl::ADL_PCL] || control_signals[ctl::PCL_PCL];
-// No clock-delay passthrough
-wire [7:0] pcl_select = regs[RegPcLSelect].ctl_store ? regs[RegPcLSelect].data_in : regs[RegPcLSelect].data_out;
+wire [7:0] pcl_select = control_signals[ctl::ADL_PCL] ? addr_bus_low : regs[RegPcL].data_out;
 wire [8:0] pcl_select_increment = pcl_select + (control_signals[ctl::I_PC] ? 8'h01 : 8'h00);
 wire pcl_carry = pcl_select_increment[8];
 
@@ -151,10 +146,8 @@ assign regs[RegPcL].data_in = pcl_select_increment[7:0];
 assign regs[RegPcL].ctl_store = 1'b1;
 
 
-assign regs[RegPcHSelect].data_in = control_signals[ctl::ADH_PCH] ? addr_bus_high : regs[RegPcH].data_out;
-assign regs[RegPcHSelect].ctl_store = control_signals[ctl::ADH_PCH] || control_signals[ctl::PCH_PCH];
 // No clock-delay passthrough
-wire [7:0] pch_select = regs[RegPcHSelect].ctl_store ? regs[RegPcHSelect].data_in : regs[RegPcHSelect].data_out;
+wire [7:0] pch_select = control_signals[ctl::ADH_PCH] ? addr_bus_high : regs[RegPcH].data_out;
 
 assign regs[RegPcH].data_in = pch_select + pcl_carry;
 assign regs[RegPcH].ctl_store = 1'b1;
@@ -173,7 +166,10 @@ assign db_inputs[ctl::PCL_DB] = regs[RegPcL].data_out;
 assign db_inputs[ctl::DL_DB] = regs[RegDl].data_out;
 
 assign data_bus = db_inputs[data_bus_source];
+logic [7:0] data_bus_latch;
 
+always_ff@(posedge clock_i)
+    data_bus_latch <= data_bus;
 
 wire [7:0] sb_inputs[special_bus_source.last() + 1];
 
@@ -182,6 +178,8 @@ assign sb_inputs[ctl::Y_SB] = regs[RegY].data_out;
 assign sb_inputs[ctl::X_SB] = regs[RegX].data_out;
 assign sb_inputs[ctl::ADD_SB] = 8'bX;   // XXX ALU output
 assign sb_inputs[ctl::S_SB] = regs[RegS].data_out;
+assign sb_inputs[ctl::DB_SB] = data_bus_latch;
+assign sb_inputs[ctl::DL_SB] = regs[RegDl].data_out;
 
 assign special_bus = sb_inputs[special_bus_source];
 
@@ -206,8 +204,19 @@ assign adl_inputs[ctl::DL_ADL] = regs[RegDl].data_out;
 
 assign addr_bus_low = adl_inputs[address_bus_low_source];
 
+logic [7:0] abh_out, abh_out_latch, abl_out, abl_out_latch;
+
+always_ff@(posedge clock_i) begin
+    if( control_signals[ctl::ADL_ABL] )
+        abl_out_latch <= addr_bus_low;
+    if( control_signals[ctl::ADH_ABH] )
+        abh_out_latch <= addr_bus_high;
+end
+
+assign abh_out = control_signals[ctl::ADH_ABH] ? addr_bus_high : abh_out_latch;
+assign abl_out = control_signals[ctl::ADL_ABL] ? addr_bus_low : abl_out_latch;
 
 assign bus_req_data_o = data_bus;
-assign bus_req_address_o = { addr_bus_high, addr_bus_low };
+assign bus_req_address_o = { abh_out, abl_out };
 
 endmodule
