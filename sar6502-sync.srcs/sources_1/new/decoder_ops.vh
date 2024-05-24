@@ -59,3 +59,15 @@ function void handle_op_ldx();
         endcase
     end
 endfunction
+
+function void handle_op_txs();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::X_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
