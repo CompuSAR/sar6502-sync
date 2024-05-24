@@ -148,11 +148,11 @@ always_comb begin
 end
 
 function void handle_op();
-    $display("handle_op called inst %02X cycle %x", instruction_register, instruction_counter );
     case( instruction_register )
         8'h00: begin handle_op_brk(); end
         8'h9a: begin handle_op_txs(); end
         8'ha2: begin handle_addr_imm(); handle_op_ldx(); end
+        8'ha9: begin handle_addr_imm(); handle_op_lda(); end
         default: begin
             $error("Invalid opcode in instruction register %x time %t", instruction_register, $time());
             set_invalid_state();

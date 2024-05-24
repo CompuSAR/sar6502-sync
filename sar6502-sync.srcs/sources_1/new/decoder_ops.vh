@@ -46,6 +46,20 @@ function void handle_op_brk();
     endcase
 endfunction
 
+function void handle_op_lda();
+    if( !addr_cycle() ) begin
+        case( instruction_counter )
+            C_OP1: begin
+                sb_src_o = ctl::DL_SB;
+                control_signals_o[ctl::SB_AC] = 1'b1;
+
+                new_instruction();
+            end
+            default: set_invalid_state();
+        endcase
+    end
+endfunction
+
 function void handle_op_ldx();
     if( !addr_cycle() ) begin
         case( instruction_counter )
