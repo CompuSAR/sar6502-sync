@@ -91,8 +91,41 @@ typedef enum {
     DAA,
     I_ADDC,
 
+    // P register flags
+    DB0_C,
+    IR5_C,
+    ACR_C,
+
+    DB1_Z,
+    DBZ_Z,
+
+    DB2_I,
+    IR5_I,
+
+    DB3_D,
+    IR5_D,
+
+    O_B,
+
+    DB6_V,
+    AVR_V,
+    I_V,
+
+    DB7_N,
+
+
     NumCtlSignals
 } ControlSignals;
+
+typedef enum int {
+    FlagCarry = 0,
+    FlagZero = 1,
+    FlagIntMask = 2,
+    FlagDecimal = 3,
+    FlagBreak = 4,
+    FlagOverflow = 6,
+    FlagNegative = 7
+} Flags;
 
 typedef enum logic[2:0] {
     DB_INVALID = 'X,
