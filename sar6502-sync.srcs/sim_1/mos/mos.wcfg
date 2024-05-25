@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="357.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="510.601 ns"></ZoomEndTime>
-      <Cursor1Time time="485.000 ns"></Cursor1Time>
+      <ZoomStartTime time="150.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="587.238 ns"></ZoomEndTime>
+      <Cursor1Time time="419.157 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="228"></NameColumnWidth>
-      <ValueColumnWidth column_width="112"></ValueColumnWidth>
+      <ValueColumnWidth column_width="108"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="37" />
+   <WVObjectSize size="42" />
    <wvobject type="logic" fp_name="/mos_top/top/clock">
       <obj_property name="ElementShortName">clock</obj_property>
       <obj_property name="ObjectShortName">clock</obj_property>
@@ -165,6 +165,26 @@
       <obj_property name="ElementShortName">special_bus[7:0]</obj_property>
       <obj_property name="ObjectShortName">special_bus[7:0]</obj_property>
    </wvobject>
+   <wvobject type="array" fp_name="/mos_top/top/cpu/alu_b_source">
+      <obj_property name="ElementShortName">alu_b_source[1:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_b_source[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mos_top/top/cpu/alu_b_input">
+      <obj_property name="ElementShortName">alu_b_input[7:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_b_input[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mos_top/top/cpu/alu_op">
+      <obj_property name="ElementShortName">alu_op[2:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_op[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mos_top/top/cpu/alu_result">
+      <obj_property name="ElementShortName">alu_result[7:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_result[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mos_top/top/cpu/alu_result_async">
+      <obj_property name="ElementShortName">alu_result_async[7:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_result_async[7:0]</obj_property>
+   </wvobject>
    <wvobject type="array" fp_name="/mos_top/top/cpu/address_bus_high_source">
       <obj_property name="ElementShortName">address_bus_high_source[1:0]</obj_property>
       <obj_property name="ObjectShortName">address_bus_high_source[1:0]</obj_property>
@@ -186,7 +206,7 @@
       <obj_property name="ObjectShortName">ctrl[9:7]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/mos_top/top/cpu/control_signals">
-      <obj_property name="ElementShortName">control_signals[13:0]</obj_property>
-      <obj_property name="ObjectShortName">control_signals[13:0]</obj_property>
+      <obj_property name="ElementShortName">control_signals[15:0]</obj_property>
+      <obj_property name="ObjectShortName">control_signals[15:0]</obj_property>
    </wvobject>
 </wave_config>

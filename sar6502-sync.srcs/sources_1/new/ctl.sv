@@ -97,7 +97,8 @@ typedef enum {
 typedef enum logic[2:0] {
     DB_INVALID = 'X,
 
-    AC_DB = 0,
+    O_DB = 0,
+    AC_DB,
     P_DB,
     SB_DB,
     PCH_DB,
@@ -146,5 +147,13 @@ typedef enum logic[2:0] {
     SRS,
     SLS
 } ALUOp;
+
+typedef enum logic[1:0] {
+    ALU_B_INVALID = 'X,
+
+    ADL_ADD = 0,
+    DB_ADD,
+    DBB_ADD
+} AluBSrc;
 
 endpackage

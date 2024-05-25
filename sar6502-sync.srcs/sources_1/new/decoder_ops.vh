@@ -89,6 +89,19 @@ function void handle_pha();
             control_signals_o[ctl::ADH_ABH] = 1'b1;
 
             bus_req_valid_o = 1'b1;
+        end
+        C_ADDR2: begin
+            db_src_o = ctl::O_DB;
+            alu_b_src_o = ctl::DBB_ADD;
+            sb_src_o = ctl::S_SB;
+
+            alu_op_o = ctl::SUMS;
+            control_signals_o[ctl::DAA] = 1'b0;
+            control_signals_o[ctl::I_ADDC] = 1'b0;
+        end
+        C_ADDR3: begin
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
 
             new_instruction();
         end

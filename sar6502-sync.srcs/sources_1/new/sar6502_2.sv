@@ -55,6 +55,8 @@ typedef enum {
 
 // Buses
 wire [7:0] data_bus, addr_bus_low, addr_bus_high, special_bus;
+logic [7:0] alu_result;
+logic alu_avr, alu_acr, alu_hc;
 
 // Control signals
 wire [ctl::NumCtlSignals-1:0] control_signals;
@@ -63,6 +65,7 @@ ctl::SBSrc special_bus_source;
 ctl::ADHSrc address_bus_high_source;
 ctl::ADLSrc address_bus_low_source;
 ctl::ALUOp alu_op;
+ctl::AluBSrc alu_b_source;
 
 decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
     .clock_i(clock_i),
@@ -79,6 +82,9 @@ decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
     .adl_src_o(address_bus_low_source),
     .adh_src_o(address_bus_high_source),
     .alu_op_o(alu_op),
+    .alu_b_src_o(alu_b_source),
+
+    .alu_acr_i(alu_acr),
 
     .bus_req_ack_i(bus_req_ack_i),
     .bus_req_valid_o(bus_req_valid_o),
@@ -105,6 +111,9 @@ initial begin
 
     if($clog2(alu_op.last() + 1) != $size(ctl::ALUOp))
         $error("ALUOp needs to be %d bits", $clog2(alu_op.last() + 1));
+
+    if($clog2(alu_b_source.last() + 1) != $size(ctl::AluBSrc))
+        $error("AluBSrc needs to be %d bits", $clog2(alu_b_source.last() + 1));
 end
 
 genvar i;
@@ -162,24 +171,27 @@ assign regs[RegPcH].ctl_store = 1'b1;
 assign regs[RegDl].data_in = bus_rsp_data_i;
 assign regs[RegDl].ctl_store = bus_rsp_valid_i;
 
-logic [7:0] alu_result;
-logic alu_avr, alu_acr, alu_hc;
+wire [7:0] alu_b_input, alu_result_async;
 
 alu alu_unit(
     .a_i(special_bus),
     .b_i(alu_b_input),
     .decimal_enable_i( control_signals[ctl::DAA] ),
-    .carry_i( ctl::I_ADDC ),
+    .carry_i( control_signals[ctl::I_ADDC] ),
     .op_i( alu_op ),
 
-    .result_o( alu_result ),
+    .result_o( alu_result_async ),
     .overflow_o( alu_avr ),
     .carry_o( alu_acr ),
     .half_carry_o( alu_hc )
 );
 
+always_ff@(posedge clock_i)
+    alu_result <= alu_result_async;
+
 wire [7:0] db_inputs[data_bus_source.last() + 1];
 
+assign db_inputs[ctl::O_DB] = 8'h00;
 assign db_inputs[ctl::AC_DB] = regs[RegA].data_out;
 assign db_inputs[ctl::P_DB] = 8'bX;     // XXX Flags register
 assign db_inputs[ctl::SB_DB] = special_bus;
@@ -199,7 +211,7 @@ assign sb_inputs[ctl::O_SB] = 8'h00;
 assign sb_inputs[ctl::AC_SB] = regs[RegA].data_out;
 assign sb_inputs[ctl::Y_SB] = regs[RegY].data_out;
 assign sb_inputs[ctl::X_SB] = regs[RegX].data_out;
-assign sb_inputs[ctl::ADD_SB] = 8'bX;   // XXX ALU output
+assign sb_inputs[ctl::ADD_SB] = alu_result;
 assign sb_inputs[ctl::S_SB] = regs[RegS].data_out;
 assign sb_inputs[ctl::DL_SB] = regs[RegDl].data_out;
 
@@ -218,13 +230,23 @@ assign addr_bus_high = adh_inputs[address_bus_high_source];
 
 wire [7:0] adl_inputs[address_bus_low_source.last() + 1];
 
-assign adl_inputs[ctl::ADD_ADL] = 8'bX; // XXX ALU output
+assign adl_inputs[ctl::ADD_ADL] = alu_result;
 assign adl_inputs[ctl::S_ADL] = regs[RegS].data_out;
 assign adl_inputs[ctl::GEN_ADL] = adl_generated_values;
 assign adl_inputs[ctl::PCL_ADL] = regs[RegPcL].data_out;
 assign adl_inputs[ctl::DL_ADL] = regs[RegDl].data_out;
 
 assign addr_bus_low = adl_inputs[address_bus_low_source];
+
+
+wire [7:0] alu_b_inputs[alu_b_source.last() + 1];
+
+assign alu_b_inputs[ctl::ADL_ADD] = addr_bus_low;
+assign alu_b_inputs[ctl::DB_ADD] = data_bus;
+assign alu_b_inputs[ctl::DBB_ADD] = ~ data_bus;
+
+assign alu_b_input = alu_b_inputs[alu_b_source];
+
 
 logic [7:0] abh_out, abh_out_latch, abl_out, abl_out_latch;
 

@@ -36,6 +36,9 @@ module decoder#(CPU_VARIANT = 0)
     output ctl::ADLSrc adl_src_o,
     output ctl::ADHSrc adh_src_o,
     output ctl::ALUOp  alu_op_o,
+    output ctl::AluBSrc alu_b_src_o,
+
+    input alu_acr_i,
 
     // Outside bus
     input bus_req_ack_i,
@@ -105,6 +108,7 @@ function void set_default();
     adl_src_o = ctl::ADL_INVALID;
     adh_src_o = ctl::ADH_INVALID;
     alu_op_o = ctl::ALU_INVALID;
+    alu_b_src_o = ctl::ALU_B_INVALID;
 
     bus_req_valid_o = 1'b0;
     bus_req_write_o = 1'b0;
@@ -130,6 +134,7 @@ function void set_invalid_state();
     adl_src_o = ctl::ADL_INVALID;
     adh_src_o = ctl::ADH_INVALID;
     alu_op_o = ctl::ALU_INVALID;
+    alu_b_src_o = ctl::ALU_B_INVALID;
 
     bus_req_valid_o = 1'bX;
     bus_req_write_o = 1'bX;
