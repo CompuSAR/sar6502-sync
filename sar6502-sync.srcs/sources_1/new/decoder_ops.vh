@@ -109,6 +109,59 @@ function void handle_pha();
     endcase
 endfunction
 
+function void handle_op_rti();
+    case( instruction_counter )
+        C_ADDR1: begin
+            addr_out_stack( 1'b0 );
+            increase_sp();
+        end
+        C_ADDR2: begin
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
+        end
+        C_ADDR3: begin
+            addr_out_stack( 1'b0 );
+            increase_sp();
+        end
+        C_ADDR4: begin
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
+        end
+        C_ADDR5: begin
+            db_src_o = ctl::DL_DB;
+            control_signals_o[ctl::DB0_C] = 1'b1;
+            control_signals_o[ctl::DB1_Z] = 1'b1;
+            control_signals_o[ctl::DB2_I] = 1'b1;
+            control_signals_o[ctl::DB3_D] = 1'b1;
+            control_signals_o[ctl::DB6_V] = 1'b1;
+            control_signals_o[ctl::DB7_N] = 1'b1;
+
+            addr_out_stack( 1'b0 );
+            increase_sp();
+        end
+        C_ADDR6: begin
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
+        end
+        C_ADDR7: begin
+            adl_src_o = ctl::DL_ADL;
+            control_signals_o[ctl::ADL_PCL] = 1'b1;
+        end
+        C_ADDR8: begin
+            addr_out_stack( 1'b0 );
+        end
+        C_ADDR9: begin
+        end
+        C_ADDR10: begin
+            adh_src_o = ctl::DL_ADH;
+            control_signals_o[ctl::ADH_PCH] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
 function void handle_op_txs();
     case( instruction_counter )
         C_ADDR1: begin

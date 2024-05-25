@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="150.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="587.238 ns"></ZoomEndTime>
-      <Cursor1Time time="419.157 ns"></Cursor1Time>
+      <ZoomStartTime time="537.666 ns"></ZoomStartTime>
+      <ZoomEndTime time="846.467 ns"></ZoomEndTime>
+      <Cursor1Time time="660.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="228"></NameColumnWidth>
-      <ValueColumnWidth column_width="108"></ValueColumnWidth>
+      <ValueColumnWidth column_width="104"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="42" />
+   <WVObjectSize size="43" />
    <wvobject type="logic" fp_name="/mos_top/top/clock">
       <obj_property name="ElementShortName">clock</obj_property>
       <obj_property name="ObjectShortName">clock</obj_property>
@@ -102,6 +102,12 @@
       <obj_property name="ElementShortName">\regs[3].data_out [7:0]</obj_property>
       <obj_property name="ObjectShortName">\regs[3].data_out [7:0]</obj_property>
       <obj_property name="label">S</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mos_top/top/cpu/regP/data_o">
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="ElementShortName">data_o[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_o[7:0]</obj_property>
+      <obj_property name="label">P</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/mos_top/top/cpu/\regs[5].register /data_o">
       <obj_property name="DisplayName">label</obj_property>
@@ -206,7 +212,7 @@
       <obj_property name="ObjectShortName">ctrl[9:7]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/mos_top/top/cpu/control_signals">
-      <obj_property name="ElementShortName">control_signals[15:0]</obj_property>
-      <obj_property name="ObjectShortName">control_signals[15:0]</obj_property>
+      <obj_property name="ElementShortName">control_signals[29:0]</obj_property>
+      <obj_property name="ObjectShortName">control_signals[29:0]</obj_property>
    </wvobject>
 </wave_config>

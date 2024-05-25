@@ -53,10 +53,13 @@ typedef enum {
     NumRegisters
 } REGISTER_NAMES;
 
+wire halted = 1'b0;
+
 // Buses
 wire [7:0] data_bus, addr_bus_low, addr_bus_high, special_bus;
 logic [7:0] alu_result;
 logic alu_avr, alu_acr, alu_hc;
+logic decoder_ir5;
 
 // Control signals
 wire [ctl::NumCtlSignals-1:0] control_signals;
@@ -75,6 +78,7 @@ decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
     .memory_lock_o(memory_lock_o),
     .sync_o(sync_o),
     .vector_pull_o(vector_pull_o),
+    .ir5_o( decoder_ir5 ),
 
     .control_signals_o(control_signals),
     .db_src_o(data_bus_source),
@@ -150,7 +154,6 @@ assign regs[RegY].data_in = special_bus;
 assign regs[RegY].ctl_store = control_signals[ctl::SB_Y];
 
 assign regs[RegS].data_in = special_bus;
-// XXX Actual stack pointer has a "hold" signal connected to S/S
 assign regs[RegS].ctl_store = control_signals[ctl::SB_S];
 
 
@@ -187,13 +190,30 @@ alu alu_unit(
 );
 
 always_ff@(posedge clock_i)
-    alu_result <= alu_result_async;
+    if( !halted )
+        alu_result <= alu_result_async;
+
+wire [7:0] regP_value;
+processor_status#(.CPU_VARIANT(CPU_VARIANT)) regP(
+    .clock_i(clock_i),
+    .reset_i(reset_i),
+
+    .data_i(data_bus),
+
+    .ir5_i( decoder_ir5 ),
+    .acr_i( alu_acr ),
+    .avr_i( alu_avr ),
+
+    .control_signals_i( control_signals[ctl::DB7_N : ctl::DB0_C] ),
+
+    .data_o( regP_value )
+);
 
 wire [7:0] db_inputs[data_bus_source.last() + 1];
 
 assign db_inputs[ctl::O_DB] = 8'h00;
 assign db_inputs[ctl::AC_DB] = regs[RegA].data_out;
-assign db_inputs[ctl::P_DB] = 8'bX;     // XXX Flags register
+assign db_inputs[ctl::P_DB] = regP_value;
 assign db_inputs[ctl::SB_DB] = special_bus;
 assign db_inputs[ctl::PCH_DB] = regs[RegPcH].data_out;
 assign db_inputs[ctl::PCL_DB] = regs[RegPcL].data_out;
@@ -203,7 +223,8 @@ assign data_bus = db_inputs[data_bus_source];
 logic [7:0] data_bus_latch;
 
 always_ff@(posedge clock_i)
-    data_bus_latch <= data_bus;
+    if( !halted )
+        data_bus_latch <= data_bus;
 
 wire [7:0] sb_inputs[special_bus_source.last() + 1];
 
@@ -251,10 +272,12 @@ assign alu_b_input = alu_b_inputs[alu_b_source];
 logic [7:0] abh_out, abh_out_latch, abl_out, abl_out_latch;
 
 always_ff@(posedge clock_i) begin
-    if( control_signals[ctl::ADL_ABL] )
-        abl_out_latch <= addr_bus_low;
-    if( control_signals[ctl::ADH_ABH] )
-        abh_out_latch <= addr_bus_high;
+    if( !halted ) begin
+        if( control_signals[ctl::ADL_ABL] )
+            abl_out_latch <= addr_bus_low;
+        if( control_signals[ctl::ADH_ABH] )
+            abh_out_latch <= addr_bus_high;
+    end
 end
 
 assign abh_out = control_signals[ctl::ADH_ABH] ? addr_bus_high : abh_out_latch;
