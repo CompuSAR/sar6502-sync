@@ -12,18 +12,24 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="217.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="370.601 ns"></ZoomEndTime>
-      <Cursor1Time time="345.000 ns"></Cursor1Time>
+      <ZoomStartTime time="357.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="510.601 ns"></ZoomEndTime>
+      <Cursor1Time time="485.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="228"></NameColumnWidth>
       <ValueColumnWidth column_width="112"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="36" />
+   <WVObjectSize size="37" />
    <wvobject type="logic" fp_name="/mos_top/top/clock">
       <obj_property name="ElementShortName">clock</obj_property>
       <obj_property name="ObjectShortName">clock</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/mos_top/top/cpu/sync_o">
+      <obj_property name="ElementShortName">sync_o</obj_property>
+      <obj_property name="ObjectShortName">sync_o</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/mos_top/top/cpu/reset_i">
       <obj_property name="ElementShortName">reset_i</obj_property>
@@ -44,6 +50,8 @@
    <wvobject type="logic" fp_name="/mos_top/top/cpu_req_valid">
       <obj_property name="ElementShortName">cpu_req_valid</obj_property>
       <obj_property name="ObjectShortName">cpu_req_valid</obj_property>
+      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/mos_top/top/cpu_req_ack">
       <obj_property name="ElementShortName">cpu_req_ack</obj_property>
@@ -52,6 +60,8 @@
    <wvobject type="logic" fp_name="/mos_top/top/cpu_req_write">
       <obj_property name="ElementShortName">cpu_req_write</obj_property>
       <obj_property name="ObjectShortName">cpu_req_write</obj_property>
+      <obj_property name="CustomSignalColor">#800080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/mos_top/top/cpu_req_address">
       <obj_property name="ElementShortName">cpu_req_address[15:0]</obj_property>

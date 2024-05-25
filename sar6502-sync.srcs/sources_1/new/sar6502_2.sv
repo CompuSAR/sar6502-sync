@@ -62,6 +62,7 @@ ctl::DBSrc data_bus_source;
 ctl::SBSrc special_bus_source;
 ctl::ADHSrc address_bus_high_source;
 ctl::ADLSrc address_bus_low_source;
+ctl::ALUOp alu_op;
 
 decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
     .clock_i(clock_i),
@@ -77,6 +78,7 @@ decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
     .sb_src_o(special_bus_source),
     .adl_src_o(address_bus_low_source),
     .adh_src_o(address_bus_high_source),
+    .alu_op_o(alu_op),
 
     .bus_req_ack_i(bus_req_ack_i),
     .bus_req_valid_o(bus_req_valid_o),
@@ -84,6 +86,8 @@ decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
     .bus_rsp_valid_i(bus_rsp_valid_i),
     .bus_rsp_data_i(bus_rsp_data_i)
 );
+
+
 
 initial begin
     // Assert proper width of bus controls
@@ -98,6 +102,9 @@ initial begin
 
     if($clog2(address_bus_low_source.last() + 1) != $size(ctl::ADLSrc))
         $error("ADLSrc needs to be %d bits", $clog2(address_bus_low_source.last() + 1));
+
+    if($clog2(alu_op.last() + 1) != $size(ctl::ALUOp))
+        $error("ALUOp needs to be %d bits", $clog2(alu_op.last() + 1));
 end
 
 genvar i;
@@ -155,6 +162,21 @@ assign regs[RegPcH].ctl_store = 1'b1;
 assign regs[RegDl].data_in = bus_rsp_data_i;
 assign regs[RegDl].ctl_store = bus_rsp_valid_i;
 
+logic [7:0] alu_result;
+logic alu_avr, alu_acr, alu_hc;
+
+alu alu_unit(
+    .a_i(special_bus),
+    .b_i(alu_b_input),
+    .decimal_enable_i( control_signals[ctl::DAA] ),
+    .carry_i( ctl::I_ADDC ),
+    .op_i( alu_op ),
+
+    .result_o( alu_result ),
+    .overflow_o( alu_avr ),
+    .carry_o( alu_acr ),
+    .half_carry_o( alu_hc )
+);
 
 wire [7:0] db_inputs[data_bus_source.last() + 1];
 
@@ -173,12 +195,12 @@ always_ff@(posedge clock_i)
 
 wire [7:0] sb_inputs[special_bus_source.last() + 1];
 
+assign sb_inputs[ctl::O_SB] = 8'h00;
 assign sb_inputs[ctl::AC_SB] = regs[RegA].data_out;
 assign sb_inputs[ctl::Y_SB] = regs[RegY].data_out;
 assign sb_inputs[ctl::X_SB] = regs[RegX].data_out;
 assign sb_inputs[ctl::ADD_SB] = 8'bX;   // XXX ALU output
 assign sb_inputs[ctl::S_SB] = regs[RegS].data_out;
-assign sb_inputs[ctl::DB_SB] = data_bus_latch;
 assign sb_inputs[ctl::DL_SB] = regs[RegDl].data_out;
 
 assign special_bus = sb_inputs[special_bus_source];

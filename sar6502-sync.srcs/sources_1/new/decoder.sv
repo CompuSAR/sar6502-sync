@@ -35,6 +35,7 @@ module decoder#(CPU_VARIANT = 0)
     output ctl::SBSrc sb_src_o,
     output ctl::ADLSrc adl_src_o,
     output ctl::ADHSrc adh_src_o,
+    output ctl::ALUOp  alu_op_o,
 
     // Outside bus
     input bus_req_ack_i,
@@ -103,6 +104,7 @@ function void set_default();
     sb_src_o = ctl::SB_INVALID;
     adl_src_o = ctl::ADL_INVALID;
     adh_src_o = ctl::ADH_INVALID;
+    alu_op_o = ctl::ALU_INVALID;
 
     bus_req_valid_o = 1'b0;
     bus_req_write_o = 1'b0;
@@ -127,6 +129,7 @@ function void set_invalid_state();
     sb_src_o = ctl::SB_INVALID;
     adl_src_o = ctl::ADL_INVALID;
     adh_src_o = ctl::ADH_INVALID;
+    alu_op_o = ctl::ALU_INVALID;
 
     bus_req_valid_o = 1'bX;
     bus_req_write_o = 1'bX;
@@ -150,6 +153,7 @@ end
 function void handle_op();
     case( instruction_register )
         8'h00: begin handle_op_brk(); end
+        8'h48: begin handle_pha(); end
         8'h9a: begin handle_op_txs(); end
         8'ha2: begin handle_addr_imm(); handle_op_ldx(); end
         8'ha9: begin handle_addr_imm(); handle_op_lda(); end
@@ -176,6 +180,8 @@ function void handle_fetch();
 
                 advance_pc();
             end
+
+            sync_o = 1'b1;
         end
         C_FETCH2: begin
             read_pc();
@@ -237,7 +243,7 @@ always_ff@(posedge clock_i) begin
         int_active <= int_active_next;
     end
 
-    bus_waiting_result <= bus_req_valid_o || (bus_waiting_result && !bus_rsp_valid_i);
+    bus_waiting_result <= (bus_req_valid_o && !bus_req_write_o) || (bus_waiting_result && !bus_rsp_valid_i);
 end
 
 endmodule

@@ -1,6 +1,5 @@
 
 function void handle_op_brk();
-    $display("handle_op_brk cycle %s", instruction_counter.name());
     case( instruction_counter )
         C_ADDR1: begin
             adl_src_o = ctl::GEN_ADL;
@@ -72,6 +71,29 @@ function void handle_op_ldx();
             default: set_invalid_state();
         endcase
     end
+endfunction
+
+function void handle_pha();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::AC_SB;
+            db_src_o = ctl::SB_DB;
+            bus_req_write_o = 1'b1;
+
+            adl_src_o = ctl::S_ADL;
+            control_signals_o[ctl::ADL_ABL] = 1'b1;
+
+            adh_src_o = ctl::GEN_ADH;
+            control_signals_o[ctl::O_ADH_0] = 1'b0;
+            control_signals_o[ctl::O_ADH_1_7] = 1'b1;
+            control_signals_o[ctl::ADH_ABH] = 1'b1;
+
+            bus_req_valid_o = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
 endfunction
 
 function void handle_op_txs();

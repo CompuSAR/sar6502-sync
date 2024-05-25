@@ -87,6 +87,10 @@ typedef enum {
     SB_Y,
     SB_S,
 
+    // ALU flags
+    DAA,
+    I_ADDC,
+
     NumCtlSignals
 } ControlSignals;
 
@@ -104,12 +108,12 @@ typedef enum logic[2:0] {
 typedef enum logic[2:0] {
     SB_INVALID = 'X,
 
-    AC_SB = 0,
+    O_SB = 0,
+    AC_SB,
     Y_SB,
     X_SB,
     ADD_SB,
     S_SB,
-    DB_SB,
     DL_SB
 } SBSrc;
 
@@ -131,5 +135,16 @@ typedef enum logic[2:0] {
     PCL_ADL,
     DL_ADL
 } ADLSrc;
+
+typedef enum logic[2:0] {
+    ALU_INVALID = 'X,
+
+    SUMS = 0,
+    ANDS,
+    EORS,
+    ORS,
+    SRS,
+    SLS
+} ALUOp;
 
 endpackage
