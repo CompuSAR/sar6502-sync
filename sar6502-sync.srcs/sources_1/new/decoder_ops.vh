@@ -73,6 +73,15 @@ function void handle_op_ldx();
     end
 endfunction
 
+function void handle_op_nop();
+    case( instruction_counter )
+        C_ADDR1: begin
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
 function void handle_pha();
     case( instruction_counter )
         C_ADDR1: begin
