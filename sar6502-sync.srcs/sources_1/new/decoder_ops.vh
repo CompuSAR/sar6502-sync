@@ -78,6 +78,9 @@ function void handle_op_jsr();
         C_ADDR6: begin
             control_signals_o[ctl::ADL_PCL] = 1'b1;
             adl_src_o = ctl::DL_ADL;
+
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
         end
         C_ADDR7: begin
             adh_src_o = ctl::DL_ADH;
@@ -157,6 +160,24 @@ function void handle_pha();
             control_signals_o[ctl::SB_S] = 1'b1;
 
             new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
+function void handle_op_php();
+    case( instruction_counter )
+        C_ADDR1: begin
+            addr_out_stack( 1'b1 );
+
+            db_src_o = ctl::P_DB;
+        end
+        C_ADDR2: begin
+            decrease_sp();
+        end
+        C_ADDR3: begin
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
         end
         default: set_invalid_state();
     endcase

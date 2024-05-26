@@ -38,7 +38,7 @@ module processor_status#(
     );
 
 logic [7:0] flags;
-assign data_o = { flags[7:6], 1'b0, ~control_signals_i[ctl::O_B], flags[3:0] };
+assign data_o = { flags[7:6], 1'b1, ~control_signals_i[ctl::O_B], flags[3:0] };
 
 always_ff@(posedge clock_i, posedge reset_i) begin
     if( reset_i ) begin
