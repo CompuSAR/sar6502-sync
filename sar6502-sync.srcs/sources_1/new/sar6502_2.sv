@@ -172,7 +172,7 @@ assign regs[RegPcH].data_in = pch_select + pcl_carry;
 assign regs[RegPcH].ctl_store = 1'b1;
 
 assign regs[RegDl].data_in = bus_rsp_data_i;
-assign regs[RegDl].ctl_store = bus_rsp_valid_i;
+assign regs[RegDl].ctl_store = bus_rsp_valid_i && !control_signals[ctl::DL_DL];
 
 wire [7:0] alu_b_input, alu_result_async;
 

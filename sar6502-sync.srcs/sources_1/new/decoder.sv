@@ -159,6 +159,7 @@ end
 function void handle_op();
     case( instruction_register )
         8'h00: begin handle_op_brk(); end
+        8'h20: begin handle_op_jsr(); end
         8'h40: begin handle_op_rti(); end
         8'h48: begin handle_pha(); end
         8'h9a: begin handle_op_txs(); end
@@ -245,6 +246,16 @@ function void addr_out_stack( input write );
 
     bus_req_valid_o = 1'b1;
     bus_req_write_o = write;
+endfunction
+
+function void decrease_sp();
+    db_src_o = ctl::O_DB;
+    alu_b_src_o = ctl::DBB_ADD;
+    sb_src_o = ctl::S_SB;
+    alu_op_o = ctl::SUMS;
+
+    control_signals_o[ctl::DAA] = 1'b0;
+    control_signals_o[ctl::I_ADDC] = 1'b0;
 endfunction
 
 function void increase_sp();

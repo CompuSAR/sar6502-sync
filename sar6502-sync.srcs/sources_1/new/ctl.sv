@@ -87,6 +87,8 @@ typedef enum {
     SB_Y,
     SB_S,
 
+    DL_DL,              // DL doesn't load incoming bus reads
+
     // ALU flags
     DAA,
     I_ADDC,

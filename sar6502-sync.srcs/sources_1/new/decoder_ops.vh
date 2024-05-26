@@ -45,6 +45,50 @@ function void handle_op_brk();
     endcase
 endfunction
 
+function void handle_op_jsr();
+    case( instruction_counter )
+        C_ADDR1: begin
+            advance_pc(); 
+
+            addr_out_stack( 1'b0 );
+        end
+        C_ADDR2: begin
+            decrease_sp();
+
+            control_signals_o[ctl::DL_DL] = 1'b1;       // Don't store the value
+        end
+        C_ADDR3: begin
+            addr_out_stack( 1'b1 );
+
+            db_src_o = ctl::PCH_DB;
+
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
+        end
+        C_ADDR4: begin
+            addr_out_stack( 1'b1 );
+
+            db_src_o = ctl::PCL_DB;
+        end
+        C_ADDR5: begin
+            decrease_sp();
+
+            read_pc();
+        end
+        C_ADDR6: begin
+            control_signals_o[ctl::ADL_PCL] = 1'b1;
+            adl_src_o = ctl::DL_ADL;
+        end
+        C_ADDR7: begin
+            adh_src_o = ctl::DL_ADH;
+            control_signals_o[ctl::ADH_PCH] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
 function void handle_op_lda();
     if( !addr_cycle() ) begin
         case( instruction_counter )
