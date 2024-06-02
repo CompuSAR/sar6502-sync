@@ -129,7 +129,7 @@ function void handle_op_nop();
     endcase
 endfunction
 
-function void handle_pha();
+function void handle_op_pha();
     case( instruction_counter )
         C_ADDR1: begin
             sb_src_o = ctl::AC_SB;
@@ -178,6 +178,8 @@ function void handle_op_php();
         C_ADDR3: begin
             sb_src_o = ctl::ADD_SB;
             control_signals_o[ctl::SB_S] = 1'b1;
+
+            new_instruction();
         end
         default: set_invalid_state();
     endcase

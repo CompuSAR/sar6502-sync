@@ -162,7 +162,7 @@ function void handle_op();
         8'h08: begin handle_op_php(); end
         8'h20: begin handle_op_jsr(); end
         8'h40: begin handle_op_rti(); end
-        8'h48: begin handle_pha(); end
+        8'h48: begin handle_op_pha(); end
         8'h9a: begin handle_op_txs(); end
         8'ha2: begin handle_addr_imm(); handle_op_ldx(); end
         8'ha9: begin handle_addr_imm(); handle_op_lda(); end

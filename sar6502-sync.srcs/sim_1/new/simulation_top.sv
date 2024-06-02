@@ -111,12 +111,16 @@ end
 wire [35:0] plan_line = test_plan[cycle_num];
 
 task handle_bus_op();
-    if( cycle_num==0 && cpu_req_address!==16'hfffc ) begin
-        $display("Pre-test cycle %s address %04x data %02x time %t", cpu_req_write ? "write" : "read", cpu_req_address, cpu_req_data, $time);
+    if( cycle_num==0 ) begin
+        if( cpu_req_address!==16'hfffc ) begin
+            $display("Pre-test cycle %s address %04x data %02x time %t", cpu_req_write ? "write" : "read", cpu_req_address, cpu_req_data, $time);
 
-        cpu_rsp_data <= 8'hXX;
-        cpu_rsp_valid <= cpu_req_valid;
-        return;
+            cpu_rsp_data <= 8'hXX;
+            cpu_rsp_valid <= cpu_req_valid;
+            return;
+        end else begin
+            $display("Detected test start condition at time %t", $time);
+        end
     end
 
     assert_state( cpu_req_address, plan_line[31:16], "Address bus" );
