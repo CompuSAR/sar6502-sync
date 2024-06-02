@@ -177,7 +177,7 @@ endfunction
 function void handle_fetch();
     case(instruction_counter)
         C_FETCH1: begin
-            read_pc();
+            addr_out_pc();
 
             int_pending_next = IntNone;
 
@@ -194,7 +194,7 @@ function void handle_fetch();
             sync_o = 1'b1;
         end
         C_FETCH2: begin
-            read_pc();
+            addr_out_pc();
 
             if( int_active!=IntNone )
                 instruction_register_next = 8'h00;      // BRK
@@ -214,16 +214,6 @@ endfunction
 `include "decoder_addr.vh"
 `include "decoder_ops.vh"
 
-function void read_pc();
-    adl_src_o = ctl::PCL_ADL;
-    adh_src_o = ctl::PCH_ADH;
-
-    bus_req_valid_o = 1'b1;
-
-    control_signals_o[ctl::ADH_ABH] = 1'b1;
-    control_signals_o[ctl::ADL_ABL] = 1'b1;
-endfunction
-
 function void advance_pc();
     control_signals_o[ctl::I_PC] = 1'b1;
 endfunction
@@ -234,6 +224,16 @@ endfunction
 
 function addr_cycle();
     addr_cycle = (instruction_counter & C_ADDR_MASK) != C_NO_MATCH;
+endfunction
+
+function void addr_out_pc();
+    adl_src_o = ctl::PCL_ADL;
+    control_signals_o[ctl::ADL_ABL] = 1'b1;
+
+    adh_src_o = ctl::PCH_ADH;
+    control_signals_o[ctl::ADH_ABH] = 1'b1;
+
+    bus_req_valid_o = 1'b1;
 endfunction
 
 function void addr_out_stack( input write );

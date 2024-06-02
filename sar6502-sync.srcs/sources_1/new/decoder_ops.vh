@@ -73,7 +73,7 @@ function void handle_op_jsr();
         C_ADDR5: begin
             decrease_sp();
 
-            read_pc();
+            addr_out_pc();
         end
         C_ADDR6: begin
             control_signals_o[ctl::ADL_PCL] = 1'b1;
