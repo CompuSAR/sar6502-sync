@@ -31,6 +31,8 @@ module decoder#(CPU_VARIANT = 0)
     output logic vector_pull_o,
     output ir5_o,
 
+    input [7:0] flags_i,
+    input dl7_i,
     output logic [ctl::NumCtlSignals-1:0] control_signals_o,
     output ctl::DBSrc db_src_o,
     output ctl::SBSrc sb_src_o,
@@ -90,6 +92,16 @@ enum logic[31:0] {
 logic bus_waiting_result = 1'b0;
 reg [7:0] instruction_register, instruction_register_next;
 assign ir5_o = instruction_register[5];
+
+logic condtion_flag, condition_flags[4];
+assign condition_flags[2'b00] = flags_i[ctl::FlagNegative];
+assign condition_flags[2'b01] = flags_i[ctl::FlagOverflow];
+assign condition_flags[2'b10] = flags_i[ctl::FlagCarry];
+assign condition_flags[2'b11] = flags_i[ctl::FlagZero];
+
+logic alu_acr;
+
+assign condtion_flag = condition_flags[ instruction_register[7:6] ];
 
 enum {
     IntReset,
@@ -160,13 +172,21 @@ function void handle_op();
     case( instruction_register )
         8'h00: begin handle_op_brk(); end
         8'h08: begin handle_op_php(); end
+        8'h10: begin handle_op_branch(); end
         8'h20: begin handle_op_jsr(); end
+        8'h30: begin handle_op_branch(); end
         8'h40: begin handle_op_rti(); end
         8'h48: begin handle_op_pha(); end
+        8'h50: begin handle_op_branch(); end
+        8'h70: begin handle_op_branch(); end
+        8'h90: begin handle_op_branch(); end
         8'h9a: begin handle_op_txs(); end
         8'ha2: begin handle_addr_imm(); handle_op_ldx(); end
         8'ha9: begin handle_addr_imm(); handle_op_lda(); end
+        8'hb0: begin handle_op_branch(); end
+        8'hd0: begin handle_op_branch(); end
         8'hea: begin handle_op_nop(); end
+        8'hf0: begin handle_op_branch(); end
         default: begin
             $error("Invalid opcode in instruction register %x time %t", instruction_register, $time());
             set_invalid_state();
@@ -269,6 +289,8 @@ function void increase_sp();
 endfunction
 
 always_ff@(posedge clock_i) begin
+    alu_acr <= alu_acr_i;
+
     if( reset_i ) begin
         instruction_counter <= C_FETCH1;
         instruction_register <= 8'h00;

@@ -1,3 +1,58 @@
+function void handle_op_branch();
+    case( instruction_counter )
+        C_ADDR1: begin
+            control_signals_o[ctl::I_PC] = 1'b1;
+
+            if( condtion_flag != instruction_register[5] )
+                new_instruction();
+        end
+        C_ADDR2: begin
+            sb_src_o = ctl::DL_SB;
+            alu_b_src_o = ctl::ADL_ADD;
+            adl_src_o = ctl::PCL_ADL;
+
+            alu_op_o = ctl::SUMS;
+
+            addr_out_pc();
+        end
+        C_ADDR3: begin
+            adl_src_o = ctl::ADD_ADL;
+            control_signals_o[ctl::ADL_PCL] = 1'b1;
+            control_signals_o[ctl::DL_DL] = 1'b1;
+
+            if( !dl7_i && !alu_acr || dl7_i && alu_acr )
+                new_instruction();
+
+            adh_src_o = ctl::PCH_ADH;
+        end
+        C_ADDR4: begin
+            addr_out_pc();
+
+            sb_src_o = ctl::ADH_SB;
+            db_src_o = ctl::O_DB;
+
+            if( dl7_i ) begin
+                // Negative offset
+                control_signals_o[ctl::I_ADDC] = 1'b0;
+                alu_b_src_o = ctl::DBB_ADD;
+            end else begin
+                // Positive offset
+                control_signals_o[ctl::I_ADDC] = 1'b1;
+                alu_b_src_o = ctl::DB_ADD;
+            end
+
+            alu_op_o = ctl::SUMS;
+        end
+        C_ADDR5: begin
+            sb_src_o = ctl::ADD_SB;
+            adh_src_o = ctl::SB_ADH;
+            control_signals_o[ctl::ADH_PCH] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
 
 function void handle_op_brk();
     case( instruction_counter )

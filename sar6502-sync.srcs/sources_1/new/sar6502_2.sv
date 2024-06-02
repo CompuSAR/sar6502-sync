@@ -80,6 +80,8 @@ decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
     .vector_pull_o(vector_pull_o),
     .ir5_o( decoder_ir5 ),
 
+    .flags_i( regP_value ),
+    .dl7_i( regs[RegDl].data_out[7] ),
     .control_signals_o(control_signals),
     .db_src_o(data_bus_source),
     .sb_src_o(special_bus_source),
@@ -235,9 +237,9 @@ assign sb_inputs[ctl::X_SB] = regs[RegX].data_out;
 assign sb_inputs[ctl::ADD_SB] = alu_result;
 assign sb_inputs[ctl::S_SB] = regs[RegS].data_out;
 assign sb_inputs[ctl::DL_SB] = regs[RegDl].data_out;
+assign sb_inputs[ctl::ADH_SB] = adh_latch;
 
 assign special_bus = sb_inputs[special_bus_source];
-
 
 wire [7:0] adh_inputs[address_bus_high_source.last() + 1];
 
@@ -247,6 +249,12 @@ assign adh_inputs[ctl::GEN_ADH] = adh_generated_values;
 assign adh_inputs[ctl::DL_ADH] = regs[RegDl].data_out;
 
 assign addr_bus_high = adh_inputs[address_bus_high_source];
+logic [7:0] adh_latch;
+
+always_ff@(posedge clock_i)
+    if( !halted )
+        adh_latch <= addr_bus_high;
+
 
 
 wire [7:0] adl_inputs[address_bus_low_source.last() + 1];

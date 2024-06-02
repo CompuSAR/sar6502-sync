@@ -150,7 +150,8 @@ typedef enum logic[2:0] {
     X_SB,
     ADD_SB,
     S_SB,
-    DL_SB
+    DL_SB,
+    ADH_SB
 } SBSrc;
 
 typedef enum logic[1:0] {
