@@ -174,6 +174,7 @@ function void handle_op();
         8'h08: begin handle_op_php(); end
         8'h10: begin handle_op_branch(); end
         8'h20: begin handle_op_jsr(); end
+        8'h28: begin handle_op_plp(); end
         8'h30: begin handle_op_branch(); end
         8'h40: begin handle_op_rti(); end
         8'h48: begin handle_op_pha(); end

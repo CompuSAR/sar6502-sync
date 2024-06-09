@@ -12,9 +12,9 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1,188.647 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,278.962 ns"></ZoomEndTime>
-      <Cursor1Time time="1,315.000 ns"></Cursor1Time>
+      <ZoomStartTime time="1,333.317 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,403.418 ns"></ZoomEndTime>
+      <Cursor1Time time="1,375.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="228"></NameColumnWidth>
@@ -22,8 +22,8 @@
    </column_width_setting>
    <WVObjectSize size="47" />
    <wave_markers>
-      <marker label="" time="1245000" />
       <marker label="" time="1315000" />
+      <marker label="" time="1375000" />
    </wave_markers>
    <wvobject type="logic" fp_name="/mos_top/top/clock">
       <obj_property name="ElementShortName">clock</obj_property>

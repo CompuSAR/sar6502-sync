@@ -251,6 +251,36 @@ function void handle_op_php();
     endcase
 endfunction
 
+function void handle_op_plp();
+    case( instruction_counter )
+        C_ADDR1: begin
+            addr_out_stack( 1'b0 );
+            increase_sp();
+        end
+        C_ADDR2: begin
+            addr_out_stack( 1'b0 );
+            adl_src_o = ctl::ADD_ADL;
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
+        end
+        C_ADDR3: begin
+        end
+        C_ADDR4: begin
+            db_src_o = ctl::DL_DB;
+
+            control_signals_o[ctl::DB0_C] = 1'b1;
+            control_signals_o[ctl::DB1_Z] = 1'b1;
+            control_signals_o[ctl::DB2_I] = 1'b1;
+            control_signals_o[ctl::DB3_D] = 1'b1;
+            control_signals_o[ctl::DB6_V] = 1'b1;
+            control_signals_o[ctl::DB7_N] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
 function void handle_op_rti();
     case( instruction_counter )
         C_ADDR1: begin
