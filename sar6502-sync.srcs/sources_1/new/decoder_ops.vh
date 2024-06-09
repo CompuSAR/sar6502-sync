@@ -334,6 +334,47 @@ function void handle_op_rti();
     endcase
 endfunction
 
+function void handle_op_rts();
+    case( instruction_counter )
+        C_ADDR1: begin
+            addr_out_stack( 1'b0 );
+            increase_sp();
+        end
+        C_ADDR2: begin
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
+        end
+        C_ADDR3: begin
+            addr_out_stack( 1'b0 );
+            increase_sp();
+        end
+        C_ADDR4: begin
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
+        end
+        C_ADDR5: begin
+            adl_src_o = ctl::DL_ADL;
+            control_signals_o[ctl::ADL_PCL] = 1'b1;
+        end
+        C_ADDR6: begin
+            addr_out_stack( 1'b0 );
+        end
+        C_ADDR7: begin
+        end
+        C_ADDR8: begin
+            adh_src_o = ctl::DL_ADH;
+            control_signals_o[ctl::ADH_PCH] = 1'b1;
+        end
+        C_ADDR9: begin
+            addr_out_pc();
+            advance_pc();
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
 function void handle_op_txs();
     case( instruction_counter )
         C_ADDR1: begin

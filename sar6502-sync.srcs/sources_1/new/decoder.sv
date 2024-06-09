@@ -180,6 +180,7 @@ function void handle_op();
         8'h48: begin handle_op_pha(); end
         8'h4c: begin handle_addr_abs(); handle_op_jmp(); end
         8'h50: begin handle_op_branch(); end
+        8'h60: begin handle_op_rts(); end
         8'h70: begin handle_op_branch(); end
         8'h90: begin handle_op_branch(); end
         8'h9a: begin handle_op_txs(); end
