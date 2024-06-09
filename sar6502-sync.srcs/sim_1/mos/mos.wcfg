@@ -12,18 +12,18 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1,106.916 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,176.617 ns"></ZoomEndTime>
-      <Cursor1Time time="1,165.000 ns"></Cursor1Time>
+      <ZoomStartTime time="1,188.647 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,278.962 ns"></ZoomEndTime>
+      <Cursor1Time time="1,315.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="228"></NameColumnWidth>
-      <ValueColumnWidth column_width="100"></ValueColumnWidth>
+      <ValueColumnWidth column_width="96"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="46" />
+   <WVObjectSize size="47" />
    <wave_markers>
-      <marker label="" time="1075000" />
-      <marker label="" time="1145000" />
+      <marker label="" time="1245000" />
+      <marker label="" time="1315000" />
    </wave_markers>
    <wvobject type="logic" fp_name="/mos_top/top/clock">
       <obj_property name="ElementShortName">clock</obj_property>
@@ -142,6 +142,10 @@
    <wvobject type="array" fp_name="/mos_top/top/cpu/decoder/int_pending">
       <obj_property name="ElementShortName">int_pending[31:0]</obj_property>
       <obj_property name="ObjectShortName">int_pending[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/mos_top/top/cpu/decoder/condtion_flag">
+      <obj_property name="ElementShortName">condtion_flag</obj_property>
+      <obj_property name="ObjectShortName">condtion_flag</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/mos_top/top/cpu/decoder/instruction_register">
       <obj_property name="ElementShortName">instruction_register[7:0]</obj_property>

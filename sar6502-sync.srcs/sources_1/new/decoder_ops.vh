@@ -100,6 +100,15 @@ function void handle_op_brk();
     endcase
 endfunction
 
+function void handle_op_jmp();
+    if( addr_cycle() ) begin
+        control_signals_o[ctl::ADL_PCL] = control_signals_o[ctl::ADL_ABL];
+        control_signals_o[ctl::ADH_PCH] = control_signals_o[ctl::ADH_ABH];
+    end else begin
+        new_instruction();
+    end
+endfunction
+
 function void handle_op_jsr();
     case( instruction_counter )
         C_ADDR1: begin
