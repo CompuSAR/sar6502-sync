@@ -30,7 +30,7 @@ module simulation_top#
 
 localparam tPWL = 5;            // Time Pulse Width Low (clock)
 localparam tPWH = 5;            // Time Pulse Width High (clock)
-localparam MaxCyclesPerBus=3;   // Maximum number of clock cycles between bus operations
+localparam MaxCyclesPerBus=4;   // Maximum number of clock cycles between bus operations
 
 logic clock;
 logic [7:0] memory[65535:0];

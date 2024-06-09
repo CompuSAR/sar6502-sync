@@ -104,6 +104,8 @@ function void handle_op_jmp();
     if( addr_cycle() ) begin
         control_signals_o[ctl::ADL_PCL] = control_signals_o[ctl::ADL_ABL];
         control_signals_o[ctl::ADH_PCH] = control_signals_o[ctl::ADH_ABH];
+        if( control_signals_o[ctl::ADL_PCL] )
+            control_signals_o[ctl::I_PC] = 1'b0;
     end else begin
         new_instruction();
     end
