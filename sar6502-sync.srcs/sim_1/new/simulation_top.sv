@@ -36,7 +36,7 @@ logic clock;
 logic [7:0] memory[65535:0];
 logic [35:0]test_plan[30000];
 
-logic cpu_req_valid, cpu_req_write, cpu_req_ack = 1'b1, cpu_rsp_valid = 1'b0;
+logic cpu_req_valid, cpu_req_write, cpu_sync, cpu_req_ack = 1'b1, cpu_rsp_valid = 1'b0;
 logic [7:0] cpu_req_data, cpu_rsp_data = 8'hXX;
 logic [15:0] cpu_req_address;
 
@@ -50,6 +50,7 @@ cpu(
     .nmi_i(cpu_nmi),
     .irq_i(cpu_irq),
     .set_overflow_i(cpu_set_overflow),
+    .sync_o(cpu_sync),
 
     .bus_req_valid_o(cpu_req_valid),
     .bus_req_address_o(cpu_req_address),
@@ -125,7 +126,7 @@ task handle_bus_op();
 
     assert_state( cpu_req_address, plan_line[31:16], "Address bus" );
     assert_state( cpu_req_write, !plan_line[0], "Read/write" );
-    //assert_state( sync, plan_line[1], "Sync" );
+    assert_state( cpu_sync, plan_line[1], "Sync" );
     //assert_state( vector_pull, !plan_line[3], "Vector pull" );
 
     if( cpu_req_write ) begin
