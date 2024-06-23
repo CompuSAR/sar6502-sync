@@ -389,3 +389,21 @@ function void handle_op_txs();
         default: set_invalid_state();
     endcase
 endfunction
+
+function void handle_op_set_flag();
+    case( instruction_register[7:6] )
+        2'b00: control_signals_o[ctl::IR5_C] = 1'b1;
+        2'b01: control_signals_o[ctl::IR5_I] = 1'b1;
+        2'b11: control_signals_o[ctl::IR5_D] = 1'b1;
+    endcase
+
+    new_instruction();
+endfunction
+
+function void handle_op_clv();
+    sb_src_o = ctl::O_SB;
+    db_src_o = ctl::SB_DB;
+    control_signals_o[ctl::DB6_V] = 1'b1;
+
+    new_instruction();
+endfunction

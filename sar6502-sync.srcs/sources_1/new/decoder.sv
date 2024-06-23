@@ -177,15 +177,19 @@ function void handle_op();
         8'h00: begin handle_op_brk(); end
         8'h08: begin handle_op_php(); end
         8'h10: begin handle_op_branch(); end
+        8'h18: begin handle_op_set_flag(); end
         8'h20: begin handle_op_jsr(); end
         8'h28: begin handle_op_plp(); end
         8'h30: begin handle_op_branch(); end
+        8'h38: begin handle_op_set_flag(); end
         8'h40: begin handle_op_rti(); end
         8'h48: begin handle_op_pha(); end
         8'h4c: begin handle_addr_abs(); handle_op_jmp(); end
         8'h50: begin handle_op_branch(); end
+        8'h58: begin handle_op_set_flag(); end
         8'h60: begin handle_op_rts(); end
         8'h70: begin handle_op_branch(); end
+        8'h78: begin handle_op_set_flag(); end
         8'h90: begin handle_op_branch(); end
         8'h9a: begin handle_op_txs(); end
         8'ha2: begin handle_addr_imm(); handle_op_ldx(); end
@@ -193,9 +197,12 @@ function void handle_op();
         8'ha9: begin handle_addr_imm(); handle_op_lda(); end
         8'had: begin handle_addr_abs(); handle_op_lda(); end
         8'hb0: begin handle_op_branch(); end
+        8'hb8: begin handle_op_clv(); end
         8'hd0: begin handle_op_branch(); end
+        8'hd8: begin handle_op_set_flag(); end
         8'hea: begin handle_op_nop(); end
         8'hf0: begin handle_op_branch(); end
+        8'hf8: begin handle_op_set_flag(); end
         default: begin
             $error("Invalid opcode in instruction register %x time %t", instruction_register, $time());
             set_invalid_state();
