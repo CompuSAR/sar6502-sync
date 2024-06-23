@@ -106,6 +106,9 @@ function void handle_op_jmp();
         control_signals_o[ctl::ADH_PCH] = control_signals_o[ctl::ADH_ABH];
         if( control_signals_o[ctl::ADL_PCL] )
             control_signals_o[ctl::I_PC] = 1'b0;
+
+        if( addr_load_value )
+            bus_req_valid_o = 1'b0;
     end else begin
         new_instruction();
     end

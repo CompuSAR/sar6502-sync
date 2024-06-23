@@ -31,6 +31,9 @@ function void handle_addr_abs();
                 control_signals_o[ctl::ADH_ABH] = 1'b1;
 
                 instruction_counter_next = C_OP1;
+
+                bus_req_valid_o = 1'b1;
+                addr_load_value = 1'b1;
             end
             default: set_invalid_state();
         endcase
@@ -56,6 +59,8 @@ function void handle_addr_zp();
                 bus_req_write_o = 1'b0;
 
                 instruction_counter_next = C_OP1;
+
+                addr_load_value = 1'b1;
             end
             default: set_invalid_state();
         endcase

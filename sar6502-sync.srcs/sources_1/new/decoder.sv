@@ -93,6 +93,8 @@ logic bus_waiting_result = 1'b0;
 reg [7:0] instruction_register, instruction_register_next;
 assign ir5_o = instruction_register[5];
 
+reg addr_load_value;
+
 logic condtion_flag, condition_flags[4];
 assign condition_flags[2'b00] = flags_i[ctl::FlagNegative];
 assign condition_flags[2'b01] = flags_i[ctl::FlagOverflow];
@@ -114,6 +116,8 @@ function void set_default();
     memory_lock_o = 1'b0;
     sync_o = 1'b0;
     vector_pull_o = 1'b0;
+
+    addr_load_value = 1'b0;
 
     control_signals_o = { ctl::NumCtlSignals { 1'b0 } };
     db_src_o = ctl::DB_INVALID;
@@ -187,6 +191,7 @@ function void handle_op();
         8'ha2: begin handle_addr_imm(); handle_op_ldx(); end
         8'ha5: begin handle_addr_zp(); handle_op_lda(); end
         8'ha9: begin handle_addr_imm(); handle_op_lda(); end
+        8'had: begin handle_addr_abs(); handle_op_lda(); end
         8'hb0: begin handle_op_branch(); end
         8'hd0: begin handle_op_branch(); end
         8'hea: begin handle_op_nop(); end
