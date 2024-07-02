@@ -193,10 +193,10 @@ function void handle_op_lda();
     if( !addr_cycle() ) begin
         case( instruction_counter )
             C_OP1: begin
-                db_src_o = ctl::DL_DB;
                 sb_src_o = ctl::DL_SB;
                 control_signals_o[ctl::SB_AC] = 1'b1;
 
+                db_src_o = ctl::DL_DB;
                 control_signals_o[ctl::DBZ_Z] = 1'b1;
                 control_signals_o[ctl::DB7_N] = 1'b1;
 
@@ -213,6 +213,28 @@ function void handle_op_ldx();
             C_OP1: begin
                 sb_src_o = ctl::DL_SB;
                 control_signals_o[ctl::SB_X] = 1'b1;
+
+                db_src_o = ctl::DL_DB;
+                control_signals_o[ctl::DBZ_Z] = 1'b1;
+                control_signals_o[ctl::DB7_N] = 1'b1;
+
+                new_instruction();
+            end
+            default: set_invalid_state();
+        endcase
+    end
+endfunction
+
+function void handle_op_ldy();
+    if( !addr_cycle() ) begin
+        case( instruction_counter )
+            C_OP1: begin
+                sb_src_o = ctl::DL_SB;
+                control_signals_o[ctl::SB_Y] = 1'b1;
+
+                db_src_o = ctl::DL_DB;
+                control_signals_o[ctl::DBZ_Z] = 1'b1;
+                control_signals_o[ctl::DB7_N] = 1'b1;
 
                 new_instruction();
             end
