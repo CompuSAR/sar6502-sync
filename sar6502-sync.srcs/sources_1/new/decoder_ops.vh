@@ -1,3 +1,30 @@
+function void handle_op_adc();
+    if( !addr_cycle() ) begin
+        case( instruction_counter )
+            C_OP1: begin end
+            C_OP2: begin
+                sb_src_o = ctl::AC_SB;
+                db_src_o = ctl::DL_DB;
+                alu_b_src_o = ctl::DB_ADD;
+                alu_op_o = ctl::SUMS;
+                control_signals_o[ctl::I_ADDC] = flags_i[ctl::FlagCarry];
+            end
+            C_OP3: begin
+                sb_src_o = ctl::ADD_SB;
+                db_src_o = ctl::SB_DB;
+                control_signals_o[ctl::SB_AC] = 1'b1;
+                control_signals_o[ctl::ACR_C] = 1'b1;
+                control_signals_o[ctl::DBZ_Z] = 1'b1;
+                control_signals_o[ctl::AVR_V] = 1'b1;
+                control_signals_o[ctl::DB7_N] = 1'b1;
+
+                new_instruction();
+            end
+            default: set_invalid_state();
+        endcase
+    end
+endfunction
+
 function void handle_op_branch();
     case( instruction_counter )
         C_ADDR1: begin
@@ -20,7 +47,7 @@ function void handle_op_branch();
             control_signals_o[ctl::ADL_PCL] = 1'b1;
             control_signals_o[ctl::DL_DL] = 1'b1;
 
-            if( !dl7_i && !alu_acr || dl7_i && alu_acr )
+            if( !dl7_i && !alu_acr_i || dl7_i && alu_acr_i )
                 new_instruction();
 
             adh_src_o = ctl::PCH_ADH;
@@ -164,9 +191,14 @@ endfunction
 function void handle_op_lda();
     if( !addr_cycle() ) begin
         case( instruction_counter )
-            C_OP1: begin
+            C_OP1: begin end
+            C_OP2: begin
+                db_src_o = ctl::DL_DB;
                 sb_src_o = ctl::DL_SB;
                 control_signals_o[ctl::SB_AC] = 1'b1;
+
+                control_signals_o[ctl::DBZ_Z] = 1'b1;
+                control_signals_o[ctl::DB7_N] = 1'b1;
 
                 new_instruction();
             end

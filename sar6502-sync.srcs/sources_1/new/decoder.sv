@@ -101,8 +101,6 @@ assign condition_flags[2'b01] = flags_i[ctl::FlagOverflow];
 assign condition_flags[2'b10] = flags_i[ctl::FlagCarry];
 assign condition_flags[2'b11] = flags_i[ctl::FlagZero];
 
-logic alu_acr;
-
 assign condtion_flag = condition_flags[ instruction_register[7:6] ];
 
 enum {
@@ -188,6 +186,7 @@ function void handle_op();
         8'h50: begin handle_op_branch(); end
         8'h58: begin handle_op_set_flag(); end
         8'h60: begin handle_op_rts(); end
+        8'h6d: begin handle_addr_abs(); handle_op_adc(); end
         8'h70: begin handle_op_branch(); end
         8'h78: begin handle_op_set_flag(); end
         8'h90: begin handle_op_branch(); end
@@ -305,8 +304,6 @@ function void increase_sp();
 endfunction
 
 always_ff@(posedge clock_i) begin
-    alu_acr <= alu_acr_i;
-
     if( reset_i ) begin
         instruction_counter <= C_FETCH1;
         instruction_register <= 8'h00;

@@ -59,6 +59,7 @@ wire halted = 1'b0;
 wire [7:0] data_bus, addr_bus_low, addr_bus_high, special_bus;
 logic [7:0] alu_result;
 logic alu_avr, alu_acr, alu_hc;
+logic alu_avr_async, alu_acr_async, alu_hc_async;
 logic decoder_ir5;
 
 // Control signals
@@ -186,14 +187,18 @@ alu alu_unit(
     .op_i( alu_op ),
 
     .result_o( alu_result_async ),
-    .overflow_o( alu_avr ),
-    .carry_o( alu_acr ),
-    .half_carry_o( alu_hc )
+    .overflow_o( alu_avr_async ),
+    .carry_o( alu_acr_async ),
+    .half_carry_o( alu_hc_async )
 );
 
 always_ff@(posedge clock_i)
-    if( !halted )
+    if( !halted ) begin
         alu_result <= alu_result_async;
+        alu_acr <= alu_acr_async;
+        alu_avr <= alu_avr_async;
+        alu_hc <= alu_hc_async;
+    end
 
 wire [7:0] regP_value;
 processor_status#(.CPU_VARIANT(CPU_VARIANT)) regP(
