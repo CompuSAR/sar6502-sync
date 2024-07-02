@@ -1,15 +1,14 @@
 function void handle_op_adc();
     if( !addr_cycle() ) begin
         case( instruction_counter )
-            C_OP1: begin end
-            C_OP2: begin
+            C_OP1: begin
                 sb_src_o = ctl::AC_SB;
                 db_src_o = ctl::DL_DB;
                 alu_b_src_o = ctl::DB_ADD;
                 alu_op_o = ctl::SUMS;
                 control_signals_o[ctl::I_ADDC] = flags_i[ctl::FlagCarry];
             end
-            C_OP3: begin
+            C_OP2: begin
                 sb_src_o = ctl::ADD_SB;
                 db_src_o = ctl::SB_DB;
                 control_signals_o[ctl::SB_AC] = 1'b1;
@@ -131,13 +130,15 @@ function void handle_op_jmp();
     if( addr_cycle() ) begin
         control_signals_o[ctl::ADL_PCL] = control_signals_o[ctl::ADL_ABL];
         control_signals_o[ctl::ADH_PCH] = control_signals_o[ctl::ADH_ABH];
-        if( control_signals_o[ctl::ADL_PCL] )
+        if( control_signals_o[ctl::ADL_PCL] ) // XXX consider making the increment no-op if loading
             control_signals_o[ctl::I_PC] = 1'b0;
 
-        if( addr_load_value )
+        if( addr_load_value ) begin
             bus_req_valid_o = 1'b0;
+            new_instruction();
+        end
     end else begin
-        new_instruction();
+        set_invalid_state();
     end
 endfunction
 
@@ -191,8 +192,7 @@ endfunction
 function void handle_op_lda();
     if( !addr_cycle() ) begin
         case( instruction_counter )
-            C_OP1: begin end
-            C_OP2: begin
+            C_OP1: begin
                 db_src_o = ctl::DL_DB;
                 sb_src_o = ctl::DL_SB;
                 control_signals_o[ctl::SB_AC] = 1'b1;
