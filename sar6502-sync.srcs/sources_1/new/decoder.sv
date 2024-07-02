@@ -189,6 +189,7 @@ function void handle_op();
         8'h6d: begin handle_addr_abs(); handle_op_adc(); end
         8'h70: begin handle_op_branch(); end
         8'h78: begin handle_op_set_flag(); end
+        8'h8a: begin handle_op_txa(); end
         8'h90: begin handle_op_branch(); end
         8'h9a: begin handle_op_txs(); end
         8'ha0: begin handle_addr_imm(); handle_op_ldy(); end

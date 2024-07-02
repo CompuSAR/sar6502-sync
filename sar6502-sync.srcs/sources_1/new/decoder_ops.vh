@@ -432,6 +432,22 @@ function void handle_op_rts();
     endcase
 endfunction
 
+function void handle_op_txa();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::X_SB;
+            control_signals_o[ctl::SB_AC] = 1'b1;
+
+            db_src_o = ctl::SB_DB;
+            control_signals_o[ctl::DB7_N] = 1'b1;
+            control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
 function void handle_op_txs();
     case( instruction_counter )
         C_ADDR1: begin
