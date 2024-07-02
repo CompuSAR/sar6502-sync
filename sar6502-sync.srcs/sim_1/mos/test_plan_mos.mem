@@ -37,34 +37,34 @@
 1_01ff_03_00
 1_01fe_05_00
 1_0305_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_74_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
 1_40f6_50_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_7a_01
 1_01fd_74_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_74_01
 1_01fe_05_01
@@ -78,34 +78,34 @@
 1_01ff_03_00
 1_01fe_0a_00
 1_030a_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_74_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
 1_40f6_50_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_7a_01
 1_01fd_74_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_74_01
 1_01fe_0a_01
@@ -120,34 +120,34 @@
 1_01ff_03_00
 1_01fe_0f_00
 1_030f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_74_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
 1_40f6_50_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_7a_01
 1_01fd_74_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_74_01
 1_01fe_0f_01
@@ -163,34 +163,34 @@
 1_01ff_03_00
 1_01fe_15_00
 1_0315_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_74_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
 1_40f6_50_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_7a_01
 1_01fd_74_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_74_01
 1_01fe_15_01
@@ -207,7 +207,7 @@
 1_3631_b0_03		//  test_program.s:1113 bcs .1
 1_3632_4f_01
 1_3633_18_01
-1_3682_b0_03		//  test_program.s:1130 .1  bcs .2
+1_3682_b0_03		//  test_program.s:1131 .1  bcs .2
 1_3683_af_01
 1_3684_90_01
 1_3633_18_03		//  test_program.s:1114 .2  clc
@@ -215,7 +215,7 @@
 1_3634_90_03		//  test_program.s:1115 bcc .3
 1_3635_4e_01
 1_3636_b8_01
-1_3684_90_03		//  test_program.s:1131 .3  bcc .4
+1_3684_90_03		//  test_program.s:1132 .3  bcc .4
 1_3685_b0_01
 1_3686_50_01
 1_3636_b8_03		//  test_program.s:1116 .4  clv
@@ -223,7 +223,7 @@
 1_3637_50_03		//  test_program.s:1117 bvc .5
 1_3638_4d_01
 1_3639_7f_01
-1_3686_50_03		//  test_program.s:1132 .5  bvc .6
+1_3686_50_03		//  test_program.s:1133 .5  bvc .6
 1_3687_b2_01
 1_3688_70_01
 1_363a_a9_03		//  test_program.s:1119 .6  lda #2
@@ -235,19 +235,19 @@
 1_363f_70_03		//  test_program.s:1121 bvs .8
 1_3640_47_01
 1_3641_30_01
-1_3688_70_03		//  test_program.s:1133 .8  bvs .9
+1_3688_70_03		//  test_program.s:1134 .8  bvs .9
 1_3689_b7_01
 1_368a_30_01
 1_3641_30_03		//  test_program.s:1122 .9  bmi .10
 1_3642_47_01
 1_3643_d0_01
-1_368a_30_03		//  test_program.s:1134 .10 bmi .11
+1_368a_30_03		//  test_program.s:1135 .10 bmi .11
 1_368b_b7_01
 1_368c_d0_01
 1_3643_d0_03		//  test_program.s:1123 .11 bne .12
 1_3644_47_01
 1_3645_a9_01
-1_368c_d0_03		//  test_program.s:1135 .12 bne .13
+1_368c_d0_03		//  test_program.s:1136 .12 bne .13
 1_368d_b7_01
 1_368e_f0_01
 1_3645_a9_03		//  test_program.s:1124 .13 lda #0
@@ -255,13 +255,13 @@
 1_3647_f0_03		//  test_program.s:1125 beq .14
 1_3648_45_01
 1_3649_10_01
-1_368e_f0_03		//  test_program.s:1136 .14 beq .15
+1_368e_f0_03		//  test_program.s:1137 .14 beq .15
 1_368f_b9_01
 1_3690_10_01
 1_3649_10_03		//  test_program.s:1126 .15 bpl .16
 1_364a_45_01
 1_364b_60_01
-1_3690_10_03		//  test_program.s:1137 .16 bpl .17
+1_3690_10_03		//  test_program.s:1138 .16 bpl .17
 1_3691_b9_01
 1_3692_00_01
 1_364b_60_03		//  test_program.s:1127 .17 rts
@@ -306,32 +306,32 @@
 1_01fe_03_00
 1_01fd_2e_00
 1_032e_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fc_ff_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
 1_40f6_50_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
-1_40fd_f0_03		//  test_program.s:1166 beq .4
+1_40fd_f0_03		//  test_program.s:1167 beq .4
 1_40fe_f9_01
 1_40ff_30_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fb_7a_01
 1_01fc_ff_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fc_ff_01
 1_01fd_2e_01
@@ -347,36 +347,36 @@
 1_01ff_03_00
 1_01fe_32_00
 1_0332_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_30_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_30_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_30_01
 1_01fe_32_01
@@ -390,34 +390,34 @@
 1_01ff_03_00
 1_01fe_36_00
 1_0336_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_31_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_31_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_31_01
 1_01fe_36_01
@@ -431,34 +431,34 @@
 1_01ff_03_00
 1_01fe_3a_00
 1_033a_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_39_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_39_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_39_01
 1_01fe_3a_01
@@ -472,34 +472,34 @@
 1_01ff_03_00
 1_01fe_3e_00
 1_033e_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_3d_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_3d_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_3d_01
 1_01fe_3e_01
@@ -513,36 +513,36 @@
 1_01ff_03_00
 1_01fe_42_00
 1_0342_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_3c_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_3c_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_3c_01
 1_01fe_42_01
@@ -556,36 +556,36 @@
 1_01ff_03_00
 1_01fe_46_00
 1_0346_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_34_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_34_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_34_01
 1_01fe_46_01
@@ -599,36 +599,36 @@
 1_01ff_03_00
 1_01fe_4a_00
 1_034a_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_30_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_30_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_30_01
 1_01fe_4a_01
@@ -642,36 +642,36 @@
 1_01ff_03_00
 1_01fe_4e_00
 1_034e_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_30_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_30_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_30_01
 1_01fe_4e_01
@@ -733,34 +733,34 @@
 1_01ff_03_00
 1_01fe_6f_00
 1_036f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_b0_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_b0_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_b0_01
 1_01fe_6f_01
@@ -779,34 +779,34 @@
 1_01ff_03_00
 1_01fe_75_00
 1_0375_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_b0_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_b0_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_b0_01
 1_01fe_75_01
@@ -823,32 +823,32 @@
 1_01ff_03_00
 1_01fe_7a_00
 1_037a_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_b1_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_b1_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_b1_01
 1_01fe_7a_01
@@ -866,34 +866,34 @@
 1_01ff_03_00
 1_01fe_7f_00
 1_037f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_b0_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_b0_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_b0_01
 1_01fe_7f_01
@@ -907,36 +907,36 @@
 1_01ff_03_00
 1_01fe_83_00
 1_0383_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_30_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_30_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_30_01
 1_01fe_83_01
@@ -957,34 +957,34 @@
 1_01ff_03_00
 1_01fe_6f_00
 1_036f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_31_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_31_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_31_01
 1_01fe_6f_01
@@ -1003,36 +1003,36 @@
 1_01ff_03_00
 1_01fe_75_00
 1_0375_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_33_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
-1_40fd_f0_03		//  test_program.s:1166 beq .4
+1_40fd_f0_03		//  test_program.s:1167 beq .4
 1_40fe_f9_01
 1_40ff_30_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_33_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_33_01
 1_01fe_75_01
@@ -1049,34 +1049,34 @@
 1_01ff_03_00
 1_01fe_7a_00
 1_037a_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_31_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_31_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_31_01
 1_01fe_7a_01
@@ -1094,32 +1094,32 @@
 1_01ff_03_00
 1_01fe_7f_00
 1_037f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_b1_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_b1_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_b1_01
 1_01fe_7f_01
@@ -1133,36 +1133,36 @@
 1_01ff_03_00
 1_01fe_83_00
 1_0383_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_30_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_30_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_30_01
 1_01fe_83_01
@@ -1183,34 +1183,34 @@
 1_01ff_03_00
 1_01fe_6f_00
 1_036f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_b0_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_b0_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_b0_01
 1_01fe_6f_01
@@ -1229,38 +1229,38 @@
 1_01ff_03_00
 1_01fe_75_00
 1_0375_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_32_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
-1_40fd_f0_03		//  test_program.s:1166 beq .4
+1_40fd_f0_03		//  test_program.s:1167 beq .4
 1_40fe_f9_01
 1_40ff_30_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_32_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_32_01
 1_01fe_75_01
@@ -1277,34 +1277,34 @@
 1_01ff_03_00
 1_01fe_7a_00
 1_037a_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_b0_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_b0_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_b0_01
 1_01fe_7a_01
@@ -1322,34 +1322,34 @@
 1_01ff_03_00
 1_01fe_7f_00
 1_037f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_31_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_31_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_31_01
 1_01fe_7f_01
@@ -1363,36 +1363,36 @@
 1_01ff_03_00
 1_01fe_83_00
 1_0383_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_30_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_30_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_30_01
 1_01fe_83_01
@@ -1413,34 +1413,34 @@
 1_01ff_03_00
 1_01fe_6f_00
 1_036f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_31_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_31_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_31_01
 1_01fe_6f_01
@@ -1459,38 +1459,38 @@
 1_01ff_03_00
 1_01fe_75_00
 1_0375_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_32_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
-1_40fd_f0_03		//  test_program.s:1166 beq .4
+1_40fd_f0_03		//  test_program.s:1167 beq .4
 1_40fe_f9_01
 1_40ff_30_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_32_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_32_01
 1_01fe_75_01
@@ -1507,34 +1507,34 @@
 1_01ff_03_00
 1_01fe_7a_00
 1_037a_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_31_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_31_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_31_01
 1_01fe_7a_01
@@ -1552,34 +1552,34 @@
 1_01ff_03_00
 1_01fe_7f_00
 1_037f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_b0_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_b0_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_b0_01
 1_01fe_7f_01
@@ -1593,36 +1593,36 @@
 1_01ff_03_00
 1_01fe_83_00
 1_0383_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_30_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_30_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_30_01
 1_01fe_83_01
@@ -1643,34 +1643,34 @@
 1_01ff_03_00
 1_01fe_6f_00
 1_036f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_b0_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_b0_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_b0_01
 1_01fe_6f_01
@@ -1689,38 +1689,38 @@
 1_01ff_03_00
 1_01fe_75_00
 1_0375_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_32_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
-1_40fd_f0_03		//  test_program.s:1166 beq .4
+1_40fd_f0_03		//  test_program.s:1167 beq .4
 1_40fe_f9_01
 1_40ff_30_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_32_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_32_01
 1_01fe_75_01
@@ -1737,36 +1737,36 @@
 1_01ff_03_00
 1_01fe_7a_00
 1_037a_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_30_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_30_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_30_01
 1_01fe_7a_01
@@ -1784,32 +1784,32 @@
 1_01ff_03_00
 1_01fe_7f_00
 1_037f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_b1_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_b1_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_b1_01
 1_01fe_7f_01
@@ -1823,36 +1823,36 @@
 1_01ff_03_00
 1_01fe_83_00
 1_0383_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_30_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_30_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_30_01
 1_01fe_83_01
@@ -1873,32 +1873,32 @@
 1_01ff_03_00
 1_01fe_6f_00
 1_036f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_b1_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_b1_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_b1_01
 1_01fe_6f_01
@@ -1917,38 +1917,38 @@
 1_01ff_03_00
 1_01fe_75_00
 1_0375_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_32_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
-1_40fd_f0_03		//  test_program.s:1166 beq .4
+1_40fd_f0_03		//  test_program.s:1167 beq .4
 1_40fe_f9_01
 1_40ff_30_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_32_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_32_01
 1_01fe_75_01
@@ -1965,34 +1965,34 @@
 1_01ff_03_00
 1_01fe_7a_00
 1_037a_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_b0_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_b0_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_b0_01
 1_01fe_7a_01
@@ -2010,32 +2010,32 @@
 1_01ff_03_00
 1_01fe_7f_00
 1_037f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_b1_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_b1_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_b1_01
 1_01fe_7f_01
@@ -2049,36 +2049,36 @@
 1_01ff_03_00
 1_01fe_83_00
 1_0383_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_30_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_30_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_30_01
 1_01fe_83_01
@@ -2099,36 +2099,36 @@
 1_01ff_03_00
 1_01fe_6f_00
 1_036f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_33_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
-1_40fd_f0_03		//  test_program.s:1166 beq .4
+1_40fd_f0_03		//  test_program.s:1167 beq .4
 1_40fe_f9_01
 1_40ff_30_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_33_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_33_01
 1_01fe_6f_01
@@ -2147,38 +2147,38 @@
 1_01ff_03_00
 1_01fe_75_00
 1_0375_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_32_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
-1_40fd_f0_03		//  test_program.s:1166 beq .4
+1_40fd_f0_03		//  test_program.s:1167 beq .4
 1_40fe_f9_01
 1_40ff_30_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_32_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_32_01
 1_01fe_75_01
@@ -2195,32 +2195,32 @@
 1_01ff_03_00
 1_01fe_7a_00
 1_037a_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_b1_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_b1_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_b1_01
 1_01fe_7a_01
@@ -2238,36 +2238,36 @@
 1_01ff_03_00
 1_01fe_7f_00
 1_037f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_33_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
-1_40fd_f0_03		//  test_program.s:1166 beq .4
+1_40fd_f0_03		//  test_program.s:1167 beq .4
 1_40fe_f9_01
 1_40ff_30_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_33_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_33_01
 1_01fe_7f_01
@@ -2281,34 +2281,34 @@
 1_01ff_03_00
 1_01fe_83_00
 1_0383_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_b0_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
 1_4101_10_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
 1_40fd_f0_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_b0_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_b0_01
 1_01fe_83_01
@@ -2329,38 +2329,38 @@
 1_01ff_03_00
 1_01fe_6f_00
 1_036f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_32_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
-1_40fd_f0_03		//  test_program.s:1166 beq .4
+1_40fd_f0_03		//  test_program.s:1167 beq .4
 1_40fe_f9_01
 1_40ff_30_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_32_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_32_01
 1_01fe_6f_01
@@ -2379,38 +2379,38 @@
 1_01ff_03_00
 1_01fe_75_00
 1_0375_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_32_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
-1_40fd_f0_03		//  test_program.s:1166 beq .4
+1_40fd_f0_03		//  test_program.s:1167 beq .4
 1_40fe_f9_01
 1_40ff_30_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_32_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_32_01
 1_01fe_75_01
@@ -2427,36 +2427,36 @@
 1_01ff_03_00
 1_01fe_7a_00
 1_037a_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_33_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
-1_40fd_f0_03		//  test_program.s:1166 beq .4
+1_40fd_f0_03		//  test_program.s:1167 beq .4
 1_40fe_f9_01
 1_40ff_30_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_33_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_33_01
 1_01fe_7a_01
@@ -2474,38 +2474,38 @@
 1_01ff_03_00
 1_01fe_7f_00
 1_037f_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_32_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
-1_40f2_90_03		//  test_program.s:1154 bcc .1
+1_40f2_90_03		//  test_program.s:1155 bcc .1
 1_40f3_0b_01
 1_40f4_70_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
-1_40fd_f0_03		//  test_program.s:1166 beq .4
+1_40fd_f0_03		//  test_program.s:1167 beq .4
 1_40fe_f9_01
 1_40ff_30_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_32_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_32_01
 1_01fe_7f_01
@@ -2519,36 +2519,36 @@
 1_01ff_03_00
 1_01fe_83_00
 1_0383_40_01
-1_40ef_08_03		//  test_program.s:1152 php
+1_40ef_08_03		//  test_program.s:1153 php
 1_40f0_b0_01
 1_01fd_33_00
-1_40f0_b0_03		//  test_program.s:1153 bcs .1
+1_40f0_b0_03		//  test_program.s:1154 bcs .1
 1_40f1_0d_01
 1_40f2_90_01
-1_40ff_30_03		//  test_program.s:1168 .1  bmi .2
+1_40ff_30_03		//  test_program.s:1169 .1  bmi .2
 1_4100_f3_01
-1_4101_10_03		//  test_program.s:1169 bpl .2
+1_4101_10_03		//  test_program.s:1170 bpl .2
 1_4102_f1_01
 1_4103_28_01
 1_41f4_00_01
-1_40f4_70_03		//  test_program.s:1156 .2  bvs .3
+1_40f4_70_03		//  test_program.s:1157 .2  bvs .3
 1_40f5_05_01
-1_40f6_50_03		//  test_program.s:1157 bvc .3
+1_40f6_50_03		//  test_program.s:1158 bvc .3
 1_40f7_03_01
 1_40f8_4c_01
-1_40fb_d0_03		//  test_program.s:1165 .3  bne .4
+1_40fb_d0_03		//  test_program.s:1166 .3  bne .4
 1_40fc_fb_01
-1_40fd_f0_03		//  test_program.s:1166 beq .4
+1_40fd_f0_03		//  test_program.s:1167 beq .4
 1_40fe_f9_01
 1_40ff_30_01
-1_40f8_4c_03		//  test_program.s:1162 .4  jmp .5
+1_40f8_4c_03		//  test_program.s:1163 .4  jmp .5
 1_40f9_03_01
 1_40fa_41_01
-1_4103_28_03		//  test_program.s:1172 plp
+1_4103_28_03		//  test_program.s:1173 plp
 1_4104_60_01
 1_01fc_ff_01
 1_01fd_33_01
-1_4104_60_03		//  test_program.s:1173 rts
+1_4104_60_03		//  test_program.s:1174 rts
 1_4105_00_01
 1_01fd_33_01
 1_01fe_83_01
@@ -3479,14 +3479,14 @@
 1_0155_f9_00
 1_fffe_f1_01
 1_ffff_41_01
-1_41f1_08_03		//  test_program.s:1212 php
+1_41f1_08_03		//  test_program.s:1213 php
 1_41f2_28_01
 1_0154_fd_00
-1_41f2_28_03		//  test_program.s:1213 plp
+1_41f2_28_03		//  test_program.s:1214 plp
 1_41f3_40_01
 1_0153_7a_01
 1_0154_fd_01
-1_41f3_40_03		//  test_program.s:1214 rti
+1_41f3_40_03		//  test_program.s:1215 rti
 1_41f4_00_01
 1_0154_fd_01
 1_0155_f9_01
@@ -3503,14 +3503,14 @@
 1_0155_f5_00
 1_fffe_f1_01
 1_ffff_41_01
-1_41f1_08_03		//  test_program.s:1212 php
+1_41f1_08_03		//  test_program.s:1213 php
 1_41f2_28_01
 1_0154_f5_00
-1_41f2_28_03		//  test_program.s:1213 plp
+1_41f2_28_03		//  test_program.s:1214 plp
 1_41f3_40_01
 1_0153_7a_01
 1_0154_f5_01
-1_41f3_40_03		//  test_program.s:1214 rti
+1_41f3_40_03		//  test_program.s:1215 rti
 1_41f4_00_01
 1_0154_f5_01
 1_0155_f5_01
@@ -3709,7 +3709,7 @@
 1_013a_04_00
 1_0139_a4_00
 1_04a4_41_01
-1_41ef_60_03		//  test_program.s:1206 rts
+1_41ef_60_03		//  test_program.s:1207 rts
 1_41f0_00_01
 1_0138_7a_01
 1_0139_a4_01
@@ -3729,7 +3729,7 @@
 1_013a_04_00
 1_0139_ad_00
 1_04ad_41_01
-1_41ef_60_03		//  test_program.s:1206 rts
+1_41ef_60_03		//  test_program.s:1207 rts
 1_41f0_00_01
 1_0138_7a_01
 1_0139_ad_01
@@ -3968,7 +3968,7 @@
 1_04f1_4c_03		//  test_program.s:509 jmp jmp_tests_mos
 1_04f2_aa_01
 1_04f3_55_01
-1_55aa_6c_03		//  test_program.s:1226 jmp (jmp_ind_test_mos)
+1_55aa_6c_03		//  test_program.s:1227 jmp (jmp_ind_test_mos)
 1_55ab_ff_01
 1_55ac_2a_01
 1_2aff_01_01
@@ -8921,237 +8921,237 @@
 1_01ff_06_00
 1_01fe_1f_00
 1_061f_f8_01
-1_f800_a9_03		//  test_program.s:1341 lda #$a9    ; Should have registered as LDA immediate, registers as ???
+1_f800_a9_03		//  test_program.s:1342 lda #$a9    ; Should have registered as LDA immediate, registers as ???
 1_f801_a9_01
-1_f802_20_03		//  test_program.s:1342 jsr .0
+1_f802_20_03		//  test_program.s:1343 jsr .0
 1_f803_82_01
 1_01fd_36_01
 1_01fd_f8_00
 1_01fc_04_00
 1_f804_f8_01
-1_f882_a8_03		//  test_program.s:1354 tay
+1_f882_a8_03		//  test_program.s:1355 tay
 1_f883_4a_01
-1_f883_4a_03		//  test_program.s:1355 lsr
+1_f883_4a_03		//  test_program.s:1356 lsr
 1_f884_90_01
-1_f884_90_03		//  test_program.s:1356 bcc .1
+1_f884_90_03		//  test_program.s:1357 bcc .1
 1_f885_09_01
-1_f886_6a_03		//  test_program.s:1357 ror
+1_f886_6a_03		//  test_program.s:1358 ror
 1_f887_b0_01
-1_f887_b0_03		//  test_program.s:1358 bcs .2
+1_f887_b0_03		//  test_program.s:1359 bcs .2
 1_f888_10_01
-1_f889_c9_03		//  test_program.s:1359 cmp #$A2
+1_f889_c9_03		//  test_program.s:1360 cmp #$A2
 1_f88a_a2_01
-1_f88b_f0_03		//  test_program.s:1360 beq .2
+1_f88b_f0_03		//  test_program.s:1361 beq .2
 1_f88c_0c_01
-1_f88d_29_03		//  test_program.s:1361 and #$87
+1_f88d_29_03		//  test_program.s:1362 and #$87
 1_f88e_87_01
-1_f88f_4a_03		//  test_program.s:1363 lsr
+1_f88f_4a_03		//  test_program.s:1364 lsr
 1_f890_aa_01
-1_f890_aa_03		//  test_program.s:1364 tax
+1_f890_aa_03		//  test_program.s:1365 tax
 1_f891_bd_01
-1_f891_bd_03		//  test_program.s:1365 lda FMT1,x
+1_f891_bd_03		//  test_program.s:1366 lda FMT1,x
 1_f892_b1_01
 1_f893_f8_01
 1_f8f2_31_01
-1_f894_20_03		//  test_program.s:1366 jsr .8
+1_f894_20_03		//  test_program.s:1367 jsr .8
 1_f895_a8_01
 1_01fb_8a_01
 1_01fb_f8_00
 1_01fa_96_00
 1_f896_f8_01
-1_f8a8_90_03		//  test_program.s:1380 .8       bcc     .9
+1_f8a8_90_03		//  test_program.s:1381 .8       bcc     .9
 1_f8a9_04_01
 1_f8aa_4a_01
-1_f8ae_29_03		//  test_program.s:1385 .9      and     #$0f
+1_f8ae_29_03		//  test_program.s:1386 .9      and     #$0f
 1_f8af_0f_01
-1_f8b0_60_03		//  test_program.s:1386 rts
+1_f8b0_60_03		//  test_program.s:1387 rts
 1_f8b1_04_01
 1_01f9_02_01
 1_01fa_96_01
 1_01fb_f8_01
 1_f896_f8_01
-1_f897_d0_03		//  test_program.s:1367 bne .5
+1_f897_d0_03		//  test_program.s:1368 bne .5
 1_f898_04_01
 1_f899_a0_01
-1_f89d_aa_03		//  test_program.s:1372 tax
+1_f89d_aa_03		//  test_program.s:1373 tax
 1_f89e_bd_01
-1_f89e_bd_03		//  test_program.s:1373 lda FMT2,x
+1_f89e_bd_03		//  test_program.s:1374 lda FMT2,x
 1_f89f_f5_01
 1_f8a0_f8_01
 1_f8f6_21_01
-1_f8a1_85_03		//  test_program.s:1374 sta $2e ; F8.MASK
+1_f8a1_85_03		//  test_program.s:1375 sta $2e ; F8.MASK
 1_f8a2_2e_01
 1_002e_21_00
-1_f8a3_29_03		//  test_program.s:1375 and #$03
+1_f8a3_29_03		//  test_program.s:1376 and #$03
 1_f8a4_03_01
-1_f8a5_85_03		//  test_program.s:1376 sta $2f ; LENGTH
+1_f8a5_85_03		//  test_program.s:1377 sta $2f ; LENGTH
 1_f8a6_2f_01
 1_002f_01_00
-1_f8a7_60_03		//  test_program.s:1378 rts
+1_f8a7_60_03		//  test_program.s:1379 rts
 1_f8a8_90_01
 1_01fb_f8_01
 1_01fc_04_01
 1_01fd_f8_01
 1_f804_f8_01
-1_f805_a9_03		//  test_program.s:1343 lda #$85    ; Should have registered as STA zp, registers as ???
+1_f805_a9_03		//  test_program.s:1344 lda #$85    ; Should have registered as STA zp, registers as ???
 1_f806_85_01
-1_f807_20_03		//  test_program.s:1344 jsr .0
+1_f807_20_03		//  test_program.s:1345 jsr .0
 1_f808_82_01
 1_01fd_f8_01
 1_01fd_f8_00
 1_01fc_09_00
 1_f809_f8_01
-1_f882_a8_03		//  test_program.s:1354 tay
+1_f882_a8_03		//  test_program.s:1355 tay
 1_f883_4a_01
-1_f883_4a_03		//  test_program.s:1355 lsr
+1_f883_4a_03		//  test_program.s:1356 lsr
 1_f884_90_01
-1_f884_90_03		//  test_program.s:1356 bcc .1
+1_f884_90_03		//  test_program.s:1357 bcc .1
 1_f885_09_01
-1_f886_6a_03		//  test_program.s:1357 ror
+1_f886_6a_03		//  test_program.s:1358 ror
 1_f887_b0_01
-1_f887_b0_03		//  test_program.s:1358 bcs .2
+1_f887_b0_03		//  test_program.s:1359 bcs .2
 1_f888_10_01
-1_f889_c9_03		//  test_program.s:1359 cmp #$A2
+1_f889_c9_03		//  test_program.s:1360 cmp #$A2
 1_f88a_a2_01
-1_f88b_f0_03		//  test_program.s:1360 beq .2
+1_f88b_f0_03		//  test_program.s:1361 beq .2
 1_f88c_0c_01
-1_f88d_29_03		//  test_program.s:1361 and #$87
+1_f88d_29_03		//  test_program.s:1362 and #$87
 1_f88e_87_01
-1_f88f_4a_03		//  test_program.s:1363 lsr
+1_f88f_4a_03		//  test_program.s:1364 lsr
 1_f890_aa_01
-1_f890_aa_03		//  test_program.s:1364 tax
+1_f890_aa_03		//  test_program.s:1365 tax
 1_f891_bd_01
-1_f891_bd_03		//  test_program.s:1365 lda FMT1,x
+1_f891_bd_03		//  test_program.s:1366 lda FMT1,x
 1_f892_b1_01
 1_f893_f8_01
 1_f8f1_26_01
-1_f894_20_03		//  test_program.s:1366 jsr .8
+1_f894_20_03		//  test_program.s:1367 jsr .8
 1_f895_a8_01
 1_01fb_f8_01
 1_01fb_f8_00
 1_01fa_96_00
 1_f896_f8_01
-1_f8a8_90_03		//  test_program.s:1380 .8       bcc     .9
+1_f8a8_90_03		//  test_program.s:1381 .8       bcc     .9
 1_f8a9_04_01
-1_f8aa_4a_03		//  test_program.s:1381 lsr     A
+1_f8aa_4a_03		//  test_program.s:1382 lsr     A
 1_f8ab_4a_01
-1_f8ab_4a_03		//  test_program.s:1382 lsr     A
+1_f8ab_4a_03		//  test_program.s:1383 lsr     A
 1_f8ac_4a_01
-1_f8ac_4a_03		//  test_program.s:1383 lsr     A
+1_f8ac_4a_03		//  test_program.s:1384 lsr     A
 1_f8ad_4a_01
-1_f8ad_4a_03		//  test_program.s:1384 lsr     A
+1_f8ad_4a_03		//  test_program.s:1385 lsr     A
 1_f8ae_29_01
-1_f8ae_29_03		//  test_program.s:1385 .9      and     #$0f
+1_f8ae_29_03		//  test_program.s:1386 .9      and     #$0f
 1_f8af_0f_01
-1_f8b0_60_03		//  test_program.s:1386 rts
+1_f8b0_60_03		//  test_program.s:1387 rts
 1_f8b1_04_01
 1_01f9_02_01
 1_01fa_96_01
 1_01fb_f8_01
 1_f896_f8_01
-1_f897_d0_03		//  test_program.s:1367 bne .5
+1_f897_d0_03		//  test_program.s:1368 bne .5
 1_f898_04_01
 1_f899_a0_01
-1_f89d_aa_03		//  test_program.s:1372 tax
+1_f89d_aa_03		//  test_program.s:1373 tax
 1_f89e_bd_01
-1_f89e_bd_03		//  test_program.s:1373 lda FMT2,x
+1_f89e_bd_03		//  test_program.s:1374 lda FMT2,x
 1_f89f_f5_01
 1_f8a0_f8_01
 1_f8f7_81_01
-1_f8a1_85_03		//  test_program.s:1374 sta $2e ; F8.MASK
+1_f8a1_85_03		//  test_program.s:1375 sta $2e ; F8.MASK
 1_f8a2_2e_01
 1_002e_81_00
-1_f8a3_29_03		//  test_program.s:1375 and #$03
+1_f8a3_29_03		//  test_program.s:1376 and #$03
 1_f8a4_03_01
-1_f8a5_85_03		//  test_program.s:1376 sta $2f ; LENGTH
+1_f8a5_85_03		//  test_program.s:1377 sta $2f ; LENGTH
 1_f8a6_2f_01
 1_002f_01_00
-1_f8a7_60_03		//  test_program.s:1378 rts
+1_f8a7_60_03		//  test_program.s:1379 rts
 1_f8a8_90_01
 1_01fb_f8_01
 1_01fc_09_01
 1_01fd_f8_01
 1_f809_f8_01
-1_f80a_a9_03		//  test_program.s:1345 lda #$ad    ; Should have registered as LDA abs, registers as LDA zp
+1_f80a_a9_03		//  test_program.s:1346 lda #$ad    ; Should have registered as LDA abs, registers as LDA zp
 1_f80b_ad_01
-1_f80c_20_03		//  test_program.s:1346 jsr .0
+1_f80c_20_03		//  test_program.s:1347 jsr .0
 1_f80d_82_01
 1_01fd_f8_01
 1_01fd_f8_00
 1_01fc_0e_00
 1_f80e_f8_01
-1_f882_a8_03		//  test_program.s:1354 tay
+1_f882_a8_03		//  test_program.s:1355 tay
 1_f883_4a_01
-1_f883_4a_03		//  test_program.s:1355 lsr
+1_f883_4a_03		//  test_program.s:1356 lsr
 1_f884_90_01
-1_f884_90_03		//  test_program.s:1356 bcc .1
+1_f884_90_03		//  test_program.s:1357 bcc .1
 1_f885_09_01
-1_f886_6a_03		//  test_program.s:1357 ror
+1_f886_6a_03		//  test_program.s:1358 ror
 1_f887_b0_01
-1_f887_b0_03		//  test_program.s:1358 bcs .2
+1_f887_b0_03		//  test_program.s:1359 bcs .2
 1_f888_10_01
-1_f889_c9_03		//  test_program.s:1359 cmp #$A2
+1_f889_c9_03		//  test_program.s:1360 cmp #$A2
 1_f88a_a2_01
-1_f88b_f0_03		//  test_program.s:1360 beq .2
+1_f88b_f0_03		//  test_program.s:1361 beq .2
 1_f88c_0c_01
-1_f88d_29_03		//  test_program.s:1361 and #$87
+1_f88d_29_03		//  test_program.s:1362 and #$87
 1_f88e_87_01
-1_f88f_4a_03		//  test_program.s:1363 lsr
+1_f88f_4a_03		//  test_program.s:1364 lsr
 1_f890_aa_01
-1_f890_aa_03		//  test_program.s:1364 tax
+1_f890_aa_03		//  test_program.s:1365 tax
 1_f891_bd_01
-1_f891_bd_03		//  test_program.s:1365 lda FMT1,x
+1_f891_bd_03		//  test_program.s:1366 lda FMT1,x
 1_f892_b1_01
 1_f893_f8_01
 1_f8f2_31_01
-1_f894_20_03		//  test_program.s:1366 jsr .8
+1_f894_20_03		//  test_program.s:1367 jsr .8
 1_f895_a8_01
 1_01fb_f8_01
 1_01fb_f8_00
 1_01fa_96_00
 1_f896_f8_01
-1_f8a8_90_03		//  test_program.s:1380 .8       bcc     .9
+1_f8a8_90_03		//  test_program.s:1381 .8       bcc     .9
 1_f8a9_04_01
-1_f8aa_4a_03		//  test_program.s:1381 lsr     A
+1_f8aa_4a_03		//  test_program.s:1382 lsr     A
 1_f8ab_4a_01
-1_f8ab_4a_03		//  test_program.s:1382 lsr     A
+1_f8ab_4a_03		//  test_program.s:1383 lsr     A
 1_f8ac_4a_01
-1_f8ac_4a_03		//  test_program.s:1383 lsr     A
+1_f8ac_4a_03		//  test_program.s:1384 lsr     A
 1_f8ad_4a_01
-1_f8ad_4a_03		//  test_program.s:1384 lsr     A
+1_f8ad_4a_03		//  test_program.s:1385 lsr     A
 1_f8ae_29_01
-1_f8ae_29_03		//  test_program.s:1385 .9      and     #$0f
+1_f8ae_29_03		//  test_program.s:1386 .9      and     #$0f
 1_f8af_0f_01
-1_f8b0_60_03		//  test_program.s:1386 rts
+1_f8b0_60_03		//  test_program.s:1387 rts
 1_f8b1_04_01
 1_01f9_02_01
 1_01fa_96_01
 1_01fb_f8_01
 1_f896_f8_01
-1_f897_d0_03		//  test_program.s:1367 bne .5
+1_f897_d0_03		//  test_program.s:1368 bne .5
 1_f898_04_01
 1_f899_a0_01
-1_f89d_aa_03		//  test_program.s:1372 tax
+1_f89d_aa_03		//  test_program.s:1373 tax
 1_f89e_bd_01
-1_f89e_bd_03		//  test_program.s:1373 lda FMT2,x
+1_f89e_bd_03		//  test_program.s:1374 lda FMT2,x
 1_f89f_f5_01
 1_f8a0_f8_01
 1_f8f8_82_01
-1_f8a1_85_03		//  test_program.s:1374 sta $2e ; F8.MASK
+1_f8a1_85_03		//  test_program.s:1375 sta $2e ; F8.MASK
 1_f8a2_2e_01
 1_002e_82_00
-1_f8a3_29_03		//  test_program.s:1375 and #$03
+1_f8a3_29_03		//  test_program.s:1376 and #$03
 1_f8a4_03_01
-1_f8a5_85_03		//  test_program.s:1376 sta $2f ; LENGTH
+1_f8a5_85_03		//  test_program.s:1377 sta $2f ; LENGTH
 1_f8a6_2f_01
 1_002f_02_00
-1_f8a7_60_03		//  test_program.s:1378 rts
+1_f8a7_60_03		//  test_program.s:1379 rts
 1_f8a8_90_01
 1_01fb_f8_01
 1_01fc_0e_01
 1_01fd_f8_01
 1_f80e_f8_01
-1_f80f_60_03		//  test_program.s:1348 rts
+1_f80f_60_03		//  test_program.s:1349 rts
 1_f810_00_01
 1_01fd_f8_01
 1_01fe_1f_01
@@ -9218,14 +9218,14 @@
 1_01fd_20_00
 1_fffe_f1_01
 1_ffff_41_01
-1_41f1_08_03		//  test_program.s:1212 php
+1_41f1_08_03		//  test_program.s:1213 php
 1_41f2_28_01
 1_01fc_34_00
-1_41f2_28_03		//  test_program.s:1213 plp
+1_41f2_28_03		//  test_program.s:1214 plp
 1_41f3_40_01
 1_01fb_f8_01
 1_01fc_34_01
-1_41f3_40_03		//  test_program.s:1214 rti
+1_41f3_40_03		//  test_program.s:1215 rti
 1_41f4_00_01
 1_01fc_34_01
 1_01fd_20_01
@@ -9238,14 +9238,14 @@
 1_01fd_20_00
 1_fffe_f1_01
 1_ffff_41_01
-1_41f1_08_03		//  test_program.s:1212 php
+1_41f1_08_03		//  test_program.s:1213 php
 1_41f2_28_01
 1_01fc_34_00
-1_41f2_28_03		//  test_program.s:1213 plp
+1_41f2_28_03		//  test_program.s:1214 plp
 1_41f3_40_01
 1_01fb_f8_01
 1_01fc_34_01
-1_41f3_40_03		//  test_program.s:1214 rti
+1_41f3_40_03		//  test_program.s:1215 rti
 1_41f4_00_01
 1_01fc_34_01
 1_01fd_20_01
@@ -9302,17 +9302,17 @@
 1_01fd_20_00
 1_fffa_f5_01
 1_fffb_41_01
-1_41f5_4c_03		//  test_program.s:1218 jmp int_handler
+1_41f5_4c_03		//  test_program.s:1219 jmp int_handler
 1_41f6_f1_01
 1_41f7_41_01
-1_41f1_08_03		//  test_program.s:1212 php
+1_41f1_08_03		//  test_program.s:1213 php
 1_41f2_28_01
 1_01fc_34_00
-1_41f2_28_03		//  test_program.s:1213 plp
+1_41f2_28_03		//  test_program.s:1214 plp
 1_41f3_40_01
 1_01fb_f8_01
 1_01fc_34_01
-1_41f3_40_03		//  test_program.s:1214 rti
+1_41f3_40_03		//  test_program.s:1215 rti
 1_41f4_00_01
 1_01fc_34_01
 1_01fd_20_01
@@ -9325,14 +9325,14 @@
 1_01fd_20_00
 1_fffe_f1_01
 1_ffff_41_01
-1_41f1_08_03		//  test_program.s:1212 php
+1_41f1_08_03		//  test_program.s:1213 php
 1_41f2_28_01
 1_01fc_34_00
-1_41f2_28_03		//  test_program.s:1213 plp
+1_41f2_28_03		//  test_program.s:1214 plp
 1_41f3_40_01
 1_01fb_f8_01
 1_01fc_34_01
-1_41f3_40_03		//  test_program.s:1214 rti
+1_41f3_40_03		//  test_program.s:1215 rti
 1_41f4_00_01
 1_01fc_34_01
 1_01fd_20_01
