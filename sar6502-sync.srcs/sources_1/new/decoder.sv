@@ -94,6 +94,7 @@ reg [7:0] instruction_register, instruction_register_next;
 assign ir5_o = instruction_register[5];
 
 reg addr_load_value;
+reg alu_acr_delayed;
 
 logic condtion_flag, condition_flags[4];
 assign condition_flags[2'b00] = flags_i[ctl::FlagNegative];
@@ -201,6 +202,7 @@ function void handle_op();
         8'had: begin handle_addr_abs(); handle_op_lda(); end
         8'hb0: begin handle_op_branch(); end
         8'hb8: begin handle_op_clv(); end
+        8'hbd: begin handle_addr_abs_x(); handle_op_lda(); end
         8'hd0: begin handle_op_branch(); end
         8'hd8: begin handle_op_set_flag(); end
         8'hea: begin handle_op_nop(); end
@@ -325,6 +327,8 @@ always_ff@(posedge clock_i) begin
     end
 
     bus_waiting_result <= (bus_req_valid_o && !bus_req_write_o) || (bus_waiting_result && !bus_rsp_valid_i);
+
+    alu_acr_delayed <= alu_acr_i;
 end
 
 endmodule

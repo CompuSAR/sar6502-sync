@@ -688,7 +688,7 @@
 1_0355_bd_03		//  test_program.s:160 lda lda_abs_test-$c0,x      ; With page transition
 1_0356_61_01
 1_0357_6c_01
-1_6c21_00_01
+1_6c21_42_01
 1_6d21_74_01
 1_0358_b9_03		//  test_program.s:161 lda lda_abs_test,y          ; No page transition
 1_0359_21_01
@@ -697,7 +697,7 @@
 1_035b_b9_03		//  test_program.s:162 lda lda_abs_test-$30,y      ; With page transition
 1_035c_f1_01
 1_035d_6c_01
-1_6c21_00_01
+1_6c21_42_01
 1_6d21_74_01
 1_035e_a5_03		//  test_program.s:163 lda lda_zp_test
 1_035f_a9_01
@@ -8921,237 +8921,237 @@
 1_01ff_06_00
 1_01fe_1f_00
 1_061f_f8_01
-1_f800_a9_03		//  test_program.s:1342 lda #$a9    ; Should have registered as LDA immediate, registers as ???
+1_f800_a9_03		//  test_program.s:1345 lda #$a9    ; Should have registered as LDA immediate, registers as ???
 1_f801_a9_01
-1_f802_20_03		//  test_program.s:1343 jsr .0
+1_f802_20_03		//  test_program.s:1346 jsr .0
 1_f803_82_01
 1_01fd_36_01
 1_01fd_f8_00
 1_01fc_04_00
 1_f804_f8_01
-1_f882_a8_03		//  test_program.s:1355 tay
+1_f882_a8_03		//  test_program.s:1358 tay
 1_f883_4a_01
-1_f883_4a_03		//  test_program.s:1356 lsr
+1_f883_4a_03		//  test_program.s:1359 lsr
 1_f884_90_01
-1_f884_90_03		//  test_program.s:1357 bcc .1
+1_f884_90_03		//  test_program.s:1360 bcc .1
 1_f885_09_01
-1_f886_6a_03		//  test_program.s:1358 ror
+1_f886_6a_03		//  test_program.s:1361 ror
 1_f887_b0_01
-1_f887_b0_03		//  test_program.s:1359 bcs .2
+1_f887_b0_03		//  test_program.s:1362 bcs .2
 1_f888_10_01
-1_f889_c9_03		//  test_program.s:1360 cmp #$A2
+1_f889_c9_03		//  test_program.s:1363 cmp #$A2
 1_f88a_a2_01
-1_f88b_f0_03		//  test_program.s:1361 beq .2
+1_f88b_f0_03		//  test_program.s:1364 beq .2
 1_f88c_0c_01
-1_f88d_29_03		//  test_program.s:1362 and #$87
+1_f88d_29_03		//  test_program.s:1365 and #$87
 1_f88e_87_01
-1_f88f_4a_03		//  test_program.s:1364 lsr
+1_f88f_4a_03		//  test_program.s:1367 lsr
 1_f890_aa_01
-1_f890_aa_03		//  test_program.s:1365 tax
+1_f890_aa_03		//  test_program.s:1368 tax
 1_f891_bd_01
-1_f891_bd_03		//  test_program.s:1366 lda FMT1,x
+1_f891_bd_03		//  test_program.s:1369 lda FMT1,x
 1_f892_b1_01
 1_f893_f8_01
 1_f8f2_31_01
-1_f894_20_03		//  test_program.s:1367 jsr .8
+1_f894_20_03		//  test_program.s:1370 jsr .8
 1_f895_a8_01
 1_01fb_8a_01
 1_01fb_f8_00
 1_01fa_96_00
 1_f896_f8_01
-1_f8a8_90_03		//  test_program.s:1381 .8       bcc     .9
+1_f8a8_90_03		//  test_program.s:1384 .8       bcc     .9
 1_f8a9_04_01
 1_f8aa_4a_01
-1_f8ae_29_03		//  test_program.s:1386 .9      and     #$0f
+1_f8ae_29_03		//  test_program.s:1389 .9      and     #$0f
 1_f8af_0f_01
-1_f8b0_60_03		//  test_program.s:1387 rts
+1_f8b0_60_03		//  test_program.s:1390 rts
 1_f8b1_04_01
 1_01f9_02_01
 1_01fa_96_01
 1_01fb_f8_01
 1_f896_f8_01
-1_f897_d0_03		//  test_program.s:1368 bne .5
+1_f897_d0_03		//  test_program.s:1371 bne .5
 1_f898_04_01
 1_f899_a0_01
-1_f89d_aa_03		//  test_program.s:1373 tax
+1_f89d_aa_03		//  test_program.s:1376 tax
 1_f89e_bd_01
-1_f89e_bd_03		//  test_program.s:1374 lda FMT2,x
+1_f89e_bd_03		//  test_program.s:1377 lda FMT2,x
 1_f89f_f5_01
 1_f8a0_f8_01
 1_f8f6_21_01
-1_f8a1_85_03		//  test_program.s:1375 sta $2e ; F8.MASK
+1_f8a1_85_03		//  test_program.s:1378 sta $2e ; F8.MASK
 1_f8a2_2e_01
 1_002e_21_00
-1_f8a3_29_03		//  test_program.s:1376 and #$03
+1_f8a3_29_03		//  test_program.s:1379 and #$03
 1_f8a4_03_01
-1_f8a5_85_03		//  test_program.s:1377 sta $2f ; LENGTH
+1_f8a5_85_03		//  test_program.s:1380 sta $2f ; LENGTH
 1_f8a6_2f_01
 1_002f_01_00
-1_f8a7_60_03		//  test_program.s:1379 rts
+1_f8a7_60_03		//  test_program.s:1382 rts
 1_f8a8_90_01
 1_01fb_f8_01
 1_01fc_04_01
 1_01fd_f8_01
 1_f804_f8_01
-1_f805_a9_03		//  test_program.s:1344 lda #$85    ; Should have registered as STA zp, registers as ???
+1_f805_a9_03		//  test_program.s:1347 lda #$85    ; Should have registered as STA zp, registers as ???
 1_f806_85_01
-1_f807_20_03		//  test_program.s:1345 jsr .0
+1_f807_20_03		//  test_program.s:1348 jsr .0
 1_f808_82_01
 1_01fd_f8_01
 1_01fd_f8_00
 1_01fc_09_00
 1_f809_f8_01
-1_f882_a8_03		//  test_program.s:1355 tay
+1_f882_a8_03		//  test_program.s:1358 tay
 1_f883_4a_01
-1_f883_4a_03		//  test_program.s:1356 lsr
+1_f883_4a_03		//  test_program.s:1359 lsr
 1_f884_90_01
-1_f884_90_03		//  test_program.s:1357 bcc .1
+1_f884_90_03		//  test_program.s:1360 bcc .1
 1_f885_09_01
-1_f886_6a_03		//  test_program.s:1358 ror
+1_f886_6a_03		//  test_program.s:1361 ror
 1_f887_b0_01
-1_f887_b0_03		//  test_program.s:1359 bcs .2
+1_f887_b0_03		//  test_program.s:1362 bcs .2
 1_f888_10_01
-1_f889_c9_03		//  test_program.s:1360 cmp #$A2
+1_f889_c9_03		//  test_program.s:1363 cmp #$A2
 1_f88a_a2_01
-1_f88b_f0_03		//  test_program.s:1361 beq .2
+1_f88b_f0_03		//  test_program.s:1364 beq .2
 1_f88c_0c_01
-1_f88d_29_03		//  test_program.s:1362 and #$87
+1_f88d_29_03		//  test_program.s:1365 and #$87
 1_f88e_87_01
-1_f88f_4a_03		//  test_program.s:1364 lsr
+1_f88f_4a_03		//  test_program.s:1367 lsr
 1_f890_aa_01
-1_f890_aa_03		//  test_program.s:1365 tax
+1_f890_aa_03		//  test_program.s:1368 tax
 1_f891_bd_01
-1_f891_bd_03		//  test_program.s:1366 lda FMT1,x
+1_f891_bd_03		//  test_program.s:1369 lda FMT1,x
 1_f892_b1_01
 1_f893_f8_01
 1_f8f1_26_01
-1_f894_20_03		//  test_program.s:1367 jsr .8
+1_f894_20_03		//  test_program.s:1370 jsr .8
 1_f895_a8_01
 1_01fb_f8_01
 1_01fb_f8_00
 1_01fa_96_00
 1_f896_f8_01
-1_f8a8_90_03		//  test_program.s:1381 .8       bcc     .9
+1_f8a8_90_03		//  test_program.s:1384 .8       bcc     .9
 1_f8a9_04_01
-1_f8aa_4a_03		//  test_program.s:1382 lsr     A
+1_f8aa_4a_03		//  test_program.s:1385 lsr     A
 1_f8ab_4a_01
-1_f8ab_4a_03		//  test_program.s:1383 lsr     A
+1_f8ab_4a_03		//  test_program.s:1386 lsr     A
 1_f8ac_4a_01
-1_f8ac_4a_03		//  test_program.s:1384 lsr     A
+1_f8ac_4a_03		//  test_program.s:1387 lsr     A
 1_f8ad_4a_01
-1_f8ad_4a_03		//  test_program.s:1385 lsr     A
+1_f8ad_4a_03		//  test_program.s:1388 lsr     A
 1_f8ae_29_01
-1_f8ae_29_03		//  test_program.s:1386 .9      and     #$0f
+1_f8ae_29_03		//  test_program.s:1389 .9      and     #$0f
 1_f8af_0f_01
-1_f8b0_60_03		//  test_program.s:1387 rts
+1_f8b0_60_03		//  test_program.s:1390 rts
 1_f8b1_04_01
 1_01f9_02_01
 1_01fa_96_01
 1_01fb_f8_01
 1_f896_f8_01
-1_f897_d0_03		//  test_program.s:1368 bne .5
+1_f897_d0_03		//  test_program.s:1371 bne .5
 1_f898_04_01
 1_f899_a0_01
-1_f89d_aa_03		//  test_program.s:1373 tax
+1_f89d_aa_03		//  test_program.s:1376 tax
 1_f89e_bd_01
-1_f89e_bd_03		//  test_program.s:1374 lda FMT2,x
+1_f89e_bd_03		//  test_program.s:1377 lda FMT2,x
 1_f89f_f5_01
 1_f8a0_f8_01
 1_f8f7_81_01
-1_f8a1_85_03		//  test_program.s:1375 sta $2e ; F8.MASK
+1_f8a1_85_03		//  test_program.s:1378 sta $2e ; F8.MASK
 1_f8a2_2e_01
 1_002e_81_00
-1_f8a3_29_03		//  test_program.s:1376 and #$03
+1_f8a3_29_03		//  test_program.s:1379 and #$03
 1_f8a4_03_01
-1_f8a5_85_03		//  test_program.s:1377 sta $2f ; LENGTH
+1_f8a5_85_03		//  test_program.s:1380 sta $2f ; LENGTH
 1_f8a6_2f_01
 1_002f_01_00
-1_f8a7_60_03		//  test_program.s:1379 rts
+1_f8a7_60_03		//  test_program.s:1382 rts
 1_f8a8_90_01
 1_01fb_f8_01
 1_01fc_09_01
 1_01fd_f8_01
 1_f809_f8_01
-1_f80a_a9_03		//  test_program.s:1346 lda #$ad    ; Should have registered as LDA abs, registers as LDA zp
+1_f80a_a9_03		//  test_program.s:1349 lda #$ad    ; Should have registered as LDA abs, registers as LDA zp
 1_f80b_ad_01
-1_f80c_20_03		//  test_program.s:1347 jsr .0
+1_f80c_20_03		//  test_program.s:1350 jsr .0
 1_f80d_82_01
 1_01fd_f8_01
 1_01fd_f8_00
 1_01fc_0e_00
 1_f80e_f8_01
-1_f882_a8_03		//  test_program.s:1355 tay
+1_f882_a8_03		//  test_program.s:1358 tay
 1_f883_4a_01
-1_f883_4a_03		//  test_program.s:1356 lsr
+1_f883_4a_03		//  test_program.s:1359 lsr
 1_f884_90_01
-1_f884_90_03		//  test_program.s:1357 bcc .1
+1_f884_90_03		//  test_program.s:1360 bcc .1
 1_f885_09_01
-1_f886_6a_03		//  test_program.s:1358 ror
+1_f886_6a_03		//  test_program.s:1361 ror
 1_f887_b0_01
-1_f887_b0_03		//  test_program.s:1359 bcs .2
+1_f887_b0_03		//  test_program.s:1362 bcs .2
 1_f888_10_01
-1_f889_c9_03		//  test_program.s:1360 cmp #$A2
+1_f889_c9_03		//  test_program.s:1363 cmp #$A2
 1_f88a_a2_01
-1_f88b_f0_03		//  test_program.s:1361 beq .2
+1_f88b_f0_03		//  test_program.s:1364 beq .2
 1_f88c_0c_01
-1_f88d_29_03		//  test_program.s:1362 and #$87
+1_f88d_29_03		//  test_program.s:1365 and #$87
 1_f88e_87_01
-1_f88f_4a_03		//  test_program.s:1364 lsr
+1_f88f_4a_03		//  test_program.s:1367 lsr
 1_f890_aa_01
-1_f890_aa_03		//  test_program.s:1365 tax
+1_f890_aa_03		//  test_program.s:1368 tax
 1_f891_bd_01
-1_f891_bd_03		//  test_program.s:1366 lda FMT1,x
+1_f891_bd_03		//  test_program.s:1369 lda FMT1,x
 1_f892_b1_01
 1_f893_f8_01
 1_f8f2_31_01
-1_f894_20_03		//  test_program.s:1367 jsr .8
+1_f894_20_03		//  test_program.s:1370 jsr .8
 1_f895_a8_01
 1_01fb_f8_01
 1_01fb_f8_00
 1_01fa_96_00
 1_f896_f8_01
-1_f8a8_90_03		//  test_program.s:1381 .8       bcc     .9
+1_f8a8_90_03		//  test_program.s:1384 .8       bcc     .9
 1_f8a9_04_01
-1_f8aa_4a_03		//  test_program.s:1382 lsr     A
+1_f8aa_4a_03		//  test_program.s:1385 lsr     A
 1_f8ab_4a_01
-1_f8ab_4a_03		//  test_program.s:1383 lsr     A
+1_f8ab_4a_03		//  test_program.s:1386 lsr     A
 1_f8ac_4a_01
-1_f8ac_4a_03		//  test_program.s:1384 lsr     A
+1_f8ac_4a_03		//  test_program.s:1387 lsr     A
 1_f8ad_4a_01
-1_f8ad_4a_03		//  test_program.s:1385 lsr     A
+1_f8ad_4a_03		//  test_program.s:1388 lsr     A
 1_f8ae_29_01
-1_f8ae_29_03		//  test_program.s:1386 .9      and     #$0f
+1_f8ae_29_03		//  test_program.s:1389 .9      and     #$0f
 1_f8af_0f_01
-1_f8b0_60_03		//  test_program.s:1387 rts
+1_f8b0_60_03		//  test_program.s:1390 rts
 1_f8b1_04_01
 1_01f9_02_01
 1_01fa_96_01
 1_01fb_f8_01
 1_f896_f8_01
-1_f897_d0_03		//  test_program.s:1368 bne .5
+1_f897_d0_03		//  test_program.s:1371 bne .5
 1_f898_04_01
 1_f899_a0_01
-1_f89d_aa_03		//  test_program.s:1373 tax
+1_f89d_aa_03		//  test_program.s:1376 tax
 1_f89e_bd_01
-1_f89e_bd_03		//  test_program.s:1374 lda FMT2,x
+1_f89e_bd_03		//  test_program.s:1377 lda FMT2,x
 1_f89f_f5_01
 1_f8a0_f8_01
 1_f8f8_82_01
-1_f8a1_85_03		//  test_program.s:1375 sta $2e ; F8.MASK
+1_f8a1_85_03		//  test_program.s:1378 sta $2e ; F8.MASK
 1_f8a2_2e_01
 1_002e_82_00
-1_f8a3_29_03		//  test_program.s:1376 and #$03
+1_f8a3_29_03		//  test_program.s:1379 and #$03
 1_f8a4_03_01
-1_f8a5_85_03		//  test_program.s:1377 sta $2f ; LENGTH
+1_f8a5_85_03		//  test_program.s:1380 sta $2f ; LENGTH
 1_f8a6_2f_01
 1_002f_02_00
-1_f8a7_60_03		//  test_program.s:1379 rts
+1_f8a7_60_03		//  test_program.s:1382 rts
 1_f8a8_90_01
 1_01fb_f8_01
 1_01fc_0e_01
 1_01fd_f8_01
 1_f80e_f8_01
-1_f80f_60_03		//  test_program.s:1349 rts
+1_f80f_60_03		//  test_program.s:1352 rts
 1_f810_00_01
 1_01fd_f8_01
 1_01fe_1f_01
