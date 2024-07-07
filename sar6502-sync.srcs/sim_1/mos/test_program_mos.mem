@@ -749,57 +749,58 @@
 @a30b a2 50                             // test_program.s:1305 ldx #$50
 @a30d 6c ff 26                          // test_program.s:1308 jmp (jmp_ind_test2)
 @a310 00                                // test_program.s:1309 brk             ; Unreachable
-@ae38 bf                                // test_program.s:1312 lda_indirect_test .byte $bf
-@ae68 20                                // test_program.s:1314 .byte $20       ; lda (zp),y test
-@af28 22                                // test_program.s:1316 .byte $22       ; lda (zp),y test
-@c213 25                                // test_program.s:1319 .byte $25                   ; adc (zp,x) test
-@d074 17                                // test_program.s:1322 eor_abs_test    .byte $17
-@d096 11                                // test_program.s:1325 .byte $11        ; eor abs,y
-@d114 49                                // test_program.s:1328 .byte $49       ; eor abs,x test
-@d2cc 38                                // test_program.s:1331 .byte $38                   ; cmp (zp,x) test
-@d588 15                                // test_program.s:1334 .byte $15                   ; adc (zp,x) test
-@d589 8e                                // test_program.s:1335 .byte $8e, $9b, $f5         ; adc (zp),y test
+@ae28 20                                // test_program.s:1312 .byte $20
+@ae38 bf                                // test_program.s:1314 lda_indirect_test .byte $bf
+@ae68 20                                // test_program.s:1316 .byte $20       ; lda (zp),y test
+@af28 22                                // test_program.s:1318 .byte $22       ; lda (zp),y test
+@c213 25                                // test_program.s:1321 .byte $25                   ; adc (zp,x) test
+@d074 17                                // test_program.s:1324 eor_abs_test    .byte $17
+@d096 11                                // test_program.s:1327 .byte $11        ; eor abs,y
+@d114 49                                // test_program.s:1330 .byte $49       ; eor abs,x test
+@d2cc 38                                // test_program.s:1333 .byte $38                   ; cmp (zp,x) test
+@d588 15                                // test_program.s:1336 .byte $15                   ; adc (zp,x) test
+@d589 8e                                // test_program.s:1337 .byte $8e, $9b, $f5         ; adc (zp),y test
 @d58a 9b
 @d58b f5
-@e308 ff                                // test_program.s:1339 .byte $ff
-@e3fd 93                                // test_program.s:1342 .byte $93                   ; ldy abs,x
-@f800 a9 a9                             // test_program.s:1347 lda #$a9    ; Should have registered as LDA immediate, registers as ???
-@f802 20 82 f8                          // test_program.s:1348 jsr .0
-@f805 a9 85                             // test_program.s:1349 lda #$85    ; Should have registered as STA zp, registers as ???
-@f807 20 82 f8                          // test_program.s:1350 jsr .0
-@f80a a9 ad                             // test_program.s:1351 lda #$ad    ; Should have registered as LDA abs, registers as LDA zp
-@f80c 20 82 f8                          // test_program.s:1352 jsr .0
-@f80f 60                                // test_program.s:1354 rts
-@f810 00                                // test_program.s:1355 brk         ; Unreachable
-@f882 a8                                // test_program.s:1360 tay
-@f883 4a                                // test_program.s:1361 lsr
-@f884 90 09                             // test_program.s:1362 bcc .1
-@f886 6a                                // test_program.s:1363 ror
-@f887 b0 10                             // test_program.s:1364 bcs .2
-@f889 c9 a2                             // test_program.s:1365 cmp #$A2
-@f88b f0 0c                             // test_program.s:1366 beq .2
-@f88d 29 87                             // test_program.s:1367 and #$87
-@f88f 4a                                // test_program.s:1369 lsr
-@f890 aa                                // test_program.s:1370 tax
-@f891 bd b1 f8                          // test_program.s:1371 lda FMT1,x
-@f894 20 a8 f8                          // test_program.s:1372 jsr .8
-@f897 d0 04                             // test_program.s:1373 bne .5
-@f899 a0 80                             // test_program.s:1375 ldy #$80
-@f89b a9 00                             // test_program.s:1376 lda #$00
-@f89d aa                                // test_program.s:1378 tax
-@f89e bd f5 f8                          // test_program.s:1379 lda FMT2,x
-@f8a1 85 2e                             // test_program.s:1380 sta $2e ; F8.MASK
-@f8a3 29 03                             // test_program.s:1381 and #$03
-@f8a5 85 2f                             // test_program.s:1382 sta $2f ; LENGTH
-@f8a7 60                                // test_program.s:1384 rts
-@f8a8 90 04                             // test_program.s:1386 .8       bcc     .9
-@f8aa 4a                                // test_program.s:1387 lsr     A
-@f8ab 4a                                // test_program.s:1388 lsr     A
-@f8ac 4a                                // test_program.s:1389 lsr     A
-@f8ad 4a                                // test_program.s:1390 lsr     A
-@f8ae 29 0f                             // test_program.s:1391 .9      and     #$0f
-@f8b0 60                                // test_program.s:1392 rts
-@f8b1 04                                // test_program.s:1394 FMT1        .byte   $04,$20,$54,$30,$0d,$80,$04,$90,$03,$22,$54,$33,$0d,$80,$04,$90
+@e308 ff                                // test_program.s:1341 .byte $ff
+@e3fd 93                                // test_program.s:1344 .byte $93                   ; ldy abs,x
+@f800 a9 a9                             // test_program.s:1349 lda #$a9    ; Should have registered as LDA immediate, registers as ???
+@f802 20 82 f8                          // test_program.s:1350 jsr .0
+@f805 a9 85                             // test_program.s:1351 lda #$85    ; Should have registered as STA zp, registers as ???
+@f807 20 82 f8                          // test_program.s:1352 jsr .0
+@f80a a9 ad                             // test_program.s:1353 lda #$ad    ; Should have registered as LDA abs, registers as LDA zp
+@f80c 20 82 f8                          // test_program.s:1354 jsr .0
+@f80f 60                                // test_program.s:1356 rts
+@f810 00                                // test_program.s:1357 brk         ; Unreachable
+@f882 a8                                // test_program.s:1362 tay
+@f883 4a                                // test_program.s:1363 lsr
+@f884 90 09                             // test_program.s:1364 bcc .1
+@f886 6a                                // test_program.s:1365 ror
+@f887 b0 10                             // test_program.s:1366 bcs .2
+@f889 c9 a2                             // test_program.s:1367 cmp #$A2
+@f88b f0 0c                             // test_program.s:1368 beq .2
+@f88d 29 87                             // test_program.s:1369 and #$87
+@f88f 4a                                // test_program.s:1371 lsr
+@f890 aa                                // test_program.s:1372 tax
+@f891 bd b1 f8                          // test_program.s:1373 lda FMT1,x
+@f894 20 a8 f8                          // test_program.s:1374 jsr .8
+@f897 d0 04                             // test_program.s:1375 bne .5
+@f899 a0 80                             // test_program.s:1377 ldy #$80
+@f89b a9 00                             // test_program.s:1378 lda #$00
+@f89d aa                                // test_program.s:1380 tax
+@f89e bd f5 f8                          // test_program.s:1381 lda FMT2,x
+@f8a1 85 2e                             // test_program.s:1382 sta $2e ; F8.MASK
+@f8a3 29 03                             // test_program.s:1383 and #$03
+@f8a5 85 2f                             // test_program.s:1384 sta $2f ; LENGTH
+@f8a7 60                                // test_program.s:1386 rts
+@f8a8 90 04                             // test_program.s:1388 .8       bcc     .9
+@f8aa 4a                                // test_program.s:1389 lsr     A
+@f8ab 4a                                // test_program.s:1390 lsr     A
+@f8ac 4a                                // test_program.s:1391 lsr     A
+@f8ad 4a                                // test_program.s:1392 lsr     A
+@f8ae 29 0f                             // test_program.s:1393 .9      and     #$0f
+@f8b0 60                                // test_program.s:1394 rts
+@f8b1 04                                // test_program.s:1396 FMT1        .byte   $04,$20,$54,$30,$0d,$80,$04,$90,$03,$22,$54,$33,$0d,$80,$04,$90
 @f8b2 20
 @f8b3 54
 @f8b4 30
@@ -815,7 +816,7 @@
 @f8be 80
 @f8bf 04
 @f8c0 90
-@f8c1 04                                // test_program.s:1395 .byte   $04,$20,$54,$33,$0d,$80,$04,$90,$04,$20,$54,$3b,$0d,$80,$04,$90
+@f8c1 04                                // test_program.s:1397 .byte   $04,$20,$54,$33,$0d,$80,$04,$90,$04,$20,$54,$3b,$0d,$80,$04,$90
 @f8c2 20
 @f8c3 54
 @f8c4 33
@@ -831,7 +832,7 @@
 @f8ce 80
 @f8cf 04
 @f8d0 90
-@f8d1 00                                // test_program.s:1396 .byte   $00,$22,$44,$33,$0d,$c8,$44,$00,$11,$22,$44,$33,$0d,$c8,$44,$a9
+@f8d1 00                                // test_program.s:1398 .byte   $00,$22,$44,$33,$0d,$c8,$44,$00,$11,$22,$44,$33,$0d,$c8,$44,$a9
 @f8d2 22
 @f8d3 44
 @f8d4 33
@@ -847,7 +848,7 @@
 @f8de c8
 @f8df 44
 @f8e0 a9
-@f8e1 01                                // test_program.s:1397 .byte   $01,$22,$44,$33,$0d,$80,$04,$90,$01,$22,$44,$33,$0d,$80,$04,$90
+@f8e1 01                                // test_program.s:1399 .byte   $01,$22,$44,$33,$0d,$80,$04,$90,$01,$22,$44,$33,$0d,$80,$04,$90
 @f8e2 22
 @f8e3 44
 @f8e4 33
@@ -863,11 +864,11 @@
 @f8ee 80
 @f8ef 04
 @f8f0 90
-@f8f1 26                                // test_program.s:1398 .byte   $26,$31,$87,$9a
+@f8f1 26                                // test_program.s:1400 .byte   $26,$31,$87,$9a
 @f8f2 31
 @f8f3 87
 @f8f4 9a
-@f8f5 00                                // test_program.s:1399 FMT2        .data   $00,$21,$81,$82,$00,$00,$59,$4d,$91,$92,$86,$4a,$85,$9d
+@f8f5 00                                // test_program.s:1401 FMT2        .data   $00,$21,$81,$82,$00,$00,$59,$4d,$91,$92,$86,$4a,$85,$9d
 @f8f6 21
 @f8f7 81
 @f8f8 82
@@ -881,9 +882,9 @@
 @f900 4a
 @f901 85
 @f902 9d
-@f9f8 cd                                // test_program.s:1403 .byte $cd, $71, $e4
+@f9f8 cd                                // test_program.s:1405 .byte $cd, $71, $e4
 @f9f9 71
 @f9fa e4
-@fffa f5 41                             // test_program.s:1406 nmi_vector:     .word nmi_handler
-@fffc 0b 07                             // test_program.s:1407 reset_vector:   .word reset_handler
-@fffe f1 41                             // test_program.s:1408 irq_vector:     .word int_handler
+@fffa f5 41                             // test_program.s:1408 nmi_vector:     .word nmi_handler
+@fffc 0b 07                             // test_program.s:1409 reset_vector:   .word reset_handler
+@fffe f1 41                             // test_program.s:1410 irq_vector:     .word int_handler

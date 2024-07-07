@@ -201,6 +201,7 @@ function void handle_op();
         8'ha9: begin handle_addr_imm(); handle_op_lda(); end
         8'had: begin handle_addr_abs(); handle_op_lda(); end
         8'hb0: begin handle_op_branch(); end
+        8'hb1: begin handle_addr_zp_ind_y(); handle_op_lda(); end
         8'hb5: begin handle_addr_zp_x(); handle_op_lda(); end
         8'hb8: begin handle_op_clv(); end
         8'hb9: begin handle_addr_abs_y(); handle_op_lda(); end
