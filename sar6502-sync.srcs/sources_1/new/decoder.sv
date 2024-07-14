@@ -102,7 +102,9 @@ assign condition_flags[2'b01] = flags_i[ctl::FlagOverflow];
 assign condition_flags[2'b10] = flags_i[ctl::FlagCarry];
 assign condition_flags[2'b11] = flags_i[ctl::FlagZero];
 
-assign condtion_flag = condition_flags[ instruction_register[7:6] ];
+assign condtion_flag = instruction_register[4] ?
+    condition_flags[ instruction_register[7:6] ] :
+    1'b0;
 
 enum {
     IntReset,
@@ -174,9 +176,13 @@ end
 function void handle_op();
     case( instruction_register )
         8'h00: begin handle_op_brk(); end
+        8'h06: begin handle_addr_zp(); handle_op_asl(); end
         8'h08: begin handle_op_php(); end
+        8'h0e: begin handle_addr_abs(); handle_op_asl(); end
         8'h10: begin handle_op_branch(); end
+        8'h16: begin handle_addr_zp_x(); handle_op_asl(); end
         8'h18: begin handle_op_set_flag(); end
+        8'h1e: begin handle_addr_abs_x(1); handle_op_asl(); end
         8'h20: begin handle_op_jsr(); end
         8'h28: begin handle_op_plp(); end
         8'h30: begin handle_op_branch(); end
@@ -190,6 +196,7 @@ function void handle_op();
         8'h6d: begin handle_addr_abs(); handle_op_adc(); end
         8'h70: begin handle_op_branch(); end
         8'h78: begin handle_op_set_flag(); end
+        8'h80: begin if( CPU_VARIANT>0 ) handle_op_branch(); else set_invalid_state(); end
         8'h8a: begin handle_op_txa(); end
         8'h8d: begin handle_addr_abs(); handle_op_sta(); end
         8'h90: begin handle_op_branch(); end
@@ -205,7 +212,7 @@ function void handle_op();
         8'hb5: begin handle_addr_zp_x(); handle_op_lda(); end
         8'hb8: begin handle_op_clv(); end
         8'hb9: begin handle_addr_abs_y(); handle_op_lda(); end
-        8'hbd: begin handle_addr_abs_x(); handle_op_lda(); end
+        8'hbd: begin handle_addr_abs_x(0); handle_op_lda(); end
         8'hd0: begin handle_op_branch(); end
         8'hd8: begin handle_op_set_flag(); end
         8'hea: begin handle_op_nop(); end

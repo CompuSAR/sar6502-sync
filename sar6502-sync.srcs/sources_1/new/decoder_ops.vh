@@ -24,6 +24,36 @@ function void handle_op_adc();
     end
 endfunction
 
+function void handle_op_asl();
+    if( !addr_cycle() ) begin
+        case( instruction_counter )
+            C_OP1: begin
+                sb_src_o = ctl::DL_SB;
+                alu_op_o = ctl::SLS;
+                control_signals_o[ctl::I_ADDC] = 1'b0;
+
+                bus_req_valid_o = 1'b1;
+                bus_req_write_o = 1'b1;
+                db_src_o = ctl::DL_DB;
+            end
+            C_OP2: begin
+                sb_src_o = ctl::ADD_SB;
+                db_src_o = ctl::SB_DB;
+
+                bus_req_valid_o = 1'b1;
+                bus_req_write_o = 1'b1;
+
+                control_signals_o[ctl::ACR_C] = 1'b1;
+                control_signals_o[ctl::DB7_N] = 1'b1;
+                control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+                new_instruction();
+            end
+            default: set_invalid_state();
+        endcase
+    end
+endfunction
+
 function void handle_op_branch();
     case( instruction_counter )
         C_ADDR1: begin
@@ -52,7 +82,10 @@ function void handle_op_branch();
             adh_src_o = ctl::PCH_ADH;
         end
         C_ADDR4: begin
-            addr_out_pc();
+            if( CPU_VARIANT==0 )
+                addr_out_pc();
+            else
+                bus_req_valid_o = 1'b1;
 
             sb_src_o = ctl::ADH_SB;
             db_src_o = ctl::O_DB;

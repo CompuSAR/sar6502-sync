@@ -41,7 +41,7 @@ function void handle_addr_abs();
     end
 endfunction
 
-function void handle_addr_abs_x();
+function void handle_addr_abs_x(input unconditional_extra_cycle);
     if( addr_cycle() ) begin
         case( instruction_counter )
             C_ADDR1: begin
@@ -66,7 +66,7 @@ function void handle_addr_abs_x();
 
                 bus_req_valid_o = 1'b1;
 
-                if( !alu_acr_delayed ) begin
+                if( !alu_acr_delayed && !unconditional_extra_cycle ) begin
                     instruction_counter_next = C_ADDR7;
                     addr_load_value = 1'b1;
                 end
