@@ -52,5 +52,6 @@ assign results[ctl::SLS]  = { a_i, carry_i };
 assign half_carry_o = low_half_add[4];
 assign result_o = results[op_i][7:0];
 assign carry_o = results[op_i][8];
+assign overflow_o = a_i[7]==b_i[7] && results[ctl::SUMS][7]!=a_i[7];
 
 endmodule
