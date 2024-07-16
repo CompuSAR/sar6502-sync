@@ -288,3 +288,72 @@ function void handle_addr_zp_x();
     end
 endfunction
 
+function void handle_addr_zp_x_ind();
+    if( addr_cycle() ) begin
+        case( instruction_counter )
+            C_ADDR1: begin
+                advance_pc();
+            end
+            C_ADDR2: begin
+                adl_src_o = ctl::DL_ADL;
+                control_signals_o[ctl::ADL_ABL] = 1'b1;
+
+                control_signals_o[ctl::O_ADH_0] = 1'b1;
+                control_signals_o[ctl::O_ADH_1_7] = 1'b1;
+                adh_src_o = ctl::GEN_ADH;
+                control_signals_o[ctl::ADH_ABH] = 1'b1;
+
+                bus_req_valid_o = 1'b1;
+                bus_req_write_o = 1'b0;
+
+                db_src_o = ctl::DL_DB;
+                alu_b_src_o = ctl::DB_ADD;
+                sb_src_o = ctl::X_SB;
+                alu_op_o = ctl::SUMS;
+            end
+            C_ADDR3: begin
+                // Read real operand's address LSB
+                adl_src_o = ctl::ADD_ADL;
+                control_signals_o[ctl::ADL_ABL] = 1'b1;
+
+                bus_req_valid_o = 1'b1;
+                bus_req_write_o = 1'b0;
+
+                // Add 1 to previous address so we can read the real operand's
+                // address MSB
+                sb_src_o = ctl::ADD_SB;
+                db_src_o = ctl::O_DB;
+                alu_b_src_o = ctl::DB_ADD;
+                control_signals_o[ctl::I_ADDC] = 1'b1;
+                alu_op_o = ctl::SUMS;
+            end
+            C_ADDR4: begin
+                // Read real operands's address MSB
+                adl_src_o = ctl::ADD_ADL;
+                control_signals_o[ctl::ADL_ABL] = 1'b1;
+
+                bus_req_valid_o = 1'b1;
+                bus_req_write_o = 1'b0;
+            end
+            C_ADDR5: begin
+                // Operand's address LSB is in DL
+                adl_src_o = ctl::DL_ADL;
+                control_signals_o[ctl::ADL_ABL] = 1'b1;
+            end
+            C_ADDR6: begin
+                // Operand's address MSB is in DL
+                adh_src_o = ctl::DL_ADH;
+                control_signals_o[ctl::ADH_ABH] = 1'b1;
+
+                bus_req_valid_o = 1'b1;
+                bus_req_write_o = 1'b0;
+                addr_load_value = 1'b1;
+            end
+            C_ADDR7: begin
+                instruction_counter_next = C_OP1;
+            end
+            default: set_invalid_state();
+        endcase
+    end
+endfunction
+
