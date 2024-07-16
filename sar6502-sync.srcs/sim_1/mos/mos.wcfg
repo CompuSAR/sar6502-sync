@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="11,778.874 ns"></ZoomStartTime>
-      <ZoomEndTime time="11,870.226 ns"></ZoomEndTime>
-      <Cursor1Time time="11,828.502 ns"></Cursor1Time>
+      <ZoomStartTime time="13,208.700 ns"></ZoomStartTime>
+      <ZoomEndTime time="13,279.601 ns"></ZoomEndTime>
+      <Cursor1Time time="13,240.600 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="228"></NameColumnWidth>
-      <ValueColumnWidth column_width="92"></ValueColumnWidth>
+      <ValueColumnWidth column_width="88"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="47" />
+   <WVObjectSize size="48" />
    <wave_markers>
       <marker label="" time="1315000" />
       <marker label="" time="1375000" />
@@ -198,6 +198,10 @@
    <wvobject type="logic" fp_name="/mos_top/top/cpu/decoder/alu_acr_i">
       <obj_property name="ElementShortName">alu_acr_i</obj_property>
       <obj_property name="ObjectShortName">alu_acr_i</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/mos_top/top/cpu/decoder/alu_acr_delayed">
+      <obj_property name="ElementShortName">alu_acr_delayed</obj_property>
+      <obj_property name="ObjectShortName">alu_acr_delayed</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/mos_top/top/cpu/alu_unit/carry_o">
       <obj_property name="ElementShortName">carry_o</obj_property>
