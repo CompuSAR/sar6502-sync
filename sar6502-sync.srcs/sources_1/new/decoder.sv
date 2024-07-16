@@ -178,6 +178,7 @@ function void handle_op();
         8'h00: begin handle_op_brk(); end
         8'h06: begin handle_addr_zp(); handle_op_asl(); end
         8'h08: begin handle_op_php(); end
+        8'h0a: begin handle_op_asl_A(); end
         8'h0e: begin handle_addr_abs(); handle_op_asl(); end
         8'h10: begin handle_op_branch(); end
         8'h16: begin handle_addr_zp_x(); handle_op_asl(); end

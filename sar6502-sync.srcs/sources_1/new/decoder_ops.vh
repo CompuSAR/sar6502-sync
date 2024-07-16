@@ -54,6 +54,28 @@ function void handle_op_asl();
     end
 endfunction
 
+function void handle_op_asl_A();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::AC_SB;
+            alu_op_o = ctl::SLS;
+            control_signals_o[ctl::I_ADDC] = 1'b0;
+        end
+        C_ADDR2: begin
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_AC] = 1'b1;
+
+            db_src_o = ctl::SB_DB;
+            control_signals_o[ctl::ACR_C] = 1'b1;
+            control_signals_o[ctl::DB7_N] = 1'b1;
+            control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
 function void handle_op_branch();
     case( instruction_counter )
         C_ADDR1: begin
