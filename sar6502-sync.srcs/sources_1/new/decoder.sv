@@ -176,13 +176,21 @@ end
 function void handle_op();
     case( instruction_register )
         8'h00: begin handle_op_brk(); end
+        8'h01: begin handle_addr_zp_x_ind(); handle_op_ora(); end
+        8'h05: begin handle_addr_zp(); handle_op_ora(); end
         8'h06: begin handle_addr_zp(); handle_op_asl(); end
         8'h08: begin handle_op_php(); end
+        8'h09: begin handle_addr_imm(); handle_op_ora(); end
         8'h0a: begin handle_op_asl_A(); end
+        8'h0d: begin handle_addr_abs(); handle_op_ora(); end
         8'h0e: begin handle_addr_abs(); handle_op_asl(); end
         8'h10: begin handle_op_branch(); end
+        8'h11: begin handle_addr_zp_ind_y(); handle_op_ora(); end
+        8'h15: begin handle_addr_zp_x(); handle_op_ora(); end
         8'h16: begin handle_addr_zp_x(); handle_op_asl(); end
         8'h18: begin handle_op_set_flag(); end
+        8'h19: begin handle_addr_abs_y(); handle_op_ora(); end
+        8'h1d: begin handle_addr_abs_x(0); handle_op_ora(); end
         8'h1e: begin handle_addr_abs_x(1); handle_op_asl(); end
         8'h20: begin handle_op_jsr(); end
         8'h21: begin handle_addr_zp_x_ind(); handle_op_and(); end
