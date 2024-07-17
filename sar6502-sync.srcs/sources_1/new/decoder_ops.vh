@@ -188,10 +188,66 @@ endfunction
 function void handle_op_brk();
     case( instruction_counter )
         C_ADDR1: begin
+            advance_pc();
+        end
+        C_ADDR2: begin
+            // Push PCH
+            addr_out_stack(int_active != IntReset);
+            db_src_o = ctl::PCH_DB;
+        end
+        C_ADDR3: begin
+            decrease_sp();
+        end
+        C_ADDR4: begin
+            // Store the new SP
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
+        end
+        C_ADDR5: begin
+            // Push PCL
+            addr_out_stack(int_active != IntReset);
+            db_src_o = ctl::PCL_DB;
+        end
+        C_ADDR6: begin
+            decrease_sp();
+        end
+        C_ADDR7: begin
+            // Store the new SP
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
+        end
+        C_ADDR8: begin
+            // Push P register
+            addr_out_stack(int_active != IntReset);
+            db_src_o = ctl::P_DB;
+        end
+        C_ADDR9: begin
+            decrease_sp();
+        end
+        C_ADDR10: begin
+            // Store the new SP
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
+
+
+            // Fetch the vectors LSB
             adl_src_o = ctl::GEN_ADL;
             control_signals_o[ctl::O_ADL_0] = 1'b1;
-            control_signals_o[ctl::O_ADL_1] = 1'b1;
-            control_signals_o[ctl::O_ADL_2] = 1'b0;
+
+            case( int_active )
+                IntReset: begin
+                    control_signals_o[ctl::O_ADL_1] = 1'b1;
+                    control_signals_o[ctl::O_ADL_2] = 1'b0;
+                end
+                IntNmi: begin
+                    control_signals_o[ctl::O_ADL_1] = 1'b0;
+                    control_signals_o[ctl::O_ADL_2] = 1'b1;
+                end
+                default: begin
+                    control_signals_o[ctl::O_ADL_1] = 1'b0;
+                    control_signals_o[ctl::O_ADL_2] = 1'b0;
+                end
+            endcase
 
             adh_src_o = ctl::GEN_ADH;
             control_signals_o[ctl::O_ADH_0] = 1'b0;
@@ -201,31 +257,54 @@ function void handle_op_brk();
             control_signals_o[ctl::ADH_ABH] = 1'b1;
             control_signals_o[ctl::ADL_ABL] = 1'b1;
         end
-        C_ADDR2: begin end
-        C_ADDR3: begin
+        C_ADDR11: begin
+            // Fetch the vectors MSB
+            adl_src_o = ctl::GEN_ADL;
+            control_signals_o[ctl::O_ADL_0] = 1'b0;
+
+            case( int_active )
+                IntReset: begin
+                    control_signals_o[ctl::O_ADL_1] = 1'b1;
+                    control_signals_o[ctl::O_ADL_2] = 1'b0;
+                end
+                IntNmi: begin
+                    control_signals_o[ctl::O_ADL_1] = 1'b0;
+                    control_signals_o[ctl::O_ADL_2] = 1'b1;
+                end
+                default: begin
+                    control_signals_o[ctl::O_ADL_1] = 1'b0;
+                    control_signals_o[ctl::O_ADL_2] = 1'b0;
+                end
+            endcase
+
+            adh_src_o = ctl::GEN_ADH;
+            control_signals_o[ctl::O_ADH_0] = 1'b0;
+            control_signals_o[ctl::O_ADH_1_7] = 1'b0;
+
+            bus_req_valid_o = 1'b1;
+            control_signals_o[ctl::ADH_ABH] = 1'b1;
+            control_signals_o[ctl::ADL_ABL] = 1'b1;
+
+            // Some flags change on vector jump
+            sb_src_o = ctl::ADH_SB;
+            db_src_o = ctl::SB_DB;
+            control_signals_o[ctl::DB2_I] = 1'b1;
+            if( CPU_VARIANT>=2 )
+                control_signals_o[ctl::IR5_D] = 1'b1;
+
+            instruction_counter_next = C_OP1;
+        end
+        C_OP1: begin
+            // Store the jump LSB in PCL
             adl_src_o = ctl::DL_ADL;
             control_signals_o[ctl::ADL_PCL] = 1'b1;
         end
-        C_ADDR4: begin
-            adl_src_o = ctl::GEN_ADL;
-            control_signals_o[ctl::O_ADL_0] = 1'b0;
-            control_signals_o[ctl::O_ADL_1] = 1'b1;
-            control_signals_o[ctl::O_ADL_2] = 1'b0;
-
-            adh_src_o = ctl::GEN_ADH;
-            control_signals_o[ctl::O_ADH_0] = 1'b0;
-            control_signals_o[ctl::O_ADH_1_7] = 1'b0;
-
-            bus_req_valid_o = 1'b1;
-            control_signals_o[ctl::ADH_ABH] = 1'b1;
-            control_signals_o[ctl::ADL_ABL] = 1'b1;
-        end
-        C_ADDR5: begin end
-        C_ADDR6: begin
-            new_instruction();
-
+        C_OP2: begin
+            // Store the jump MSB in PCH
             adh_src_o = ctl::DL_ADH;
             control_signals_o[ctl::ADH_PCH] = 1'b1;
+
+            new_instruction();
         end
         default: set_invalid_state();
     endcase
