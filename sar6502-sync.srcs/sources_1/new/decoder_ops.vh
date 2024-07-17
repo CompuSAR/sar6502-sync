@@ -582,3 +582,26 @@ function void handle_op_clv();
 
     new_instruction();
 endfunction
+
+function void handle_op_iny();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::Y_SB;
+            db_src_o = ctl::O_DB;
+            alu_op_o = ctl::SUMS;
+            alu_b_src_o = ctl::DB_ADD;
+            control_signals_o[ctl::I_ADDC] = 1'b1;
+        end
+        C_ADDR2: begin
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_Y] = 1'b1;
+
+            db_src_o = ctl::SB_DB;
+            control_signals_o[ctl::DB7_N] = 1'b1;
+            control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
