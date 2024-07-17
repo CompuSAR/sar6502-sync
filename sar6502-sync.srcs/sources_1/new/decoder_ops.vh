@@ -609,6 +609,32 @@ function void handle_op_tya();
     endcase
 endfunction
 
+function void handle_op_sbc();
+    if( !addr_cycle() ) begin
+        case( instruction_counter )
+            C_OP1: begin
+                sb_src_o = ctl::AC_SB;
+                db_src_o = ctl::DL_DB;
+                alu_b_src_o = ctl::DBB_ADD;
+                alu_op_o = ctl::SUMS;
+                control_signals_o[ctl::I_ADDC] = flags_i[ctl::FlagCarry];
+            end
+            C_OP2: begin
+                sb_src_o = ctl::ADD_SB;
+                db_src_o = ctl::SB_DB;
+                control_signals_o[ctl::SB_AC] = 1'b1;
+                control_signals_o[ctl::ACR_C] = 1'b1;
+                control_signals_o[ctl::DBZ_Z] = 1'b1;
+                control_signals_o[ctl::AVR_V] = 1'b1;
+                control_signals_o[ctl::DB7_N] = 1'b1;
+
+                new_instruction();
+            end
+            default: set_invalid_state();
+        endcase
+    end
+endfunction
+
 function void handle_op_sta();
     if( addr_load_value ) begin
         bus_req_write_o = 1'b1;

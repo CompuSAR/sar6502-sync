@@ -239,9 +239,17 @@ function void handle_op();
         8'hca: begin handle_op_dex(); end
         8'hd0: begin handle_op_branch(); end
         8'hd8: begin handle_op_set_flag(); end
+        8'he1: begin handle_addr_zp_x_ind(); handle_op_sbc(); end
+        8'he5: begin handle_addr_zp(); handle_op_sbc(); end
+        8'he9: begin handle_addr_imm(); handle_op_sbc(); end
         8'hea: begin handle_op_nop(); end
+        8'hed: begin handle_addr_abs(); handle_op_sbc(); end
         8'hf0: begin handle_op_branch(); end
+        8'hf1: begin handle_addr_zp_ind_y(); handle_op_sbc(); end
+        8'hf5: begin handle_addr_zp_x(); handle_op_sbc(); end
         8'hf8: begin handle_op_set_flag(); end
+        8'hf9: begin handle_addr_abs_y(); handle_op_sbc(); end
+        8'hfd: begin handle_addr_abs_x(0); handle_op_sbc(); end
         default: begin
             $error("Invalid opcode in instruction register %x time %t", instruction_register, $time());
             set_invalid_state();
