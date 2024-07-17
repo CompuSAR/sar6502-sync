@@ -174,6 +174,7 @@ always_comb begin
 end
 
 function void handle_op();
+    //$display("Instruction reg %02x cycle %s", instruction_register, instruction_counter.name());
     case( instruction_register )
         8'h00: begin handle_op_brk(); end
         8'h01: begin handle_addr_zp_x_ind(); handle_op_ora(); end
@@ -194,15 +195,19 @@ function void handle_op();
         8'h1e: begin handle_addr_abs_x(1); handle_op_asl(); end
         8'h20: begin handle_op_jsr(); end
         8'h21: begin handle_addr_zp_x_ind(); handle_op_and(); end
+        8'h24: begin handle_addr_zp(); handle_op_bit(); end
         8'h25: begin handle_addr_zp(); handle_op_and(); end
         8'h28: begin handle_op_plp(); end
         8'h29: begin handle_addr_imm(); handle_op_and(); end
+        8'h2c: begin handle_addr_abs(); handle_op_bit(); end
         8'h2d: begin handle_addr_abs(); handle_op_and(); end
         8'h30: begin handle_op_branch(); end
         8'h31: begin handle_addr_zp_ind_y(); handle_op_and(); end
+        8'h34: begin handle_addr_zp_x(); handle_op_bit(); end
         8'h35: begin handle_addr_zp_x(); handle_op_and(); end
         8'h38: begin handle_op_set_flag(); end
         8'h39: begin handle_addr_abs_y(); handle_op_and(); end
+        8'h3c: begin handle_addr_abs_x(0); handle_op_bit(); end
         8'h3d: begin handle_addr_abs_x(0); handle_op_and(); end
         8'h40: begin handle_op_rti(); end
         8'h48: begin handle_op_pha(); end
@@ -224,6 +229,7 @@ function void handle_op();
         8'h84: begin handle_addr_zp(); handle_op_sty(); end
         8'h86: begin handle_addr_zp(); handle_op_stx(); end
         8'h88: begin handle_op_dey(); end
+        8'h89: begin handle_addr_imm(); handle_op_bit(); end
         8'h8a: begin handle_op_txa(); end
         8'h8c: begin handle_addr_abs(); handle_op_sty(); end
         8'h8d: begin handle_addr_abs(); handle_op_sta(); end
