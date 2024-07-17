@@ -71,6 +71,26 @@ ctl::ADLSrc address_bus_low_source;
 ctl::ALUOp alu_op;
 ctl::AluBSrc alu_b_source;
 
+genvar i;
+
+generate
+
+for( i=0; i<NumRegisters; ++i ) begin : regs
+    wire [7:0] data_in, data_out;
+    wire ctl_store;
+
+    register register(
+        .clock_i(clock_i),
+        .data_i(data_in),
+        .ctl_store_i(ctl_store),
+        .data_o(data_out)
+    );
+end
+
+endgenerate
+
+wire [7:0] regP_value;
+
 decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
     .clock_i(clock_i),
     .reset_i(reset_i),
@@ -122,24 +142,6 @@ initial begin
     if($clog2(alu_b_source.last() + 1) != $size(ctl::AluBSrc))
         $error("AluBSrc needs to be %d bits", $clog2(alu_b_source.last() + 1));
 end
-
-genvar i;
-
-generate
-
-for( i=0; i<NumRegisters; ++i ) begin : regs
-    wire [7:0] data_in, data_out;
-    wire ctl_store;
-
-    register register(
-        .clock_i(clock_i),
-        .data_i(data_in),
-        .ctl_store_i(ctl_store),
-        .data_o(data_out)
-    );
-end
-
-endgenerate
 
 wire [7:0] adh_generated_values;
 adh_gen adh_generator( .ctrl(control_signals[ctl::O_ADH_1_7:ctl::O_ADH_0]), .out(adh_generated_values) );
@@ -200,7 +202,6 @@ always_ff@(posedge clock_i)
         alu_hc <= alu_hc_async;
     end
 
-wire [7:0] regP_value;
 processor_status#(.CPU_VARIANT(CPU_VARIANT)) regP(
     .clock_i(clock_i),
     .reset_i(reset_i),
@@ -233,6 +234,7 @@ always_ff@(posedge clock_i)
     if( !halted )
         data_bus_latch <= data_bus;
 
+logic [7:0] adh_latch;
 wire [7:0] sb_inputs[special_bus_source.last() + 1];
 
 assign sb_inputs[ctl::O_SB] = 8'h00;
@@ -254,7 +256,6 @@ assign adh_inputs[ctl::GEN_ADH] = adh_generated_values;
 assign adh_inputs[ctl::DL_ADH] = regs[RegDl].data_out;
 
 assign addr_bus_high = adh_inputs[address_bus_high_source];
-logic [7:0] adh_latch;
 
 always_ff@(posedge clock_i)
     if( !halted )
