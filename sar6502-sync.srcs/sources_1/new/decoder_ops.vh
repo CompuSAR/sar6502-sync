@@ -205,6 +205,60 @@ function void handle_op_brk();
     endcase
 endfunction
 
+function void handle_op_clv();
+    sb_src_o = ctl::O_SB;
+    db_src_o = ctl::SB_DB;
+    control_signals_o[ctl::DB6_V] = 1'b1;
+
+    new_instruction();
+endfunction
+
+function void handle_op_dex();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::X_SB;
+            db_src_o = ctl::O_DB;
+            alu_op_o = ctl::SUMS;
+            alu_b_src_o = ctl::DBB_ADD;
+            control_signals_o[ctl::I_ADDC] = 1'b0;
+        end
+        C_ADDR2: begin
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_X] = 1'b1;
+
+            db_src_o = ctl::SB_DB;
+            control_signals_o[ctl::DB7_N] = 1'b1;
+            control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
+function void handle_op_iny();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::Y_SB;
+            db_src_o = ctl::O_DB;
+            alu_op_o = ctl::SUMS;
+            alu_b_src_o = ctl::DB_ADD;
+            control_signals_o[ctl::I_ADDC] = 1'b1;
+        end
+        C_ADDR2: begin
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_Y] = 1'b1;
+
+            db_src_o = ctl::SB_DB;
+            control_signals_o[ctl::DB7_N] = 1'b1;
+            control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
 function void handle_op_jmp();
     if( addr_cycle() ) begin
         control_signals_o[ctl::ADL_PCL] = control_signals_o[ctl::ADL_ABL];
@@ -573,35 +627,4 @@ function void handle_op_set_flag();
     endcase
 
     new_instruction();
-endfunction
-
-function void handle_op_clv();
-    sb_src_o = ctl::O_SB;
-    db_src_o = ctl::SB_DB;
-    control_signals_o[ctl::DB6_V] = 1'b1;
-
-    new_instruction();
-endfunction
-
-function void handle_op_iny();
-    case( instruction_counter )
-        C_ADDR1: begin
-            sb_src_o = ctl::Y_SB;
-            db_src_o = ctl::O_DB;
-            alu_op_o = ctl::SUMS;
-            alu_b_src_o = ctl::DB_ADD;
-            control_signals_o[ctl::I_ADDC] = 1'b1;
-        end
-        C_ADDR2: begin
-            sb_src_o = ctl::ADD_SB;
-            control_signals_o[ctl::SB_Y] = 1'b1;
-
-            db_src_o = ctl::SB_DB;
-            control_signals_o[ctl::DB7_N] = 1'b1;
-            control_signals_o[ctl::DBZ_Z] = 1'b1;
-
-            new_instruction();
-        end
-        default: set_invalid_state();
-    endcase
 endfunction
