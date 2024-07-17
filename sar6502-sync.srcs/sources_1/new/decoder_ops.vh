@@ -619,6 +619,26 @@ function void handle_op_sta();
     end
 endfunction
 
+function void handle_op_stx();
+    if( addr_load_value ) begin
+        bus_req_write_o = 1'b1;
+        sb_src_o = ctl::X_SB;
+        db_src_o = ctl::SB_DB;
+
+        new_instruction();
+    end
+endfunction
+
+function void handle_op_sty();
+    if( addr_load_value ) begin
+        bus_req_write_o = 1'b1;
+        sb_src_o = ctl::Y_SB;
+        db_src_o = ctl::SB_DB;
+
+        new_instruction();
+    end
+endfunction
+
 function void handle_op_set_flag();
     case( instruction_register[7:6] )
         2'b00: control_signals_o[ctl::IR5_C] = 1'b1;
