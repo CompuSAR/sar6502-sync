@@ -342,6 +342,41 @@ function void handle_op_cmp(input ctl::SBSrc sb_src);
     end
 endfunction
 
+function void handle_op_dec();
+    if( !addr_cycle() ) begin
+        case( instruction_counter )
+            C_OP1: begin
+                // Dummy bus op
+                db_src_o = ctl::DL_DB;
+                bus_req_valid_o = 1'b1;
+                bus_req_write_o = CPU_VARIANT<2;
+            end
+            C_OP2: begin
+                // Subtract 1 from operand
+                sb_src_o = ctl::DL_SB;
+                db_src_o = ctl::O_DB;
+                alu_op_o = ctl::SUMS;
+                alu_b_src_o = ctl::DBB_ADD;
+                control_signals_o[ctl::I_ADDC] = 1'b0;
+            end
+            C_OP3: begin
+                // Write result back
+                sb_src_o = ctl::ADD_SB;
+                db_src_o = ctl::SB_DB;
+                bus_req_valid_o = 1'b1;
+                bus_req_write_o = 1'b1;
+
+                // Update the flags
+                control_signals_o[ctl::DB7_N] = 1'b1;
+                control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+                new_instruction();
+            end
+            default: set_invalid_state();
+        endcase
+    end
+endfunction
+
 function void handle_op_dex();
     case( instruction_counter )
         C_ADDR1: begin
