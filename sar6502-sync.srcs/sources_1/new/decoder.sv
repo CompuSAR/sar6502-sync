@@ -250,23 +250,29 @@ function void handle_op();
         8'hb8: begin handle_op_clv(); end
         8'hb9: begin handle_addr_abs_y(); handle_op_lda(); end
         8'hbd: begin handle_addr_abs_x(0); handle_op_lda(); end
-        8'hc1: begin handle_addr_zp_x_ind(); handle_op_cmp(); end
-        8'hc5: begin handle_addr_zp(); handle_op_cmp(); end
+        8'hc0: begin handle_addr_imm(); handle_op_cmp(ctl::Y_SB); end
+        8'hc1: begin handle_addr_zp_x_ind(); handle_op_cmp(ctl::AC_SB); end
+        8'hc4: begin handle_addr_zp(); handle_op_cmp(ctl::Y_SB); end
+        8'hc5: begin handle_addr_zp(); handle_op_cmp(ctl::AC_SB); end
         8'hc8: begin handle_op_iny(); end
-        8'hc9: begin handle_addr_imm(); handle_op_cmp(); end
+        8'hc9: begin handle_addr_imm(); handle_op_cmp(ctl::AC_SB); end
         8'hca: begin handle_op_dex(); end
-        8'hcd: begin handle_addr_abs(); handle_op_cmp(); end
+        8'hcc: begin handle_addr_abs(); handle_op_cmp(ctl::Y_SB); end
+        8'hcd: begin handle_addr_abs(); handle_op_cmp(ctl::AC_SB); end
         8'hd0: begin handle_op_branch(); end
-        8'hd1: begin handle_addr_zp_ind_y(); handle_op_cmp(); end
-        8'hd5: begin handle_addr_zp_x(); handle_op_cmp(); end
+        8'hd1: begin handle_addr_zp_ind_y(); handle_op_cmp(ctl::AC_SB); end
+        8'hd5: begin handle_addr_zp_x(); handle_op_cmp(ctl::AC_SB); end
         8'hd8: begin handle_op_set_flag(); end
-        8'hd9: begin handle_addr_abs_y(); handle_op_cmp(); end
-        8'hdd: begin handle_addr_abs_x(0); handle_op_cmp(); end
+        8'hd9: begin handle_addr_abs_y(); handle_op_cmp(ctl::AC_SB); end
+        8'hdd: begin handle_addr_abs_x(0); handle_op_cmp(ctl::AC_SB); end
+        8'he0: begin handle_addr_imm(); handle_op_cmp(ctl::X_SB); end
         8'he1: begin handle_addr_zp_x_ind(); handle_op_sbc(); end
+        8'he4: begin handle_addr_zp(); handle_op_cmp(ctl::X_SB); end
         8'he5: begin handle_addr_zp(); handle_op_sbc(); end
         8'he8: begin handle_op_inx(); end
         8'he9: begin handle_addr_imm(); handle_op_sbc(); end
         8'hea: begin handle_op_nop(); end
+        8'hec: begin handle_addr_abs(); handle_op_cmp(ctl::X_SB); end
         8'hed: begin handle_addr_abs(); handle_op_sbc(); end
         8'hf0: begin handle_op_branch(); end
         8'hf1: begin handle_addr_zp_ind_y(); handle_op_sbc(); end

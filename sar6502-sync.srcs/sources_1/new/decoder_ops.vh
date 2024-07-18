@@ -318,11 +318,11 @@ function void handle_op_clv();
     new_instruction();
 endfunction
 
-function void handle_op_cmp();
+function void handle_op_cmp(input ctl::SBSrc sb_src);
     if( !addr_cycle() ) begin
         case( instruction_counter )
             C_OP1: begin
-                sb_src_o = ctl::AC_SB;
+                sb_src_o = sb_src;
                 db_src_o = ctl::DL_DB;
                 alu_b_src_o = ctl::DBB_ADD;
                 alu_op_o = ctl::SUMS;
