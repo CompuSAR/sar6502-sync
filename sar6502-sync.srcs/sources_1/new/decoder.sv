@@ -234,7 +234,9 @@ function void handle_op();
         8'h79: begin handle_addr_abs_y(); handle_op_adc(); end
         8'h7d: begin handle_addr_abs_x(0); handle_op_adc(); end
         8'h80: begin if( CPU_VARIANT>0 ) handle_op_branch(); else set_invalid_state(); end
+        8'h81: begin handle_addr_zp_x_ind(); handle_op_sta(); end
         8'h84: begin handle_addr_zp(); handle_op_sty(); end
+        8'h85: begin handle_addr_zp(); handle_op_sta(); end
         8'h86: begin handle_addr_zp(); handle_op_stx(); end
         8'h88: begin handle_op_dey(); end
         8'h89: begin handle_addr_imm(); handle_op_bit(); end
@@ -243,10 +245,14 @@ function void handle_op();
         8'h8d: begin handle_addr_abs(); handle_op_sta(); end
         8'h8e: begin handle_addr_abs(); handle_op_stx(); end
         8'h90: begin handle_op_branch(); end
+        8'h91: begin handle_addr_zp_ind_y(); handle_op_sta(); end
         8'h94: begin handle_addr_zp_x(); handle_op_sty(); end
+        8'h95: begin handle_addr_zp_x(); handle_op_sta(); end
         8'h96: begin handle_addr_zp_y(); handle_op_stx(); end
         8'h98: begin handle_op_tya(); end
+        8'h99: begin handle_addr_abs_y(); handle_op_sta(); end
         8'h9a: begin handle_op_txs(); end
+        8'h9d: begin handle_addr_abs_x(0); handle_op_sta(); end
         8'ha0: begin handle_addr_imm(); handle_op_ldy(); end
         8'ha2: begin handle_addr_imm(); handle_op_ldx(); end
         8'ha5: begin handle_addr_zp(); handle_op_lda(); end
