@@ -257,17 +257,21 @@ function void handle_op();
         8'h9d: begin handle_addr_abs_x(0); handle_op_sta(); end
         8'ha0: begin handle_addr_imm(); handle_op_ldy(); end
         8'ha2: begin handle_addr_imm(); handle_op_ldx(); end
+        8'ha4: begin handle_addr_zp(); handle_op_ldy(); end
         8'ha5: begin handle_addr_zp(); handle_op_lda(); end
         8'ha6: begin handle_addr_zp(); handle_op_ldx(); end
         8'ha9: begin handle_addr_imm(); handle_op_lda(); end
+        8'hac: begin handle_addr_abs(); handle_op_ldy(); end
         8'had: begin handle_addr_abs(); handle_op_lda(); end
         8'hae: begin handle_addr_abs(); handle_op_ldx(); end
         8'hb0: begin handle_op_branch(); end
         8'hb1: begin handle_addr_zp_ind_y(); handle_op_lda(); end
+        8'hb4: begin handle_addr_zp_x(); handle_op_ldy(); end
         8'hb5: begin handle_addr_zp_x(); handle_op_lda(); end
         8'hb6: begin handle_addr_zp_y(); handle_op_ldx(); end
         8'hb8: begin handle_op_clv(); end
         8'hb9: begin handle_addr_abs_y(); handle_op_lda(); end
+        8'hbc: begin handle_addr_abs_x(0); handle_op_ldy(); end
         8'hbd: begin handle_addr_abs_x(0); handle_op_lda(); end
         8'hbe: begin handle_addr_abs_y(); handle_op_ldx(); end
         8'hc0: begin handle_addr_imm(); handle_op_cmp(ctl::Y_SB); end
