@@ -176,6 +176,7 @@ end
 function void handle_op();
     //$display("Instruction reg %02x cycle %s", instruction_register, instruction_counter.name());
     case( instruction_register )
+        8'h6c: begin handle_op_jmp_abs_ind(); end
         8'h00: begin handle_op_brk(); end
         8'h01: begin handle_addr_zp_x_ind(); handle_op_ora(); end
         8'h05: begin handle_addr_zp(); handle_op_ora(); end

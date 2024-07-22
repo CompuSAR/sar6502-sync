@@ -568,6 +568,67 @@ function void handle_op_jmp();
     end
 endfunction
 
+function void handle_op_jmp_abs_ind();
+    if( addr_cycle() ) begin
+        case( instruction_counter )
+            C_ADDR1: begin
+                // Fetch LSB of indirect address
+                advance_pc();
+            end
+            C_ADDR2: begin
+                // Fetch MSB of indirect address
+                addr_out_pc();
+            end
+            C_ADDR3: begin
+                // DL = LSB of indirect address
+                adl_src_o = ctl::DL_ADL;
+                control_signals_o[ctl::ADL_ABL] = 1'b1;
+
+                alu_b_src_o = ctl::ADL_ADD;
+                alu_op_o = ctl::SUMS;
+                sb_src_o = ctl::O_SB;
+                control_signals_o[ctl::I_ADDC] = 1'b1;
+            end
+            C_ADDR4: begin
+                // DL = MSB of indirect address
+                adh_src_o = ctl::DL_ADH;
+                control_signals_o[ctl::ADH_ABH] = 1'b1;
+
+                // Fetch LSB of actual address
+                bus_req_valid_o = 1'b1;
+                addr_load_value = 1'b1;
+
+                // This addressing mode is only used by the jmp instruction.
+                // This means we can use the PCL to store the incremeanted
+                // value until we need it.
+                adl_src_o = ctl::ADD_ADL;
+                control_signals_o[ctl::ADL_PCL] = 1'b1;
+            end
+            C_ADDR5: begin
+                // Fetch MSB of actual address
+                adl_src_o = ctl::PCL_ADL;
+                control_signals_o[ctl::ADL_ABL] = 1'b1;
+
+                bus_req_valid_o = 1'b1;
+            end
+            C_ADDR6: begin
+                // DL = actual LSB
+                adl_src_o = ctl::DL_ADL;
+                control_signals_o[ctl::ADL_PCL] = 1'b1;
+            end
+            C_ADDR7: begin
+                // DL = actual MSB
+                adh_src_o = ctl::DL_ADH;
+                control_signals_o[ctl::ADH_PCH] = 1'b1;
+            end
+            C_ADDR8: begin
+                new_instruction();
+            end
+            default: set_invalid_state();
+        endcase
+    end
+endfunction
+
 function void handle_op_jsr();
     case( instruction_counter )
         C_ADDR1: begin
