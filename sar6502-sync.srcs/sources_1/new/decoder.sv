@@ -231,6 +231,7 @@ function void handle_op();
         8'h60: begin handle_op_rts(); end
         8'h61: begin handle_addr_zp_x_ind(); handle_op_adc(); end
         8'h65: begin handle_addr_zp(); handle_op_adc(); end
+        8'h68: begin handle_op_pla(); end
         8'h69: begin handle_addr_imm(); handle_op_adc(); end
         8'h6c: begin handle_op_jmp_abs_ind(); end
         8'h6d: begin handle_addr_abs(); handle_op_adc(); end
