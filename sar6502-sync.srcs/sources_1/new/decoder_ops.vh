@@ -1024,50 +1024,6 @@ function void handle_op_rts();
     endcase
 endfunction
 
-function void handle_op_txa();
-    case( instruction_counter )
-        C_ADDR1: begin
-            sb_src_o = ctl::X_SB;
-            control_signals_o[ctl::SB_AC] = 1'b1;
-
-            db_src_o = ctl::SB_DB;
-            control_signals_o[ctl::DB7_N] = 1'b1;
-            control_signals_o[ctl::DBZ_Z] = 1'b1;
-
-            new_instruction();
-        end
-        default: set_invalid_state();
-    endcase
-endfunction
-
-function void handle_op_txs();
-    case( instruction_counter )
-        C_ADDR1: begin
-            sb_src_o = ctl::X_SB;
-            control_signals_o[ctl::SB_S] = 1'b1;
-
-            new_instruction();
-        end
-        default: set_invalid_state();
-    endcase
-endfunction
-
-function void handle_op_tya();
-    case( instruction_counter )
-        C_ADDR1: begin
-            sb_src_o = ctl::Y_SB;
-            control_signals_o[ctl::SB_AC] = 1'b1;
-
-            db_src_o = ctl::SB_DB;
-            control_signals_o[ctl::DB7_N] = 1'b1;
-            control_signals_o[ctl::DBZ_Z] = 1'b1;
-
-            new_instruction();
-        end
-        default: set_invalid_state();
-    endcase
-endfunction
-
 function void handle_op_sbc();
     if( !addr_cycle() ) begin
         case( instruction_counter )
@@ -1122,6 +1078,98 @@ function void handle_op_sty();
 
         new_instruction();
     end
+endfunction
+
+function void handle_op_tax();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::AC_SB;
+            control_signals_o[ctl::SB_X] = 1'b1;
+
+            db_src_o = ctl::SB_DB;
+            control_signals_o[ctl::DB7_N] = 1'b1;
+            control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
+function void handle_op_tay();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::AC_SB;
+            control_signals_o[ctl::SB_Y] = 1'b1;
+
+            db_src_o = ctl::SB_DB;
+            control_signals_o[ctl::DB7_N] = 1'b1;
+            control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
+function void handle_op_txa();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::X_SB;
+            control_signals_o[ctl::SB_AC] = 1'b1;
+
+            db_src_o = ctl::SB_DB;
+            control_signals_o[ctl::DB7_N] = 1'b1;
+            control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
+function void handle_op_tsx();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::S_SB;
+            control_signals_o[ctl::SB_X] = 1'b1;
+
+            db_src_o = ctl::SB_DB;
+            control_signals_o[ctl::DB7_N] = 1'b1;
+            control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
+function void handle_op_txs();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::X_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
+function void handle_op_tya();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::Y_SB;
+            control_signals_o[ctl::SB_AC] = 1'b1;
+
+            db_src_o = ctl::SB_DB;
+            control_signals_o[ctl::DB7_N] = 1'b1;
+            control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
 endfunction
 
 function void handle_op_set_flag();

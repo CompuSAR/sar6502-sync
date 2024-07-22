@@ -266,7 +266,9 @@ function void handle_op();
         8'ha4: begin handle_addr_zp(); handle_op_ldy(); end
         8'ha5: begin handle_addr_zp(); handle_op_lda(); end
         8'ha6: begin handle_addr_zp(); handle_op_ldx(); end
+        8'ha8: begin handle_op_tay(); end
         8'ha9: begin handle_addr_imm(); handle_op_lda(); end
+        8'haa: begin handle_op_tax(); end
         8'hac: begin handle_addr_abs(); handle_op_ldy(); end
         8'had: begin handle_addr_abs(); handle_op_lda(); end
         8'hae: begin handle_addr_abs(); handle_op_ldx(); end
@@ -277,6 +279,7 @@ function void handle_op();
         8'hb6: begin handle_addr_zp_y(); handle_op_ldx(); end
         8'hb8: begin handle_op_clv(); end
         8'hb9: begin handle_addr_abs_y(); handle_op_lda(); end
+        8'hba: begin handle_op_tsx(); end
         8'hbc: begin handle_addr_abs_x(0); handle_op_ldy(); end
         8'hbd: begin handle_addr_abs_x(0); handle_op_lda(); end
         8'hbe: begin handle_addr_abs_y(); handle_op_ldx(); end
