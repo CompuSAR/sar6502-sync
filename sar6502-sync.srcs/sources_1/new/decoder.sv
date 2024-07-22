@@ -186,11 +186,11 @@ function void handle_op();
         8'h0d: begin handle_addr_abs(); handle_op_ora(); end
         8'h0e: begin handle_addr_abs(); handle_op_asl(); end
         8'h10: begin handle_op_branch(); end
-        8'h11: begin handle_addr_zp_ind_y(); handle_op_ora(); end
+        8'h11: begin handle_addr_zp_ind_y(0); handle_op_ora(); end
         8'h15: begin handle_addr_zp_x(); handle_op_ora(); end
         8'h16: begin handle_addr_zp_x(); handle_op_asl(); end
         8'h18: begin handle_op_set_flag(); end
-        8'h19: begin handle_addr_abs_y(); handle_op_ora(); end
+        8'h19: begin handle_addr_abs_y(0); handle_op_ora(); end
         8'h1a: begin handle_op_inc_A(); end
         8'h1d: begin handle_addr_abs_x(0); handle_op_ora(); end
         8'h1e: begin handle_addr_abs_x(1); handle_op_asl(); end
@@ -198,18 +198,23 @@ function void handle_op();
         8'h21: begin handle_addr_zp_x_ind(); handle_op_and(); end
         8'h24: begin handle_addr_zp(); handle_op_bit(); end
         8'h25: begin handle_addr_zp(); handle_op_and(); end
+        8'h26: begin handle_addr_zp(); handle_op_rol(); end
         8'h28: begin handle_op_plp(); end
         8'h29: begin handle_addr_imm(); handle_op_and(); end
+        8'h2a: begin handle_op_rol_A(); end
         8'h2c: begin handle_addr_abs(); handle_op_bit(); end
         8'h2d: begin handle_addr_abs(); handle_op_and(); end
+        8'h2e: begin handle_addr_abs(); handle_op_rol(); end
         8'h30: begin handle_op_branch(); end
-        8'h31: begin handle_addr_zp_ind_y(); handle_op_and(); end
+        8'h31: begin handle_addr_zp_ind_y(0); handle_op_and(); end
         8'h34: begin handle_addr_zp_x(); handle_op_bit(); end
         8'h35: begin handle_addr_zp_x(); handle_op_and(); end
+        8'h36: begin handle_addr_zp_x(); handle_op_rol(); end
         8'h38: begin handle_op_set_flag(); end
-        8'h39: begin handle_addr_abs_y(); handle_op_and(); end
+        8'h39: begin handle_addr_abs_y(0); handle_op_and(); end
         8'h3c: begin handle_addr_abs_x(0); handle_op_bit(); end
         8'h3d: begin handle_addr_abs_x(0); handle_op_and(); end
+        8'h3e: begin handle_addr_abs_x(1); handle_op_rol(); end
         8'h40: begin handle_op_rti(); end
         8'h41: begin handle_addr_zp_x_ind(); handle_op_eor(); end
         8'h45: begin handle_addr_zp(); handle_op_eor(); end
@@ -221,26 +226,31 @@ function void handle_op();
         8'h4d: begin handle_addr_abs(); handle_op_eor(); end
         8'h4e: begin handle_addr_abs(); handle_op_lsr(); end
         8'h50: begin handle_op_branch(); end
-        8'h51: begin handle_addr_zp_ind_y(); handle_op_eor(); end
+        8'h51: begin handle_addr_zp_ind_y(0); handle_op_eor(); end
         8'h55: begin handle_addr_zp_x(); handle_op_eor(); end
         8'h56: begin handle_addr_zp_x(); handle_op_lsr(); end
         8'h58: begin handle_op_set_flag(); end
-        8'h59: begin handle_addr_abs_y(); handle_op_eor(); end
+        8'h59: begin handle_addr_abs_y(0); handle_op_eor(); end
         8'h5d: begin handle_addr_abs_x(1); handle_op_eor(); end
         8'h5e: begin handle_addr_abs_x(0); handle_op_lsr(); end
         8'h60: begin handle_op_rts(); end
         8'h61: begin handle_addr_zp_x_ind(); handle_op_adc(); end
         8'h65: begin handle_addr_zp(); handle_op_adc(); end
+        8'h66: begin handle_addr_zp(); handle_op_ror(); end
         8'h68: begin handle_op_pla(); end
         8'h69: begin handle_addr_imm(); handle_op_adc(); end
+        8'h6a: begin handle_op_ror_A(); end
         8'h6c: begin handle_op_jmp_abs_ind(); end
         8'h6d: begin handle_addr_abs(); handle_op_adc(); end
+        8'h6e: begin handle_addr_abs(); handle_op_ror(); end
         8'h70: begin handle_op_branch(); end
-        8'h71: begin handle_addr_zp_ind_y(); handle_op_adc(); end
+        8'h71: begin handle_addr_zp_ind_y(0); handle_op_adc(); end
         8'h75: begin handle_addr_zp_x(); handle_op_adc(); end
+        8'h76: begin handle_addr_zp_x(); handle_op_ror(); end
         8'h78: begin handle_op_set_flag(); end
-        8'h79: begin handle_addr_abs_y(); handle_op_adc(); end
+        8'h79: begin handle_addr_abs_y(0); handle_op_adc(); end
         8'h7d: begin handle_addr_abs_x(0); handle_op_adc(); end
+        8'h7e: begin handle_addr_abs_x(1); handle_op_ror(); end
         8'h80: begin if( CPU_VARIANT>0 ) handle_op_branch(); else set_invalid_state(); end
         8'h81: begin handle_addr_zp_x_ind(); handle_op_sta(); end
         8'h84: begin handle_addr_zp(); handle_op_sty(); end
@@ -253,14 +263,14 @@ function void handle_op();
         8'h8d: begin handle_addr_abs(); handle_op_sta(); end
         8'h8e: begin handle_addr_abs(); handle_op_stx(); end
         8'h90: begin handle_op_branch(); end
-        8'h91: begin handle_addr_zp_ind_y(); handle_op_sta(); end
+        8'h91: begin handle_addr_zp_ind_y(1); handle_op_sta(); end
         8'h94: begin handle_addr_zp_x(); handle_op_sty(); end
         8'h95: begin handle_addr_zp_x(); handle_op_sta(); end
         8'h96: begin handle_addr_zp_y(); handle_op_stx(); end
         8'h98: begin handle_op_tya(); end
-        8'h99: begin handle_addr_abs_y(); handle_op_sta(); end
+        8'h99: begin handle_addr_abs_y(1); handle_op_sta(); end
         8'h9a: begin handle_op_txs(); end
-        8'h9d: begin handle_addr_abs_x(0); handle_op_sta(); end
+        8'h9d: begin handle_addr_abs_x(1); handle_op_sta(); end
         8'ha0: begin handle_addr_imm(); handle_op_ldy(); end
         8'ha2: begin handle_addr_imm(); handle_op_ldx(); end
         8'ha4: begin handle_addr_zp(); handle_op_ldy(); end
@@ -273,16 +283,16 @@ function void handle_op();
         8'had: begin handle_addr_abs(); handle_op_lda(); end
         8'hae: begin handle_addr_abs(); handle_op_ldx(); end
         8'hb0: begin handle_op_branch(); end
-        8'hb1: begin handle_addr_zp_ind_y(); handle_op_lda(); end
+        8'hb1: begin handle_addr_zp_ind_y(0); handle_op_lda(); end
         8'hb4: begin handle_addr_zp_x(); handle_op_ldy(); end
         8'hb5: begin handle_addr_zp_x(); handle_op_lda(); end
         8'hb6: begin handle_addr_zp_y(); handle_op_ldx(); end
         8'hb8: begin handle_op_clv(); end
-        8'hb9: begin handle_addr_abs_y(); handle_op_lda(); end
+        8'hb9: begin handle_addr_abs_y(0); handle_op_lda(); end
         8'hba: begin handle_op_tsx(); end
         8'hbc: begin handle_addr_abs_x(0); handle_op_ldy(); end
         8'hbd: begin handle_addr_abs_x(0); handle_op_lda(); end
-        8'hbe: begin handle_addr_abs_y(); handle_op_ldx(); end
+        8'hbe: begin handle_addr_abs_y(0); handle_op_ldx(); end
         8'hc0: begin handle_addr_imm(); handle_op_cmp(ctl::Y_SB); end
         8'hc1: begin handle_addr_zp_x_ind(); handle_op_cmp(ctl::AC_SB); end
         8'hc4: begin handle_addr_zp(); handle_op_cmp(ctl::Y_SB); end
@@ -295,11 +305,11 @@ function void handle_op();
         8'hcd: begin handle_addr_abs(); handle_op_cmp(ctl::AC_SB); end
         8'hce: begin handle_addr_abs(); handle_op_dec(); end
         8'hd0: begin handle_op_branch(); end
-        8'hd1: begin handle_addr_zp_ind_y(); handle_op_cmp(ctl::AC_SB); end
+        8'hd1: begin handle_addr_zp_ind_y(0); handle_op_cmp(ctl::AC_SB); end
         8'hd5: begin handle_addr_zp_x(); handle_op_cmp(ctl::AC_SB); end
         8'hd6: begin handle_addr_zp_x(); handle_op_dec(); end
         8'hd8: begin handle_op_set_flag(); end
-        8'hd9: begin handle_addr_abs_y(); handle_op_cmp(ctl::AC_SB); end
+        8'hd9: begin handle_addr_abs_y(0); handle_op_cmp(ctl::AC_SB); end
         8'hdd: begin handle_addr_abs_x(0); handle_op_cmp(ctl::AC_SB); end
         8'hde: begin handle_addr_abs_x(1); handle_op_dec(); end
         8'he0: begin handle_addr_imm(); handle_op_cmp(ctl::X_SB); end
@@ -314,11 +324,11 @@ function void handle_op();
         8'hed: begin handle_addr_abs(); handle_op_sbc(); end
         8'hee: begin handle_addr_abs(); handle_op_inc(); end
         8'hf0: begin handle_op_branch(); end
-        8'hf1: begin handle_addr_zp_ind_y(); handle_op_sbc(); end
+        8'hf1: begin handle_addr_zp_ind_y(0); handle_op_sbc(); end
         8'hf5: begin handle_addr_zp_x(); handle_op_sbc(); end
         8'hf6: begin handle_addr_zp_x(); handle_op_inc(); end
         8'hf8: begin handle_op_set_flag(); end
-        8'hf9: begin handle_addr_abs_y(); handle_op_sbc(); end
+        8'hf9: begin handle_addr_abs_y(0); handle_op_sbc(); end
         8'hfd: begin handle_addr_abs_x(0); handle_op_sbc(); end
         8'hfe: begin handle_addr_abs_x(0); handle_op_inc(); end
         default: begin

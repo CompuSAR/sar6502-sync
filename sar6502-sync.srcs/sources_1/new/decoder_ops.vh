@@ -930,6 +930,111 @@ function void handle_op_plp();
     endcase
 endfunction
 
+function void handle_op_rol();
+    if( !addr_cycle() ) begin
+        case( instruction_counter )
+            C_OP1: begin
+                sb_src_o = ctl::DL_SB;
+                alu_op_o = ctl::SLS;
+                control_signals_o[ctl::I_ADDC] = flags_i[ctl::FlagCarry];
+
+                bus_req_valid_o = 1'b1;
+                bus_req_write_o = 1'b1;
+                db_src_o = ctl::DL_DB;
+            end
+            C_OP2: begin
+                sb_src_o = ctl::ADD_SB;
+                db_src_o = ctl::SB_DB;
+
+                bus_req_valid_o = 1'b1;
+                bus_req_write_o = 1'b1;
+
+                control_signals_o[ctl::ACR_C] = 1'b1;
+                control_signals_o[ctl::DB7_N] = 1'b1;
+                control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+                new_instruction();
+            end
+            default: set_invalid_state();
+        endcase
+    end
+endfunction
+
+function void handle_op_rol_A();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::AC_SB;
+            alu_op_o = ctl::SLS;
+            control_signals_o[ctl::I_ADDC] = flags_i[ctl::FlagCarry];
+        end
+        C_ADDR2: begin
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_AC] = 1'b1;
+
+            db_src_o = ctl::SB_DB;
+            control_signals_o[ctl::ACR_C] = 1'b1;
+            control_signals_o[ctl::DB7_N] = 1'b1;
+            control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
+
+function void handle_op_ror();
+    if( !addr_cycle() ) begin
+        case( instruction_counter )
+            C_OP1: begin
+                sb_src_o = ctl::DL_SB;
+                alu_op_o = ctl::SRS;
+                control_signals_o[ctl::I_ADDC] = flags_i[ctl::FlagCarry];
+
+                bus_req_valid_o = 1'b1;
+                bus_req_write_o = 1'b1;
+                db_src_o = ctl::DL_DB;
+            end
+            C_OP2: begin
+                sb_src_o = ctl::ADD_SB;
+                db_src_o = ctl::SB_DB;
+
+                bus_req_valid_o = 1'b1;
+                bus_req_write_o = 1'b1;
+
+                control_signals_o[ctl::ACR_C] = 1'b1;
+                control_signals_o[ctl::DB7_N] = 1'b1;
+                control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+                new_instruction();
+            end
+            default: set_invalid_state();
+        endcase
+    end
+endfunction
+
+function void handle_op_ror_A();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::AC_SB;
+            alu_op_o = ctl::SRS;
+            control_signals_o[ctl::I_ADDC] = flags_i[ctl::FlagCarry];
+        end
+        C_ADDR2: begin
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_AC] = 1'b1;
+
+            db_src_o = ctl::SB_DB;
+            control_signals_o[ctl::ACR_C] = 1'b1;
+            control_signals_o[ctl::DB7_N] = 1'b1;
+            control_signals_o[ctl::DBZ_Z] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
 function void handle_op_rti();
     case( instruction_counter )
         C_ADDR1: begin
@@ -1051,7 +1156,11 @@ function void handle_op_sbc();
 endfunction
 
 function void handle_op_sta();
-    if( addr_load_value ) begin
+    if( addr_cycle() ) begin
+        if( addr_load_value )
+            bus_req_valid_o = 1'b0;
+    end else begin
+        bus_req_valid_o = 1'b1;
         bus_req_write_o = 1'b1;
         sb_src_o = ctl::AC_SB;
         db_src_o = ctl::SB_DB;
