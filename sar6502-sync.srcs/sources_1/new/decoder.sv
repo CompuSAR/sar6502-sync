@@ -191,6 +191,7 @@ function void handle_op();
         8'h16: begin handle_addr_zp_x(); handle_op_asl(); end
         8'h18: begin handle_op_set_flag(); end
         8'h19: begin handle_addr_abs_y(); handle_op_ora(); end
+        8'h1a: begin handle_op_inc_A(); end
         8'h1d: begin handle_addr_abs_x(0); handle_op_ora(); end
         8'h1e: begin handle_addr_abs_x(1); handle_op_asl(); end
         8'h20: begin handle_op_jsr(); end
@@ -287,17 +288,21 @@ function void handle_op();
         8'he1: begin handle_addr_zp_x_ind(); handle_op_sbc(); end
         8'he4: begin handle_addr_zp(); handle_op_cmp(ctl::X_SB); end
         8'he5: begin handle_addr_zp(); handle_op_sbc(); end
+        8'he6: begin handle_addr_zp(); handle_op_inc(); end
         8'he8: begin handle_op_inx(); end
         8'he9: begin handle_addr_imm(); handle_op_sbc(); end
         8'hea: begin handle_op_nop(); end
         8'hec: begin handle_addr_abs(); handle_op_cmp(ctl::X_SB); end
         8'hed: begin handle_addr_abs(); handle_op_sbc(); end
+        8'hee: begin handle_addr_abs(); handle_op_inc(); end
         8'hf0: begin handle_op_branch(); end
         8'hf1: begin handle_addr_zp_ind_y(); handle_op_sbc(); end
         8'hf5: begin handle_addr_zp_x(); handle_op_sbc(); end
+        8'hf6: begin handle_addr_zp_x(); handle_op_inc(); end
         8'hf8: begin handle_op_set_flag(); end
         8'hf9: begin handle_addr_abs_y(); handle_op_sbc(); end
         8'hfd: begin handle_addr_abs_x(0); handle_op_sbc(); end
+        8'hfe: begin handle_addr_abs_x(0); handle_op_inc(); end
         default: begin
             $error("Invalid opcode in instruction register %x time %t", instruction_register, $time());
             set_invalid_state();
