@@ -213,16 +213,21 @@ function void handle_op();
         8'h40: begin handle_op_rti(); end
         8'h41: begin handle_addr_zp_x_ind(); handle_op_eor(); end
         8'h45: begin handle_addr_zp(); handle_op_eor(); end
+        8'h46: begin handle_addr_zp(); handle_op_lsr(); end
         8'h48: begin handle_op_pha(); end
         8'h49: begin handle_addr_imm(); handle_op_eor(); end
+        8'h4a: begin handle_op_lsr_A(); end
         8'h4c: begin handle_addr_abs(); handle_op_jmp(); end
         8'h4d: begin handle_addr_abs(); handle_op_eor(); end
+        8'h4e: begin handle_addr_abs(); handle_op_lsr(); end
         8'h50: begin handle_op_branch(); end
         8'h51: begin handle_addr_zp_ind_y(); handle_op_eor(); end
         8'h55: begin handle_addr_zp_x(); handle_op_eor(); end
+        8'h56: begin handle_addr_zp_x(); handle_op_lsr(); end
         8'h58: begin handle_op_set_flag(); end
         8'h59: begin handle_addr_abs_y(); handle_op_eor(); end
         8'h5d: begin handle_addr_abs_x(1); handle_op_eor(); end
+        8'h5e: begin handle_addr_abs_x(0); handle_op_lsr(); end
         8'h60: begin handle_op_rts(); end
         8'h61: begin handle_addr_zp_x_ind(); handle_op_adc(); end
         8'h65: begin handle_addr_zp(); handle_op_adc(); end
