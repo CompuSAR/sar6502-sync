@@ -89,7 +89,7 @@ end
 
 endgenerate
 
-wire [7:0] regP_value;
+logic [7:0] regP_value, regP_latched;
 
 decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
     .clock_i(clock_i),
@@ -101,7 +101,7 @@ decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
     .vector_pull_o(vector_pull_o),
     .ir5_o( decoder_ir5 ),
 
-    .flags_i( regP_value ),
+    .flags_i( regP_latched ),
     .dl7_i( regs[RegDl].data_out[7] ),
     .control_signals_o(control_signals),
     .db_src_o(data_bus_source),
@@ -200,6 +200,8 @@ always_ff@(posedge clock_i)
         alu_acr <= alu_acr_async;
         alu_avr <= alu_avr_async;
         alu_hc <= alu_hc_async;
+
+        regP_latched <= regP_value;
     end
 
 processor_status#(.CPU_VARIANT(CPU_VARIANT)) regP(

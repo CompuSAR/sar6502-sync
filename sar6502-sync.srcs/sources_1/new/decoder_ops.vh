@@ -188,7 +188,8 @@ endfunction
 function void handle_op_brk();
     case( instruction_counter )
         C_ADDR1: begin
-            advance_pc();
+            if( int_active==IntNone )
+                advance_pc();
         end
         C_ADDR2: begin
             // Push PCH
@@ -220,6 +221,7 @@ function void handle_op_brk();
             // Push P register
             addr_out_stack(int_active != IntReset);
             db_src_o = ctl::P_DB;
+            control_signals_o[ctl::O_B] = (int_active != IntNone);
         end
         C_ADDR9: begin
             decrease_sp();

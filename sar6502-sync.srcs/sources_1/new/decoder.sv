@@ -52,6 +52,8 @@ module decoder#(CPU_VARIANT = 0)
     input [7:0] bus_rsp_data_i
 );
 
+logic last_nmi = 0;
+
 enum logic[31:0] {
     C_INVALID   = 32'bX,
     C_NO_MATCH  = 32'b00000000000000000000000000000000,
@@ -433,6 +435,8 @@ function void increase_sp();
 endfunction
 
 always_ff@(posedge clock_i) begin
+    last_nmi <= nmi_i;
+
     if( reset_i ) begin
         instruction_counter <= C_FETCH1;
         instruction_register <= 8'h00;
@@ -447,6 +451,9 @@ always_ff@(posedge clock_i) begin
 
         int_pending <= int_pending_next;
         int_active <= int_active_next;
+
+        if( int_pending_next!=IntReset && nmi_i==1'b1 && last_nmi==1'b0 )
+            int_pending <= IntNmi;
     end
 
     bus_waiting_result <= (bus_req_valid_o && !bus_req_write_o) || (bus_waiting_result && !bus_rsp_valid_i);
