@@ -12,13 +12,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="386.166 ns"></ZoomStartTime>
-      <ZoomEndTime time="528.767 ns"></ZoomEndTime>
-      <Cursor1Time time="505.000 ns"></Cursor1Time>
+      <ZoomStartTime time="157,534.315 ns"></ZoomStartTime>
+      <ZoomEndTime time="157,715.137 ns"></ZoomEndTime>
+      <Cursor1Time time="157,685.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="228"></NameColumnWidth>
-      <ValueColumnWidth column_width="84"></ValueColumnWidth>
+      <NameColumnWidth column_width="208"></NameColumnWidth>
+      <ValueColumnWidth column_width="131"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="51" />
    <wave_markers>
@@ -38,6 +38,7 @@
    <wvobject type="array" fp_name="/mos_top/top/cycle_num">
       <obj_property name="ElementShortName">cycle_num[31:0]</obj_property>
       <obj_property name="ObjectShortName">cycle_num[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/mos_top/top/cycles_since_bus">
       <obj_property name="ElementShortName">cycles_since_bus[31:0]</obj_property>
@@ -47,27 +48,6 @@
       <obj_property name="ElementShortName">pending_signals[4:0]</obj_property>
       <obj_property name="ObjectShortName">pending_signals[4:0]</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject type="array" fp_name="/mos_top/top/pending_signals[4]">
-         <obj_property name="ElementShortName">[4]</obj_property>
-         <obj_property name="ObjectShortName">[4]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/mos_top/top/pending_signals[3]">
-         <obj_property name="ElementShortName">[3]</obj_property>
-         <obj_property name="ObjectShortName">[3]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/mos_top/top/pending_signals[2]">
-         <obj_property name="ElementShortName">[2]</obj_property>
-         <obj_property name="ObjectShortName">[2]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/mos_top/top/pending_signals[1]">
-         <obj_property name="ElementShortName">[1]</obj_property>
-         <obj_property name="ObjectShortName">[1]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/mos_top/top/pending_signals[0]">
-         <obj_property name="ElementShortName">[0]</obj_property>
-         <obj_property name="ObjectShortName">[0]</obj_property>
-         <obj_property name="isExpanded"></obj_property>
-      </wvobject>
    </wvobject>
    <wvobject type="logic" fp_name="/mos_top/top/cpu/reset_i">
       <obj_property name="ElementShortName">reset_i</obj_property>

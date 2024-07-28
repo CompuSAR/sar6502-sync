@@ -36,10 +36,6 @@ logic clock;
 logic [7:0] memory[65535:0];
 logic [35:0]test_plan[30000];
 
-logic cpu_req_valid, cpu_req_write, cpu_sync, cpu_req_ack = 1'b1, cpu_rsp_valid = 1'b0;
-logic [7:0] cpu_req_data, cpu_rsp_data = 8'hXX;
-logic [15:0] cpu_req_address;
-
 typedef enum { SigReset, SigIrq, SigNmi, SigSo, SigReady, Sig_NumElements } signal_types;
 wire signals[Sig_NumElements-1:0];
 struct {
@@ -53,6 +49,11 @@ generate
 for(i=0; i<Sig_NumElements; ++i)
     assign signals[i] = pending_signals[i].delay==0 && pending_signals[i].count!=0;
 endgenerate
+
+logic cpu_req_valid, cpu_req_write, cpu_sync, cpu_rsp_valid = 1'b0;
+wire cpu_req_ack = !signals[SigReady];
+logic [7:0] cpu_req_data, cpu_rsp_data = 8'hXX;
+logic [15:0] cpu_req_address;
 
 sar6502_2#(.CPU_VARIANT(CPU_VARIANT))
 cpu(
@@ -96,7 +97,7 @@ always_ff@(posedge clock) begin
     end
 
     if( cycles_since_bus==MaxCyclesPerBus ) begin
-        if( signals[SigReset] ) begin
+        if( signals[SigReset] || signals[SigReady] ) begin
             update_pending_status();
             cycles_since_bus <= 0;
             if( cycle_num>=2 )
@@ -108,7 +109,8 @@ always_ff@(posedge clock) begin
             $finish();
         end
     end else begin
-        cycles_since_bus <= cycles_since_bus+1;
+        if( cpu_req_ack || signals[SigReady] )
+            cycles_since_bus <= cycles_since_bus+1;
 
         cpu_rsp_valid <= 1'b0;
         cpu_rsp_data <= 8'hXX;

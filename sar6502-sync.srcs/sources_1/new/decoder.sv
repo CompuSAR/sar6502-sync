@@ -456,7 +456,7 @@ always_ff@(posedge clock_i) begin
             int_pending <= IntNmi;
     end
 
-    bus_waiting_result <= (bus_req_valid_o && !bus_req_write_o) || (bus_waiting_result && !bus_rsp_valid_i);
+    bus_waiting_result <= (bus_req_valid_o && !bus_req_write_o && bus_req_ack_i) || (bus_waiting_result && !bus_rsp_valid_i);
 
     alu_acr_delayed <= alu_acr_i;
 end
