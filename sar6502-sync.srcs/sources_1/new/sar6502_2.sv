@@ -213,6 +213,7 @@ processor_status#(.CPU_VARIANT(CPU_VARIANT)) regP(
     .ir5_i( decoder_ir5 ),
     .acr_i( alu_acr ),
     .avr_i( alu_avr ),
+    .so_i( set_overflow_i ),
 
     .control_signals_i( control_signals[ctl::DB7_N : ctl::DB0_C] ),
 

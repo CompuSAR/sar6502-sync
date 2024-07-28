@@ -31,6 +31,7 @@ module processor_status#(
     input ir5_i,
     input acr_i,
     input avr_i,
+    input so_i,
 
     input [ctl::DB7_N : ctl::DB0_C] control_signals_i,
 
@@ -39,8 +40,13 @@ module processor_status#(
 
 logic [7:0] flags;
 assign data_o = { flags[7:6], 1'b1, ~control_signals_i[ctl::O_B], flags[3:0] };
+logic prev_so = 1'b0;
 
 always_ff@(posedge clock_i, posedge reset_i) begin
+    if( !prev_so && so_i )
+        flags[ctl::FlagOverflow] <= 1'b1;
+    prev_so <= so_i;
+
     if( reset_i ) begin
         flags[ctl::FlagIntMask] = 1'b1;
         if( CPU_VARIANT>=2 )
