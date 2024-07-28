@@ -347,7 +347,7 @@ function void handle_fetch();
 
             if( int_pending!=IntNone ) begin
                 int_active_next = int_pending;
-            end else if( irq_i ) begin
+            end else if( irq_i && !flags_i[ctl::FlagIntMask] ) begin
                 int_active_next = IntIrq;
             end else begin
                 int_active_next = IntNone;

@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="13,208.700 ns"></ZoomStartTime>
-      <ZoomEndTime time="13,279.601 ns"></ZoomEndTime>
-      <Cursor1Time time="13,240.600 ns"></Cursor1Time>
+      <ZoomStartTime time="386.166 ns"></ZoomStartTime>
+      <ZoomEndTime time="528.767 ns"></ZoomEndTime>
+      <Cursor1Time time="505.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="228"></NameColumnWidth>
-      <ValueColumnWidth column_width="88"></ValueColumnWidth>
+      <ValueColumnWidth column_width="84"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="48" />
+   <WVObjectSize size="51" />
    <wave_markers>
       <marker label="" time="1315000" />
       <marker label="" time="1375000" />
@@ -34,6 +34,40 @@
    <wvobject type="logic" fp_name="/mos_top/top/cpu/sync_o">
       <obj_property name="ElementShortName">sync_o</obj_property>
       <obj_property name="ObjectShortName">sync_o</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mos_top/top/cycle_num">
+      <obj_property name="ElementShortName">cycle_num[31:0]</obj_property>
+      <obj_property name="ObjectShortName">cycle_num[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mos_top/top/cycles_since_bus">
+      <obj_property name="ElementShortName">cycles_since_bus[31:0]</obj_property>
+      <obj_property name="ObjectShortName">cycles_since_bus[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/mos_top/top/pending_signals">
+      <obj_property name="ElementShortName">pending_signals[4:0]</obj_property>
+      <obj_property name="ObjectShortName">pending_signals[4:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/mos_top/top/pending_signals[4]">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">[4]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/mos_top/top/pending_signals[3]">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">[3]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/mos_top/top/pending_signals[2]">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">[2]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/mos_top/top/pending_signals[1]">
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">[1]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/mos_top/top/pending_signals[0]">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">[0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
    </wvobject>
    <wvobject type="logic" fp_name="/mos_top/top/cpu/reset_i">
       <obj_property name="ElementShortName">reset_i</obj_property>
