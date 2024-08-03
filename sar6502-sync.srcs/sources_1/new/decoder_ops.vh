@@ -853,6 +853,78 @@ function void handle_op_pha();
     endcase
 endfunction
 
+function void handle_op_phx();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::X_SB;
+            db_src_o = ctl::SB_DB;
+            bus_req_write_o = 1'b1;
+
+            adl_src_o = ctl::S_ADL;
+            control_signals_o[ctl::ADL_ABL] = 1'b1;
+
+            adh_src_o = ctl::GEN_ADH;
+            control_signals_o[ctl::O_ADH_0] = 1'b0;
+            control_signals_o[ctl::O_ADH_1_7] = 1'b1;
+            control_signals_o[ctl::ADH_ABH] = 1'b1;
+
+            bus_req_valid_o = 1'b1;
+        end
+        C_ADDR2: begin
+            db_src_o = ctl::O_DB;
+            alu_b_src_o = ctl::DBB_ADD;
+            sb_src_o = ctl::S_SB;
+
+            alu_op_o = ctl::SUMS;
+            control_signals_o[ctl::DAA] = 1'b0;
+            control_signals_o[ctl::I_ADDC] = 1'b0;
+        end
+        C_ADDR3: begin
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
+function void handle_op_phy();
+    case( instruction_counter )
+        C_ADDR1: begin
+            sb_src_o = ctl::Y_SB;
+            db_src_o = ctl::SB_DB;
+            bus_req_write_o = 1'b1;
+
+            adl_src_o = ctl::S_ADL;
+            control_signals_o[ctl::ADL_ABL] = 1'b1;
+
+            adh_src_o = ctl::GEN_ADH;
+            control_signals_o[ctl::O_ADH_0] = 1'b0;
+            control_signals_o[ctl::O_ADH_1_7] = 1'b1;
+            control_signals_o[ctl::ADH_ABH] = 1'b1;
+
+            bus_req_valid_o = 1'b1;
+        end
+        C_ADDR2: begin
+            db_src_o = ctl::O_DB;
+            alu_b_src_o = ctl::DBB_ADD;
+            sb_src_o = ctl::S_SB;
+
+            alu_op_o = ctl::SUMS;
+            control_signals_o[ctl::DAA] = 1'b0;
+            control_signals_o[ctl::I_ADDC] = 1'b0;
+        end
+        C_ADDR3: begin
+            sb_src_o = ctl::ADD_SB;
+            control_signals_o[ctl::SB_S] = 1'b1;
+
+            new_instruction();
+        end
+        default: set_invalid_state();
+    endcase
+endfunction
+
 function void handle_op_php();
     case( instruction_counter )
         C_ADDR1: begin

@@ -233,6 +233,7 @@ function void handle_op();
         8'h56: begin handle_addr_zp_x(); handle_op_lsr(); end
         8'h58: begin handle_op_set_flag(); end
         8'h59: begin handle_addr_abs_y(0); handle_op_eor(); end
+        8'h5a: begin if( CPU_VARIANT>=2 ) handle_op_phy(); else set_invalid_state(); end
         8'h5d: begin handle_addr_abs_x(1); handle_op_eor(); end
         8'h5e: begin handle_addr_abs_x(0); handle_op_lsr(); end
         8'h60: begin handle_op_rts(); end
@@ -312,6 +313,7 @@ function void handle_op();
         8'hd6: begin handle_addr_zp_x(); handle_op_dec(); end
         8'hd8: begin handle_op_set_flag(); end
         8'hd9: begin handle_addr_abs_y(0); handle_op_cmp(ctl::AC_SB); end
+        8'hda: begin if( CPU_VARIANT>=2 ) handle_op_phx(); else set_invalid_state(); end
         8'hdd: begin handle_addr_abs_x(0); handle_op_cmp(ctl::AC_SB); end
         8'hde: begin handle_addr_abs_x(1); handle_op_dec(); end
         8'he0: begin handle_addr_imm(); handle_op_cmp(ctl::X_SB); end
