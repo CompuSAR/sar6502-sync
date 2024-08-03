@@ -1263,6 +1263,20 @@ function void handle_op_sty();
     end
 endfunction
 
+function void handle_op_stz();
+    if( addr_cycle() ) begin
+        if( addr_load_value )
+            bus_req_valid_o = 1'b0;
+    end else begin
+        bus_req_valid_o = 1'b1;
+        bus_req_write_o = 1'b1;
+        sb_src_o = ctl::O_SB;
+        db_src_o = ctl::SB_DB;
+
+        new_instruction();
+    end
+endfunction
+
 function void handle_op_tax();
     case( instruction_counter )
         C_ADDR1: begin

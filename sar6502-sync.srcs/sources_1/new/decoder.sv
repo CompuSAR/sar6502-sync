@@ -238,6 +238,7 @@ function void handle_op();
         8'h5e: begin handle_addr_abs_x(0); handle_op_lsr(); end
         8'h60: begin handle_op_rts(); end
         8'h61: begin handle_addr_zp_x_ind(); handle_op_adc(); end
+        8'h64: begin if( CPU_VARIANT>=2 ) begin handle_addr_zp(); handle_op_stz(); end else set_invalid_state(); end
         8'h65: begin handle_addr_zp(); handle_op_adc(); end
         8'h66: begin handle_addr_zp(); handle_op_ror(); end
         8'h68: begin handle_op_pla(); end
@@ -248,6 +249,7 @@ function void handle_op();
         8'h6e: begin handle_addr_abs(); handle_op_ror(); end
         8'h70: begin handle_op_branch(); end
         8'h71: begin handle_addr_zp_ind_y(0); handle_op_adc(); end
+        8'h74: begin if( CPU_VARIANT>=2 ) begin handle_addr_zp_x(); handle_op_stz(); end else set_invalid_state(); end
         8'h75: begin handle_addr_zp_x(); handle_op_adc(); end
         8'h76: begin handle_addr_zp_x(); handle_op_ror(); end
         8'h78: begin handle_op_set_flag(); end
@@ -273,7 +275,9 @@ function void handle_op();
         8'h98: begin handle_op_tya(); end
         8'h99: begin handle_addr_abs_y(1); handle_op_sta(); end
         8'h9a: begin handle_op_txs(); end
+        8'h9c: begin if( CPU_VARIANT>=2 ) begin handle_addr_abs(); handle_op_stz(); end else set_invalid_state(); end
         8'h9d: begin handle_addr_abs_x(1); handle_op_sta(); end
+        8'h9e: begin if( CPU_VARIANT>=2 ) begin handle_addr_abs_x(1'b0); handle_op_stz(); end else set_invalid_state(); end
         8'ha0: begin handle_addr_imm(); handle_op_ldy(); end
         8'ha2: begin handle_addr_imm(); handle_op_ldx(); end
         8'ha4: begin handle_addr_zp(); handle_op_ldy(); end
