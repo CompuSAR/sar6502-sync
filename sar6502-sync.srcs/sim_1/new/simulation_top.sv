@@ -43,6 +43,11 @@ struct {
     int count = 0;
 } pending_signals[Sig_NumElements-1:0];
 
+initial begin
+    pending_signals[0].delay = 0;
+    pending_signals[0].count = 10;
+end
+
 genvar i;
 
 generate
@@ -89,23 +94,28 @@ end
 
 int cycles_since_bus = 0;
 int cycle_num = 0;
+logic reset_sequence = 0;
+int cycles_skip;
 
 always_ff@(posedge clock) begin
-    if( cycles_since_bus==0 && cycle_num==0 ) begin
-        pending_signals[SigReset].delay <= 0;
-        pending_signals[SigReset].count <= 10;
+    if( signals[SigReset] ) begin
+        reset_sequence <= 1'b1;
+
+        for( cycles_skip=0; test_plan[cycle_num+cycles_skip][31:16] != 16'hfffc; ++cycles_skip ) begin
+        end
+
+        cycle_num <= cycle_num+cycles_skip;
     end
 
     if( cycles_since_bus==MaxCyclesPerBus ) begin
-        if( signals[SigReset] || signals[SigReady] ) begin
+        if( signals[SigReset] || signals[SigReady] || reset_sequence ) begin
             update_pending_status();
             cycles_since_bus <= 0;
-            if( cycle_num>=2 )
+            if( !reset_sequence && !signals[SigReset] ) begin
                 cycle_num <= cycle_num+1;
-            else
-                cycle_num <= 1;
+            end
         end else begin
-            $error("Too many cycles since last bus operation on cycle %d time %t", cycle_num, $time);
+            $error("Too many cycles since last bus operation on cycle %d time %t", cycle_num + 1, $time);
             $finish();
         end
     end else begin
@@ -133,18 +143,20 @@ task update_pending_status();
     end
 endtask
 
-wire [35:0] plan_line = test_plan[cycle_num-1];
+wire [35:0] plan_line = test_plan[cycle_num];
 
 task handle_bus_op();
-    if( cycle_num<=1 ) begin
-        if( cpu_req_valid && cpu_req_address!==16'hfffc ) begin
-            $display("Pre-test cycle %s address %04x data %02x time %t", cpu_req_write ? "write" : "read", cpu_req_address, cpu_req_data, $time);
+    if( reset_sequence ) begin
+        if( cpu_req_valid && cpu_req_address===16'hfffc ) begin
+            $display("Detected reset done condition at time %t", $time);
+
+            reset_sequence <= 1'b0;
+        end else begin
+            $display("In-reset cycle %s address %04x data %02x time %t", cpu_req_write ? "write" : "read", cpu_req_address, cpu_req_data, $time);
 
             cpu_rsp_data <= 8'hXX;
             cpu_rsp_valid <= cpu_req_valid;
             return;
-        end else begin
-            $display("Detected test start condition at time %t", $time);
         end
     end
 
@@ -177,16 +189,16 @@ task assert_state( input logic [15:0]actual, input logic [15:0]expected, input s
         return;
 
     $display("Verification failed on cycle %d time %t pin %s: expected %x, received %x on address %04x",
-        cycle_num, $time, name, expected, actual, cpu_req_address);
+        cycle_num+1, $time, name, expected, actual, cpu_req_address);
     $finish();
 endtask
 
 task perform_io();
-    $display("Cycle %d: IO writing %x to %x", cycle_num, cpu_req_data, cpu_req_address);
+    $display("Cycle %d: IO writing %x to %x", cycle_num+1, cpu_req_data, cpu_req_address);
 
     casex( cpu_req_address[7:0] )
         8'h00: begin
-            $display("Test finished successfully cycle %d", cycle_num);
+            $display("Test finished successfully cycle %d", cycle_num+1);
             $finish();
         end
         8'h81: begin pending_signals[SigReady].delay <= cpu_req_data; pending_signals[SigReady].count <= memory[16'h0280]; end
