@@ -58,7 +58,7 @@ wire halted = 1'b0;
 // Buses
 wire [7:0] data_bus, addr_bus_low, addr_bus_high, special_bus;
 logic [7:0] alu_result;
-logic alu_avr, alu_acr, alu_hc;
+logic alu_avr, alu_acr, alu_acr_bcd, alu_hc;
 logic alu_avr_async, alu_acr_async, alu_hc_async;
 logic decoder_ir5;
 
@@ -149,7 +149,18 @@ adh_gen adh_generator( .ctrl(control_signals[ctl::O_ADH_1_7:ctl::O_ADH_0]), .out
 wire [7:0] adl_generated_values;
 adl_gen adl_generator( .ctrl(control_signals[ctl::O_ADL_2:ctl::O_ADL_0]), .out(adl_generated_values) );
 
-assign regs[RegA].data_in = special_bus;        // XXX Actually a BCD adjustment unit
+wire [7:0] special_bus_bcd;
+decimal_adjust bcd_a(
+    .decimal_add_i(control_signals[ctl::DAA]),
+    .decimal_subtract_i(control_signals[ctl::DSA]),
+    .data_i(special_bus),
+    .half_carry_i(alu_hc),
+    .carry_i(alu_acr),
+    .data_o(special_bus_bcd),
+    .carry_o(alu_acr_bcd)
+    );
+
+assign regs[RegA].data_in = special_bus_bcd;
 assign regs[RegA].ctl_store = control_signals[ctl::SB_AC];
 
 assign regs[RegX].data_in = special_bus;
@@ -184,7 +195,6 @@ wire [7:0] alu_b_input, alu_result_async;
 alu alu_unit(
     .a_i(special_bus),
     .b_i(alu_b_input),
-    .decimal_enable_i( control_signals[ctl::DAA] ),
     .carry_i( control_signals[ctl::I_ADDC] ),
     .op_i( alu_op ),
 
@@ -211,7 +221,7 @@ processor_status#(.CPU_VARIANT(CPU_VARIANT)) regP(
     .data_i(data_bus),
 
     .ir5_i( decoder_ir5 ),
-    .acr_i( alu_acr ),
+    .acr_i( alu_acr_bcd ),
     .avr_i( alu_avr ),
     .so_i( set_overflow_i ),
 

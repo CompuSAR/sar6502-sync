@@ -11,6 +11,7 @@ function void handle_op_adc();
             C_OP2: begin
                 sb_src_o = ctl::ADD_SB;
                 db_src_o = ctl::SB_DB;
+                control_signals_o[ctl::DAA] = flags_i[ctl::FlagDecimal];
                 control_signals_o[ctl::SB_AC] = 1'b1;
                 control_signals_o[ctl::ACR_C] = 1'b1;
                 control_signals_o[ctl::DBZ_Z] = 1'b1;
@@ -840,7 +841,6 @@ function void handle_op_pha();
             sb_src_o = ctl::S_SB;
 
             alu_op_o = ctl::SUMS;
-            control_signals_o[ctl::DAA] = 1'b0;
             control_signals_o[ctl::I_ADDC] = 1'b0;
         end
         C_ADDR3: begin
@@ -1216,6 +1216,7 @@ function void handle_op_sbc();
             C_OP2: begin
                 sb_src_o = ctl::ADD_SB;
                 db_src_o = ctl::SB_DB;
+                control_signals_o[ctl::DSA] = flags_i[ctl::FlagDecimal];
                 control_signals_o[ctl::SB_AC] = 1'b1;
                 control_signals_o[ctl::ACR_C] = 1'b1;
                 control_signals_o[ctl::DBZ_Z] = 1'b1;

@@ -23,7 +23,6 @@
 module alu(
     input [7:0] a_i,
     input [7:0] b_i,
-    input decimal_enable_i,
     input carry_i,
 
     input ctl::ALUOp op_i,

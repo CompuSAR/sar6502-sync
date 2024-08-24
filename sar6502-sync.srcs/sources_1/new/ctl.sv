@@ -90,7 +90,8 @@ typedef enum {
     DL_DL,              // DL doesn't load incoming bus reads
 
     // ALU flags
-    DAA,
+    DAA,                // Decimal add
+    DSA,                // Decimal subtract
     I_ADDC,
 
     // P register flags
