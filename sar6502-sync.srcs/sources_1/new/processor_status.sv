@@ -42,16 +42,16 @@ logic [7:0] flags;
 assign data_o = { flags[7:6], 1'b1, ~control_signals_i[ctl::O_B], flags[3:0] };
 logic prev_so = 1'b0;
 
-always_ff@(posedge clock_i, posedge reset_i) begin
-    if( !prev_so && so_i )
-        flags[ctl::FlagOverflow] <= 1'b1;
-    prev_so <= so_i;
-
+always_ff@(posedge clock_i) begin
     if( reset_i ) begin
-        flags[ctl::FlagIntMask] = 1'b1;
+        flags[ctl::FlagIntMask] <= 1'b1;
         if( CPU_VARIANT>=2 )
-            flags[ctl::FlagDecimal] = 1'b0;
+            flags[ctl::FlagDecimal] <= 1'b0;
     end else begin
+        if( !prev_so && so_i )
+            flags[ctl::FlagOverflow] <= 1'b1;
+        prev_so <= so_i;
+
         if( control_signals_i[ctl::DB0_C] )
             flags[ctl::FlagCarry] <= data_i[0];
         if( control_signals_i[ctl::IR5_C] )
