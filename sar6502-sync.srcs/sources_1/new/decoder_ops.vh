@@ -931,6 +931,7 @@ function void handle_op_php();
             addr_out_stack( 1'b1 );
 
             db_src_o = ctl::P_DB;
+            control_signals_o[ctl::O_B] = 1'b0;
         end
         C_ADDR2: begin
             decrease_sp();

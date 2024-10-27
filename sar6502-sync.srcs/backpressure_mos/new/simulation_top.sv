@@ -31,6 +31,7 @@ module simulation_top#
 localparam tPWL = 5;            // Time Pulse Width Low (clock)
 localparam tPWH = 5;            // Time Pulse Width High (clock)
 localparam MaxCyclesPerBus=4;   // Maximum number of clock cycles between bus operations
+localparam AckDelayCounter=MaxCyclesPerBus;
 
 logic clock;
 logic [7:0] memory[65535:0];
@@ -55,10 +56,12 @@ for(i=0; i<Sig_NumElements; ++i)
     assign signals[i] = pending_signals[i].delay==0 && pending_signals[i].count!=0;
 endgenerate
 
+int ack_counter = 0;
 logic cpu_req_valid, cpu_req_write, cpu_sync, cpu_rsp_valid = 1'b0;
-wire cpu_req_ack = !signals[SigReady];
-logic [7:0] cpu_req_data, cpu_rsp_data = 8'hXX;
-logic [15:0] cpu_req_address;
+wire cpu_req_ack = !signals[SigReady] && ack_counter>=AckDelayCounter;
+logic [7:0] cpu_req_data, prev_req_data = 8'hXX, cpu_rsp_data = 8'hXX;
+logic [15:0] cpu_req_address, prev_req_address = 16'hXXXX;
+logic prev_req_write;
 
 sar6502_2#(.CPU_VARIANT(CPU_VARIANT))
 cpu(
@@ -96,6 +99,31 @@ int cycles_since_bus = 0;
 int cycle_num = 0;
 logic reset_sequence = 0;
 int cycles_skip;
+
+always_ff@(posedge clock) begin
+    if( cpu_req_ack && cpu_req_valid ) begin
+        ack_counter <= 0;
+
+        prev_req_address <= 16'hXXXX;
+        prev_req_data <= 8'hXX;
+        prev_req_write <= 1'bX;
+    end else begin
+        ack_counter <= ack_counter+1;
+
+        if( cpu_req_valid ) begin
+            if( prev_req_address === 16'hXXXX ) begin
+                prev_req_address <= cpu_req_address;
+                prev_req_write <= cpu_req_write;
+                prev_req_data <= cpu_req_data;
+            end else begin
+                assert_state( cpu_req_address, prev_req_address, "Previously unacked request had different address" );
+                assert_state( cpu_req_write, prev_req_write, "Previously unacked request had different write state" );
+                if( prev_req_write )
+                    assert_state( cpu_req_data, prev_req_data, "Previously unacked request had different data" );
+            end
+        end
+    end
+end
 
 always_ff@(posedge clock) begin
     if( signals[SigReset] ) begin

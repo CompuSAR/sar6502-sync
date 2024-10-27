@@ -72,28 +72,6 @@ typedef enum {
 */
 
 typedef enum {
-    O_ADH_0,
-    O_ADH_1_7,
-    ADH_ABH,
-    ADL_ABL,
-    ADL_PCL,
-    I_PC,
-    ADH_PCH,
-    O_ADL_0,
-    O_ADL_1,
-    O_ADL_2,
-    SB_AC,
-    SB_X,
-    SB_Y,
-    SB_S,
-
-    DL_DL,              // DL doesn't load incoming bus reads
-
-    // ALU flags
-    DAA,                // Decimal add
-    DSA,                // Decimal subtract
-    I_ADDC,
-
     // P register flags
     DB0_C,
     IR5_C,
@@ -108,13 +86,36 @@ typedef enum {
     DB3_D,
     IR5_D,
 
-    O_B,
-
     DB6_V,
     AVR_V,
     I_V,
 
     DB7_N,
+
+    SB_AC,
+    SB_X,
+    SB_Y,
+    SB_S,
+    I_PC,       // Last state changing signal
+
+    O_ADH_0,
+    O_ADH_1_7,
+    ADH_ABH,
+    ADL_ABL,
+    ADL_PCL,
+    ADH_PCH,
+    O_ADL_0,
+    O_ADL_1,
+    O_ADL_2,
+
+    DL_DL,              // DL doesn't load incoming bus reads
+
+    // ALU flags
+    DAA,                // Decimal add
+    DSA,                // Decimal subtract
+    I_ADDC,
+
+    O_B,
 
 
     NumCtlSignals

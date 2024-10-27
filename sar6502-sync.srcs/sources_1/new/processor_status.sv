@@ -25,6 +25,7 @@ module processor_status#(
 )(
     input clock_i,
     input reset_i,
+    input halt_i,
 
     input [7:0] data_i,
 
@@ -33,7 +34,7 @@ module processor_status#(
     input avr_i,
     input so_i,
 
-    input [ctl::DB7_N : ctl::DB0_C] control_signals_i,
+    input [ctl::NumCtlSignals-1 : 0] control_signals_i,
 
     output [7:0] data_o
     );

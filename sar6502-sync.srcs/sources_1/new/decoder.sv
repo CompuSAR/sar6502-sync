@@ -42,6 +42,7 @@ module decoder#(CPU_VARIANT = 0)
     output ctl::AluBSrc alu_b_src_o,
 
     input alu_acr_i,
+    input alu_acr_delayed_i,
 
     // Outside bus
     input bus_req_ack_i,
@@ -96,7 +97,6 @@ reg [7:0] instruction_register, instruction_register_next;
 assign ir5_o = instruction_register[5];
 
 reg addr_load_value;
-reg alu_acr_delayed;
 
 logic condtion_flag, condition_flags[4];
 assign condition_flags[2'b00] = flags_i[ctl::FlagNegative];
@@ -173,6 +173,15 @@ always_comb begin
         C_FETCH2: handle_fetch();
         default: handle_op();
     endcase
+
+    if( bus_req_valid_o && !bus_req_ack_i ) begin
+        // Prevent state change if we're receiving backpressure.
+        instruction_counter_next = instruction_counter;
+        // Don't freeze instruction_register_next
+        int_active_next = int_active;
+        int_pending_next = int_pending;
+        control_signals_o[ctl::I_PC:0] = { ctl::I_PC+1{1'b0} };     // I_PC is the last state changing signal
+    end
 end
 
 function void handle_op();
@@ -370,7 +379,7 @@ function void handle_fetch();
 
             if( int_active!=IntNone )
                 instruction_register_next = 8'h00;      // BRK
-            else
+            else if( bus_waiting_result )
                 /* In theory, we need here "if( bus_rsp_valid_i )".
                  * In practice, since this cycle never issues a request, the
                  * only reason to stall here is because the response has not
@@ -448,12 +457,8 @@ always_ff@(posedge clock_i) begin
         instruction_register <= 8'h00;
         int_pending <= IntReset;
     end else begin
-        if( bus_req_valid_o && ! bus_req_ack_i ) begin
-            // Request cannot be served
-        end else begin
-            instruction_register <= instruction_register_next;
-            instruction_counter <= instruction_counter_next;
-        end
+        instruction_counter <= instruction_counter_next;
+        instruction_register <= instruction_register_next;
 
         int_pending <= int_pending_next;
         int_active <= int_active_next;
@@ -463,8 +468,6 @@ always_ff@(posedge clock_i) begin
     end
 
     bus_waiting_result <= (bus_req_valid_o && !bus_req_write_o && bus_req_ack_i) || (bus_waiting_result && !bus_rsp_valid_i);
-
-    alu_acr_delayed <= alu_acr_i;
 end
 
 endmodule

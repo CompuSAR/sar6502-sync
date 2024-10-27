@@ -72,9 +72,9 @@ function void handle_addr_abs_x(input unconditional_extra_cycle);
                 alu_b_src_o = ctl::DB_ADD;
                 sb_src_o = ctl::O_SB;
                 alu_op_o = ctl::SUMS;
-                control_signals_o[ctl::I_ADDC] = alu_acr_delayed;
+                control_signals_o[ctl::I_ADDC] = alu_acr_delayed_i;
 
-                if( !alu_acr_delayed && !unconditional_extra_cycle ) begin
+                if( !alu_acr_delayed_i && !unconditional_extra_cycle ) begin
                     instruction_counter_next = C_ADDR6;
                     addr_load_value = 1'b1;
                 end
@@ -126,9 +126,9 @@ function void handle_addr_abs_y(input unconditional_extra_cycle);
                 alu_b_src_o = ctl::DB_ADD;
                 sb_src_o = ctl::O_SB;
                 alu_op_o = ctl::SUMS;
-                control_signals_o[ctl::I_ADDC] = alu_acr_delayed;
+                control_signals_o[ctl::I_ADDC] = alu_acr_delayed_i;
 
-                if( !alu_acr_delayed && !unconditional_extra_cycle ) begin
+                if( !alu_acr_delayed_i && !unconditional_extra_cycle ) begin
                     instruction_counter_next = C_ADDR6;
                     addr_load_value = 1'b1;
                 end

@@ -53,12 +53,12 @@ typedef enum {
     NumRegisters
 } REGISTER_NAMES;
 
-wire halted = 1'b0;
+wire halted = bus_req_valid_o && ! bus_req_ack_i;
 
 // Buses
 wire [7:0] data_bus, addr_bus_low, addr_bus_high, special_bus;
 logic [7:0] alu_result;
-logic alu_avr, alu_acr, alu_acr_bcd, alu_hc;
+logic alu_avr, alu_acr, alu_acr_delayed, alu_acr_bcd, alu_hc;
 logic alu_avr_async, alu_acr_async, alu_hc_async;
 logic decoder_ir5;
 
@@ -112,6 +112,7 @@ decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
     .alu_b_src_o(alu_b_source),
 
     .alu_acr_i(alu_acr),
+    .alu_acr_delayed_i(alu_acr_delayed),
 
     .bus_req_ack_i(bus_req_ack_i),
     .bus_req_valid_o(bus_req_valid_o),
@@ -207,6 +208,7 @@ alu alu_unit(
 always_ff@(posedge clock_i)
     if( !halted ) begin
         alu_result <= alu_result_async;
+        alu_acr_delayed <= alu_acr;
         alu_acr <= alu_acr_async;
         alu_avr <= alu_avr_async;
         alu_hc <= alu_hc_async;
@@ -217,6 +219,7 @@ always_ff@(posedge clock_i)
 processor_status#(.CPU_VARIANT(CPU_VARIANT)) regP(
     .clock_i(clock_i),
     .reset_i(reset_i),
+    .halt_i(halted),
 
     .data_i(data_bus),
 
@@ -225,7 +228,7 @@ processor_status#(.CPU_VARIANT(CPU_VARIANT)) regP(
     .avr_i( alu_avr ),
     .so_i( set_overflow_i ),
 
-    .control_signals_i( control_signals[ctl::DB7_N : ctl::DB0_C] ),
+    .control_signals_i( control_signals ),
 
     .data_o( regP_value )
 );
