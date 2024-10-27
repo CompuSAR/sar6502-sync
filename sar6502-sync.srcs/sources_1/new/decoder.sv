@@ -50,7 +50,9 @@ module decoder#(CPU_VARIANT = 0)
     output logic bus_req_write_o,
 
     input bus_rsp_valid_i,
-    input [7:0] bus_rsp_data_i
+    input [7:0] bus_rsp_data_i,
+
+    output logic bus_waiting_result_o = 1'b0
 );
 
 logic last_nmi = 0;
@@ -92,7 +94,6 @@ enum logic[31:0] {
     C_PENDING18 = 32'b10000000000000000000000000000000
 } instruction_counter, instruction_counter_next;
 
-logic bus_waiting_result = 1'b0;
 reg [7:0] instruction_register, instruction_register_next;
 assign ir5_o = instruction_register[5];
 
@@ -137,7 +138,7 @@ function void set_default();
     int_active_next = int_active;
     int_pending_next = int_pending;
 
-    if( bus_waiting_result && !bus_rsp_valid_i )
+    if( bus_waiting_result_o && !bus_rsp_valid_i )
         instruction_counter_next = instruction_counter;
     else
         $cast( instruction_counter_next, { instruction_counter[30:0], 1'b0 } );
@@ -174,7 +175,7 @@ always_comb begin
         default: handle_op();
     endcase
 
-    if( bus_req_valid_o && !bus_req_ack_i ) begin
+    if( (bus_req_valid_o && !bus_req_ack_i) || (bus_waiting_result_o && !bus_rsp_valid_i) ) begin
         // Prevent state change if we're receiving backpressure.
         instruction_counter_next = instruction_counter;
         // Don't freeze instruction_register_next
@@ -182,6 +183,9 @@ always_comb begin
         int_pending_next = int_pending;
         control_signals_o[ctl::I_PC:0] = { ctl::I_PC+1{1'b0} };     // I_PC is the last state changing signal
     end
+
+    if( bus_waiting_result_o && !bus_rsp_valid_i)
+        bus_req_valid_o = 1'b0;
 end
 
 function void handle_op();
@@ -379,7 +383,7 @@ function void handle_fetch();
 
             if( int_active!=IntNone )
                 instruction_register_next = 8'h00;      // BRK
-            else if( bus_waiting_result )
+            else if( bus_waiting_result_o )
                 /* In theory, we need here "if( bus_rsp_valid_i )".
                  * In practice, since this cycle never issues a request, the
                  * only reason to stall here is because the response has not
@@ -452,10 +456,14 @@ endfunction
 always_ff@(posedge clock_i) begin
     last_nmi <= nmi_i;
 
+    bus_waiting_result_o <= (bus_req_valid_o && !bus_req_write_o && bus_req_ack_i) || (bus_waiting_result_o && !bus_rsp_valid_i);
+
     if( reset_i ) begin
         instruction_counter <= C_FETCH1;
         instruction_register <= 8'h00;
         int_pending <= IntReset;
+
+        bus_waiting_result_o <= 1'b0;
     end else begin
         instruction_counter <= instruction_counter_next;
         instruction_register <= instruction_register_next;
@@ -466,8 +474,6 @@ always_ff@(posedge clock_i) begin
         if( int_pending_next!=IntReset && nmi_i==1'b1 && last_nmi==1'b0 )
             int_pending <= IntNmi;
     end
-
-    bus_waiting_result <= (bus_req_valid_o && !bus_req_write_o && bus_req_ack_i) || (bus_waiting_result && !bus_rsp_valid_i);
 end
 
 endmodule

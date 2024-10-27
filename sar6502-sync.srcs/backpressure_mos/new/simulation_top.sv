@@ -31,11 +31,15 @@ module simulation_top#
 localparam tPWL = 5;            // Time Pulse Width Low (clock)
 localparam tPWH = 5;            // Time Pulse Width High (clock)
 localparam MaxCyclesPerBus=4;   // Maximum number of clock cycles between bus operations
-localparam AckDelayCounter=MaxCyclesPerBus;
+localparam AckDelayCounter=5;
+localparam RspDelayCounter=3;
 
 logic clock;
 logic [7:0] memory[65535:0];
 logic [35:0]test_plan[30000];
+
+logic [15:0] rsp_delay_counter = 0;
+logic [7:0] rsp_data;
 
 typedef enum { SigReset, SigIrq, SigNmi, SigSo, SigReady, Sig_NumElements } signal_types;
 wire signals[Sig_NumElements-1:0];
@@ -126,6 +130,20 @@ always_ff@(posedge clock) begin
 end
 
 always_ff@(posedge clock) begin
+    cpu_rsp_data <= 8'hXX;
+    cpu_rsp_valid <= 1'b0;
+
+    if( rsp_delay_counter>0 ) begin
+        rsp_delay_counter <= rsp_delay_counter-1;
+
+        if( rsp_delay_counter==1 ) begin
+            cpu_rsp_valid <= 1'b1;
+            cpu_rsp_data <= rsp_data;
+
+            rsp_data <= 8'hXX;
+        end
+    end
+
     if( signals[SigReset] ) begin
         reset_sequence <= 1'b1;
 
@@ -149,9 +167,6 @@ always_ff@(posedge clock) begin
     end else begin
         if( cpu_req_ack || signals[SigReady] )
             cycles_since_bus <= cycles_since_bus+1;
-
-        cpu_rsp_valid <= 1'b0;
-        cpu_rsp_data <= 8'hXX;
 
         if( cpu_req_valid && cpu_req_ack ) begin
             cycles_since_bus <= 0;
@@ -182,8 +197,9 @@ task handle_bus_op();
         end else begin
             $display("In-reset cycle %s address %04x data %02x time %t", cpu_req_write ? "write" : "read", cpu_req_address, cpu_req_data, $time);
 
-            cpu_rsp_data <= 8'hXX;
-            cpu_rsp_valid <= cpu_req_valid;
+            assert_state( rsp_delay_counter, 0, "Request arrives while a response is pending (reset)" );
+            rsp_data <= 8'hXX;
+            rsp_delay_counter <= RspDelayCounter;
             return;
         end
     end
@@ -203,10 +219,11 @@ task handle_bus_op();
     end else begin
         // Read
         //if( !incompatible )
-            assert_state( memory[cpu_req_address], plan_line[15:8], "Data in" );
+        assert_state( memory[cpu_req_address], plan_line[15:8], "Data in" );
 
-        cpu_rsp_valid <= 1'b1;
-        cpu_rsp_data <= memory[cpu_req_address];
+        assert_state( rsp_delay_counter, 0, "Request arrives while a response is pending" );
+        rsp_data <= memory[cpu_req_address];
+        rsp_delay_counter <= RspDelayCounter;
     end
 
     cycle_num <= cycle_num+1;

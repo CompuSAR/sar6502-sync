@@ -53,7 +53,8 @@ typedef enum {
     NumRegisters
 } REGISTER_NAMES;
 
-wire halted = bus_req_valid_o && ! bus_req_ack_i;
+wire bus_waiting_result;
+wire halted = bus_req_valid_o && ! bus_req_ack_i || bus_waiting_result && !bus_rsp_valid_i;
 
 // Buses
 wire [7:0] data_bus, addr_bus_low, addr_bus_high, special_bus;
@@ -118,7 +119,8 @@ decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
     .bus_req_valid_o(bus_req_valid_o),
     .bus_req_write_o(bus_req_write_o),
     .bus_rsp_valid_i(bus_rsp_valid_i),
-    .bus_rsp_data_i(bus_rsp_data_i)
+    .bus_rsp_data_i(bus_rsp_data_i),
+    .bus_waiting_result_o(bus_waiting_result)
 );
 
 
