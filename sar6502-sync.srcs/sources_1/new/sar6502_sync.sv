@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module sar6502_2#( CPU_VARIANT=0 )(
+module sar6502_sync#( CPU_VARIANT=0 )(
     input clock_i,
 
     input reset_i,
@@ -64,13 +64,13 @@ logic alu_avr_async, alu_acr_async, alu_hc_async;
 logic decoder_ir5;
 
 // Control signals
-wire [ctl::NumCtlSignals-1:0] control_signals;
-ctl::DBSrc data_bus_source;
-ctl::SBSrc special_bus_source;
-ctl::ADHSrc address_bus_high_source;
-ctl::ADLSrc address_bus_low_source;
-ctl::ALUOp alu_op;
-ctl::AluBSrc alu_b_source;
+wire [sar65s_ctl::NumCtlSignals-1:0] control_signals;
+sar65s_ctl::DBSrc data_bus_source;
+sar65s_ctl::SBSrc special_bus_source;
+sar65s_ctl::ADHSrc address_bus_high_source;
+sar65s_ctl::ADLSrc address_bus_low_source;
+sar65s_ctl::ALUOp alu_op;
+sar65s_ctl::AluBSrc alu_b_source;
 
 genvar i;
 
@@ -80,7 +80,7 @@ for( i=0; i<NumRegisters; ++i ) begin : regs
     wire [7:0] data_in, data_out;
     wire ctl_store;
 
-    register register(
+    sar65s_register register(
         .clock_i(clock_i),
         .data_i(data_in),
         .ctl_store_i(ctl_store),
@@ -92,7 +92,7 @@ endgenerate
 
 logic [7:0] regP_value, regP_latched;
 
-decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
+sar65s_decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
     .clock_i(clock_i),
     .reset_i(reset_i),
     .irq_i(irq_i),
@@ -127,35 +127,35 @@ decoder#(.CPU_VARIANT(CPU_VARIANT)) decoder(
 
 initial begin
     // Assert proper width of bus controls
-    if($clog2(data_bus_source.last() + 1) != $size(ctl::DBSrc))
+    if($clog2(data_bus_source.last() + 1) != $size(sar65s_ctl::DBSrc))
         $error("DBSrc needs to be %d bits", $clog2(data_bus_source.last() + 1));
 
-    if($clog2(special_bus_source.last() + 1) != $size(ctl::SBSrc))
+    if($clog2(special_bus_source.last() + 1) != $size(sar65s_ctl::SBSrc))
         $error("SBSrc needs to be %d bits", $clog2(special_bus_source.last() + 1));
 
-    if($clog2(address_bus_high_source.last() + 1) != $size(ctl::ADHSrc))
+    if($clog2(address_bus_high_source.last() + 1) != $size(sar65s_ctl::ADHSrc))
         $error("ADHSrc needs to be %d bits", $clog2(address_bus_high_source.last() + 1));
 
-    if($clog2(address_bus_low_source.last() + 1) != $size(ctl::ADLSrc))
+    if($clog2(address_bus_low_source.last() + 1) != $size(sar65s_ctl::ADLSrc))
         $error("ADLSrc needs to be %d bits", $clog2(address_bus_low_source.last() + 1));
 
-    if($clog2(alu_op.last() + 1) != $size(ctl::ALUOp))
+    if($clog2(alu_op.last() + 1) != $size(sar65s_ctl::ALUOp))
         $error("ALUOp needs to be %d bits", $clog2(alu_op.last() + 1));
 
-    if($clog2(alu_b_source.last() + 1) != $size(ctl::AluBSrc))
+    if($clog2(alu_b_source.last() + 1) != $size(sar65s_ctl::AluBSrc))
         $error("AluBSrc needs to be %d bits", $clog2(alu_b_source.last() + 1));
 end
 
 wire [7:0] adh_generated_values;
-adh_gen adh_generator( .ctrl(control_signals[ctl::O_ADH_1_7:ctl::O_ADH_0]), .out(adh_generated_values) );
+sar65s_adh_gen adh_generator( .ctrl(control_signals[sar65s_ctl::O_ADH_1_7:sar65s_ctl::O_ADH_0]), .out(adh_generated_values) );
 
 wire [7:0] adl_generated_values;
-adl_gen adl_generator( .ctrl(control_signals[ctl::O_ADL_2:ctl::O_ADL_0]), .out(adl_generated_values) );
+sar65s_adl_gen adl_generator( .ctrl(control_signals[sar65s_ctl::O_ADL_2:sar65s_ctl::O_ADL_0]), .out(adl_generated_values) );
 
 wire [7:0] special_bus_bcd;
-decimal_adjust bcd_a(
-    .decimal_add_i(control_signals[ctl::DAA]),
-    .decimal_subtract_i(control_signals[ctl::DSA]),
+sar65s_decimal_adjust bcd_a(
+    .decimal_add_i(control_signals[sar65s_ctl::DAA]),
+    .decimal_subtract_i(control_signals[sar65s_ctl::DSA]),
     .data_i(special_bus),
     .half_carry_i(alu_hc),
     .carry_i(alu_acr),
@@ -164,20 +164,20 @@ decimal_adjust bcd_a(
     );
 
 assign regs[RegA].data_in = special_bus_bcd;
-assign regs[RegA].ctl_store = control_signals[ctl::SB_AC];
+assign regs[RegA].ctl_store = control_signals[sar65s_ctl::SB_AC];
 
 assign regs[RegX].data_in = special_bus;
-assign regs[RegX].ctl_store = control_signals[ctl::SB_X];
+assign regs[RegX].ctl_store = control_signals[sar65s_ctl::SB_X];
 
 assign regs[RegY].data_in = special_bus;
-assign regs[RegY].ctl_store = control_signals[ctl::SB_Y];
+assign regs[RegY].ctl_store = control_signals[sar65s_ctl::SB_Y];
 
 assign regs[RegS].data_in = special_bus;
-assign regs[RegS].ctl_store = control_signals[ctl::SB_S];
+assign regs[RegS].ctl_store = control_signals[sar65s_ctl::SB_S];
 
 
-wire [7:0] pcl_select = control_signals[ctl::ADL_PCL] ? addr_bus_low : regs[RegPcL].data_out;
-wire [8:0] pcl_select_increment = pcl_select + (control_signals[ctl::I_PC] ? 8'h01 : 8'h00);
+wire [7:0] pcl_select = control_signals[sar65s_ctl::ADL_PCL] ? addr_bus_low : regs[RegPcL].data_out;
+wire [8:0] pcl_select_increment = pcl_select + (control_signals[sar65s_ctl::I_PC] ? 8'h01 : 8'h00);
 wire pcl_carry = pcl_select_increment[8];
 
 assign regs[RegPcL].data_in = pcl_select_increment[7:0];
@@ -185,20 +185,20 @@ assign regs[RegPcL].ctl_store = 1'b1;
 
 
 // No clock-delay passthrough
-wire [7:0] pch_select = control_signals[ctl::ADH_PCH] ? addr_bus_high : regs[RegPcH].data_out;
+wire [7:0] pch_select = control_signals[sar65s_ctl::ADH_PCH] ? addr_bus_high : regs[RegPcH].data_out;
 
 assign regs[RegPcH].data_in = pch_select + pcl_carry;
 assign regs[RegPcH].ctl_store = 1'b1;
 
 assign regs[RegDl].data_in = bus_rsp_data_i;
-assign regs[RegDl].ctl_store = bus_rsp_valid_i && !control_signals[ctl::DL_DL];
+assign regs[RegDl].ctl_store = bus_rsp_valid_i && !control_signals[sar65s_ctl::DL_DL];
 
 wire [7:0] alu_b_input, alu_result_async;
 
-alu alu_unit(
+sar65s_alu alu_unit(
     .a_i(special_bus),
     .b_i(alu_b_input),
-    .carry_i( control_signals[ctl::I_ADDC] ),
+    .carry_i( control_signals[sar65s_ctl::I_ADDC] ),
     .op_i( alu_op ),
 
     .result_o( alu_result_async ),
@@ -218,7 +218,7 @@ always_ff@(posedge clock_i)
         regP_latched <= regP_value;
     end
 
-processor_status#(.CPU_VARIANT(CPU_VARIANT)) regP(
+sar65s_processor_status#(.CPU_VARIANT(CPU_VARIANT)) regP(
     .clock_i(clock_i),
     .reset_i(reset_i),
     .halt_i(halted),
@@ -237,13 +237,13 @@ processor_status#(.CPU_VARIANT(CPU_VARIANT)) regP(
 
 wire [7:0] db_inputs[data_bus_source.last() + 1];
 
-assign db_inputs[ctl::O_DB] = 8'h00;
-assign db_inputs[ctl::AC_DB] = regs[RegA].data_out;
-assign db_inputs[ctl::P_DB] = regP_value;
-assign db_inputs[ctl::SB_DB] = special_bus;
-assign db_inputs[ctl::PCH_DB] = regs[RegPcH].data_out;
-assign db_inputs[ctl::PCL_DB] = regs[RegPcL].data_out;
-assign db_inputs[ctl::DL_DB] = regs[RegDl].data_out;
+assign db_inputs[sar65s_ctl::O_DB] = 8'h00;
+assign db_inputs[sar65s_ctl::AC_DB] = regs[RegA].data_out;
+assign db_inputs[sar65s_ctl::P_DB] = regP_value;
+assign db_inputs[sar65s_ctl::SB_DB] = special_bus;
+assign db_inputs[sar65s_ctl::PCH_DB] = regs[RegPcH].data_out;
+assign db_inputs[sar65s_ctl::PCL_DB] = regs[RegPcL].data_out;
+assign db_inputs[sar65s_ctl::DL_DB] = regs[RegDl].data_out;
 
 assign data_bus = db_inputs[data_bus_source];
 logic [7:0] data_bus_latch;
@@ -255,23 +255,23 @@ always_ff@(posedge clock_i)
 logic [7:0] adh_latch;
 wire [7:0] sb_inputs[special_bus_source.last() + 1];
 
-assign sb_inputs[ctl::O_SB] = 8'h00;
-assign sb_inputs[ctl::AC_SB] = regs[RegA].data_out;
-assign sb_inputs[ctl::Y_SB] = regs[RegY].data_out;
-assign sb_inputs[ctl::X_SB] = regs[RegX].data_out;
-assign sb_inputs[ctl::ADD_SB] = alu_result;
-assign sb_inputs[ctl::S_SB] = regs[RegS].data_out;
-assign sb_inputs[ctl::DL_SB] = regs[RegDl].data_out;
-assign sb_inputs[ctl::ADH_SB] = adh_latch;
+assign sb_inputs[sar65s_ctl::O_SB] = 8'h00;
+assign sb_inputs[sar65s_ctl::AC_SB] = regs[RegA].data_out;
+assign sb_inputs[sar65s_ctl::Y_SB] = regs[RegY].data_out;
+assign sb_inputs[sar65s_ctl::X_SB] = regs[RegX].data_out;
+assign sb_inputs[sar65s_ctl::ADD_SB] = alu_result;
+assign sb_inputs[sar65s_ctl::S_SB] = regs[RegS].data_out;
+assign sb_inputs[sar65s_ctl::DL_SB] = regs[RegDl].data_out;
+assign sb_inputs[sar65s_ctl::ADH_SB] = adh_latch;
 
 assign special_bus = sb_inputs[special_bus_source];
 
 wire [7:0] adh_inputs[address_bus_high_source.last() + 1];
 
-assign adh_inputs[ctl::SB_ADH] = special_bus;
-assign adh_inputs[ctl::PCH_ADH] = regs[RegPcH].data_out;
-assign adh_inputs[ctl::GEN_ADH] = adh_generated_values;
-assign adh_inputs[ctl::DL_ADH] = regs[RegDl].data_out;
+assign adh_inputs[sar65s_ctl::SB_ADH] = special_bus;
+assign adh_inputs[sar65s_ctl::PCH_ADH] = regs[RegPcH].data_out;
+assign adh_inputs[sar65s_ctl::GEN_ADH] = adh_generated_values;
+assign adh_inputs[sar65s_ctl::DL_ADH] = regs[RegDl].data_out;
 
 assign addr_bus_high = adh_inputs[address_bus_high_source];
 
@@ -283,20 +283,20 @@ always_ff@(posedge clock_i)
 
 wire [7:0] adl_inputs[address_bus_low_source.last() + 1];
 
-assign adl_inputs[ctl::ADD_ADL] = alu_result;
-assign adl_inputs[ctl::S_ADL] = regs[RegS].data_out;
-assign adl_inputs[ctl::GEN_ADL] = adl_generated_values;
-assign adl_inputs[ctl::PCL_ADL] = regs[RegPcL].data_out;
-assign adl_inputs[ctl::DL_ADL] = regs[RegDl].data_out;
+assign adl_inputs[sar65s_ctl::ADD_ADL] = alu_result;
+assign adl_inputs[sar65s_ctl::S_ADL] = regs[RegS].data_out;
+assign adl_inputs[sar65s_ctl::GEN_ADL] = adl_generated_values;
+assign adl_inputs[sar65s_ctl::PCL_ADL] = regs[RegPcL].data_out;
+assign adl_inputs[sar65s_ctl::DL_ADL] = regs[RegDl].data_out;
 
 assign addr_bus_low = adl_inputs[address_bus_low_source];
 
 
 wire [7:0] alu_b_inputs[alu_b_source.last() + 1];
 
-assign alu_b_inputs[ctl::ADL_ADD] = addr_bus_low;
-assign alu_b_inputs[ctl::DB_ADD] = data_bus;
-assign alu_b_inputs[ctl::DBB_ADD] = ~ data_bus;
+assign alu_b_inputs[sar65s_ctl::ADL_ADD] = addr_bus_low;
+assign alu_b_inputs[sar65s_ctl::DB_ADD] = data_bus;
+assign alu_b_inputs[sar65s_ctl::DBB_ADD] = ~ data_bus;
 
 assign alu_b_input = alu_b_inputs[alu_b_source];
 
@@ -305,15 +305,15 @@ logic [7:0] abh_out, abh_out_latch, abl_out, abl_out_latch;
 
 always_ff@(posedge clock_i) begin
     if( !halted ) begin
-        if( control_signals[ctl::ADL_ABL] )
+        if( control_signals[sar65s_ctl::ADL_ABL] )
             abl_out_latch <= addr_bus_low;
-        if( control_signals[ctl::ADH_ABH] )
+        if( control_signals[sar65s_ctl::ADH_ABH] )
             abh_out_latch <= addr_bus_high;
     end
 end
 
-assign abh_out = control_signals[ctl::ADH_ABH] ? addr_bus_high : abh_out_latch;
-assign abl_out = control_signals[ctl::ADL_ABL] ? addr_bus_low : abl_out_latch;
+assign abh_out = control_signals[sar65s_ctl::ADH_ABH] ? addr_bus_high : abh_out_latch;
+assign abl_out = control_signals[sar65s_ctl::ADL_ABL] ? addr_bus_low : abl_out_latch;
 
 assign bus_req_data_o = data_bus;
 assign bus_req_address_o = { abh_out, abl_out };

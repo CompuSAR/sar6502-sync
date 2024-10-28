@@ -67,7 +67,7 @@ logic [7:0] cpu_req_data, prev_req_data = 8'hXX, cpu_rsp_data = 8'hXX;
 logic [15:0] cpu_req_address, prev_req_address = 16'hXXXX;
 logic prev_req_write;
 
-sar6502_2#(.CPU_VARIANT(CPU_VARIANT))
+sar6502_sync#(.CPU_VARIANT(CPU_VARIANT))
 cpu(
     .clock_i(clock),
 

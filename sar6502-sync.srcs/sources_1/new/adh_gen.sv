@@ -20,8 +20,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module adh_gen(
-    input [ctl::O_ADH_1_7:ctl::O_ADH_0] ctrl,
+module sar65s_adh_gen(
+    input [sar65s_ctl::O_ADH_1_7 : sar65s_ctl::O_ADH_0] ctrl,
     output logic[7:0] out
 
     );
@@ -29,9 +29,9 @@ module adh_gen(
 always_comb begin
     out = 8'b11111111;
 
-    if( ctrl[ctl::O_ADH_0] )
+    if( ctrl[sar65s_ctl::O_ADH_0] )
         out[0] = 1'b0;
-    if( ctrl[ctl::O_ADH_1_7] )
+    if( ctrl[sar65s_ctl::O_ADH_1_7] )
         out[7:1] = 7'b0;
 end
 

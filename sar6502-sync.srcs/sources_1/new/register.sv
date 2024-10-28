@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module register#(Width = 8)
+module sar65s_register#(Width = 8)
 (
     input clock_i,
     input [Width-1:0] data_i,

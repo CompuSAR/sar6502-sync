@@ -60,7 +60,7 @@ wire cpu_req_ack = !signals[SigReady];
 logic [7:0] cpu_req_data, cpu_rsp_data = 8'hXX;
 logic [15:0] cpu_req_address;
 
-sar6502_2#(.CPU_VARIANT(CPU_VARIANT))
+sar6502_sync#(.CPU_VARIANT(CPU_VARIANT))
 cpu(
     .clock_i(clock),
 

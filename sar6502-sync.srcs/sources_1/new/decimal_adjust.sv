@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module decimal_adjust(
+module sar65s_decimal_adjust(
     input decimal_add_i,
     input decimal_subtract_i,
     input [7:0] data_i,

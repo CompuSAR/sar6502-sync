@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module decoder#(CPU_VARIANT = 0)
+module sar65s_decoder#(CPU_VARIANT = 0)
 (
     input clock_i,
     input reset_i,
@@ -33,13 +33,13 @@ module decoder#(CPU_VARIANT = 0)
 
     input [7:0] flags_i,
     input dl7_i,
-    output logic [ctl::NumCtlSignals-1:0] control_signals_o,
-    output ctl::DBSrc db_src_o,
-    output ctl::SBSrc sb_src_o,
-    output ctl::ADLSrc adl_src_o,
-    output ctl::ADHSrc adh_src_o,
-    output ctl::ALUOp  alu_op_o,
-    output ctl::AluBSrc alu_b_src_o,
+    output logic [sar65s_ctl::NumCtlSignals-1:0] control_signals_o,
+    output sar65s_ctl::DBSrc db_src_o,
+    output sar65s_ctl::SBSrc sb_src_o,
+    output sar65s_ctl::ADLSrc adl_src_o,
+    output sar65s_ctl::ADHSrc adh_src_o,
+    output sar65s_ctl::ALUOp  alu_op_o,
+    output sar65s_ctl::AluBSrc alu_b_src_o,
 
     input alu_acr_i,
     input alu_acr_delayed_i,
@@ -100,10 +100,10 @@ assign ir5_o = instruction_register[5];
 reg addr_load_value;
 
 logic condtion_flag, condition_flags[4];
-assign condition_flags[2'b00] = flags_i[ctl::FlagNegative];
-assign condition_flags[2'b01] = flags_i[ctl::FlagOverflow];
-assign condition_flags[2'b10] = flags_i[ctl::FlagCarry];
-assign condition_flags[2'b11] = flags_i[ctl::FlagZero];
+assign condition_flags[2'b00] = flags_i[sar65s_ctl::FlagNegative];
+assign condition_flags[2'b01] = flags_i[sar65s_ctl::FlagOverflow];
+assign condition_flags[2'b10] = flags_i[sar65s_ctl::FlagCarry];
+assign condition_flags[2'b11] = flags_i[sar65s_ctl::FlagZero];
 
 assign condtion_flag = instruction_register[4] ?
     condition_flags[ instruction_register[7:6] ] :
@@ -123,13 +123,13 @@ function void set_default();
 
     addr_load_value = 1'b0;
 
-    control_signals_o = { ctl::NumCtlSignals { 1'b0 } };
-    db_src_o = ctl::DB_INVALID;
-    sb_src_o = ctl::SB_INVALID;
-    adl_src_o = ctl::ADL_INVALID;
-    adh_src_o = ctl::ADH_INVALID;
-    alu_op_o = ctl::ALU_INVALID;
-    alu_b_src_o = ctl::ALU_B_INVALID;
+    control_signals_o = { sar65s_ctl::NumCtlSignals { 1'b0 } };
+    db_src_o = sar65s_ctl::DB_INVALID;
+    sb_src_o = sar65s_ctl::SB_INVALID;
+    adl_src_o = sar65s_ctl::ADL_INVALID;
+    adh_src_o = sar65s_ctl::ADH_INVALID;
+    alu_op_o = sar65s_ctl::ALU_INVALID;
+    alu_b_src_o = sar65s_ctl::ALU_B_INVALID;
 
     bus_req_valid_o = 1'b0;
     bus_req_write_o = 1'b0;
@@ -149,13 +149,13 @@ function void set_invalid_state();
     sync_o = 1'bX;
     vector_pull_o = 1'bX;
 
-    control_signals_o = { ctl::NumCtlSignals { 1'bX } };
-    db_src_o = ctl::DB_INVALID;
-    sb_src_o = ctl::SB_INVALID;
-    adl_src_o = ctl::ADL_INVALID;
-    adh_src_o = ctl::ADH_INVALID;
-    alu_op_o = ctl::ALU_INVALID;
-    alu_b_src_o = ctl::ALU_B_INVALID;
+    control_signals_o = { sar65s_ctl::NumCtlSignals { 1'bX } };
+    db_src_o = sar65s_ctl::DB_INVALID;
+    sb_src_o = sar65s_ctl::SB_INVALID;
+    adl_src_o = sar65s_ctl::ADL_INVALID;
+    adh_src_o = sar65s_ctl::ADH_INVALID;
+    alu_op_o = sar65s_ctl::ALU_INVALID;
+    alu_b_src_o = sar65s_ctl::ALU_B_INVALID;
 
     bus_req_valid_o = 1'bX;
     bus_req_write_o = 1'bX;
@@ -181,7 +181,7 @@ always_comb begin
         // Don't freeze instruction_register_next
         int_active_next = int_active;
         int_pending_next = int_pending;
-        control_signals_o[ctl::I_PC:0] = { ctl::I_PC+1{1'b0} };     // I_PC is the last state changing signal
+        control_signals_o[sar65s_ctl::I_PC:0] = { sar65s_ctl::I_PC+1{1'b0} };     // I_PC is the last state changing signal
     end
 
     if( bus_waiting_result_o && !bus_rsp_valid_i)
@@ -313,35 +313,35 @@ function void handle_op();
         8'hbc: begin handle_addr_abs_x(0); handle_op_ldy(); end
         8'hbd: begin handle_addr_abs_x(0); handle_op_lda(); end
         8'hbe: begin handle_addr_abs_y(0); handle_op_ldx(); end
-        8'hc0: begin handle_addr_imm(); handle_op_cmp(ctl::Y_SB); end
-        8'hc1: begin handle_addr_zp_x_ind(); handle_op_cmp(ctl::AC_SB); end
-        8'hc4: begin handle_addr_zp(); handle_op_cmp(ctl::Y_SB); end
-        8'hc5: begin handle_addr_zp(); handle_op_cmp(ctl::AC_SB); end
+        8'hc0: begin handle_addr_imm(); handle_op_cmp(sar65s_ctl::Y_SB); end
+        8'hc1: begin handle_addr_zp_x_ind(); handle_op_cmp(sar65s_ctl::AC_SB); end
+        8'hc4: begin handle_addr_zp(); handle_op_cmp(sar65s_ctl::Y_SB); end
+        8'hc5: begin handle_addr_zp(); handle_op_cmp(sar65s_ctl::AC_SB); end
         8'hc6: begin handle_addr_zp(); handle_op_dec(); end
         8'hc8: begin handle_op_iny(); end
-        8'hc9: begin handle_addr_imm(); handle_op_cmp(ctl::AC_SB); end
+        8'hc9: begin handle_addr_imm(); handle_op_cmp(sar65s_ctl::AC_SB); end
         8'hca: begin handle_op_dex(); end
-        8'hcc: begin handle_addr_abs(); handle_op_cmp(ctl::Y_SB); end
-        8'hcd: begin handle_addr_abs(); handle_op_cmp(ctl::AC_SB); end
+        8'hcc: begin handle_addr_abs(); handle_op_cmp(sar65s_ctl::Y_SB); end
+        8'hcd: begin handle_addr_abs(); handle_op_cmp(sar65s_ctl::AC_SB); end
         8'hce: begin handle_addr_abs(); handle_op_dec(); end
         8'hd0: begin handle_op_branch(); end
-        8'hd1: begin handle_addr_zp_ind_y(0); handle_op_cmp(ctl::AC_SB); end
-        8'hd5: begin handle_addr_zp_x(); handle_op_cmp(ctl::AC_SB); end
+        8'hd1: begin handle_addr_zp_ind_y(0); handle_op_cmp(sar65s_ctl::AC_SB); end
+        8'hd5: begin handle_addr_zp_x(); handle_op_cmp(sar65s_ctl::AC_SB); end
         8'hd6: begin handle_addr_zp_x(); handle_op_dec(); end
         8'hd8: begin handle_op_set_flag(); end
-        8'hd9: begin handle_addr_abs_y(0); handle_op_cmp(ctl::AC_SB); end
+        8'hd9: begin handle_addr_abs_y(0); handle_op_cmp(sar65s_ctl::AC_SB); end
         8'hda: begin if( CPU_VARIANT>=2 ) handle_op_phx(); else set_invalid_state(); end
-        8'hdd: begin handle_addr_abs_x(0); handle_op_cmp(ctl::AC_SB); end
+        8'hdd: begin handle_addr_abs_x(0); handle_op_cmp(sar65s_ctl::AC_SB); end
         8'hde: begin handle_addr_abs_x(1); handle_op_dec(); end
-        8'he0: begin handle_addr_imm(); handle_op_cmp(ctl::X_SB); end
+        8'he0: begin handle_addr_imm(); handle_op_cmp(sar65s_ctl::X_SB); end
         8'he1: begin handle_addr_zp_x_ind(); handle_op_sbc(); end
-        8'he4: begin handle_addr_zp(); handle_op_cmp(ctl::X_SB); end
+        8'he4: begin handle_addr_zp(); handle_op_cmp(sar65s_ctl::X_SB); end
         8'he5: begin handle_addr_zp(); handle_op_sbc(); end
         8'he6: begin handle_addr_zp(); handle_op_inc(); end
         8'he8: begin handle_op_inx(); end
         8'he9: begin handle_addr_imm(); handle_op_sbc(); end
         8'hea: begin handle_op_nop(); end
-        8'hec: begin handle_addr_abs(); handle_op_cmp(ctl::X_SB); end
+        8'hec: begin handle_addr_abs(); handle_op_cmp(sar65s_ctl::X_SB); end
         8'hed: begin handle_addr_abs(); handle_op_sbc(); end
         8'hee: begin handle_addr_abs(); handle_op_inc(); end
         8'hf0: begin handle_op_branch(); end
@@ -368,7 +368,7 @@ function void handle_fetch();
 
             if( int_pending!=IntNone ) begin
                 int_active_next = int_pending;
-            end else if( irq_i && !flags_i[ctl::FlagIntMask] ) begin
+            end else if( irq_i && !flags_i[sar65s_ctl::FlagIntMask] ) begin
                 int_active_next = IntIrq;
             end else begin
                 int_active_next = IntNone;
@@ -400,7 +400,7 @@ endfunction
 `include "decoder_ops.vh"
 
 function void advance_pc();
-    control_signals_o[ctl::I_PC] = 1'b1;
+    control_signals_o[sar65s_ctl::I_PC] = 1'b1;
 endfunction
 
 function void new_instruction();
@@ -412,45 +412,45 @@ function addr_cycle();
 endfunction
 
 function void addr_out_pc();
-    adl_src_o = ctl::PCL_ADL;
-    control_signals_o[ctl::ADL_ABL] = 1'b1;
+    adl_src_o = sar65s_ctl::PCL_ADL;
+    control_signals_o[sar65s_ctl::ADL_ABL] = 1'b1;
 
-    adh_src_o = ctl::PCH_ADH;
-    control_signals_o[ctl::ADH_ABH] = 1'b1;
+    adh_src_o = sar65s_ctl::PCH_ADH;
+    control_signals_o[sar65s_ctl::ADH_ABH] = 1'b1;
 
     bus_req_valid_o = 1'b1;
 endfunction
 
 function void addr_out_stack( input write );
-    adl_src_o = ctl::S_ADL;
-    control_signals_o[ctl::ADL_ABL] = 1'b1;
+    adl_src_o = sar65s_ctl::S_ADL;
+    control_signals_o[sar65s_ctl::ADL_ABL] = 1'b1;
 
-    adh_src_o = ctl::GEN_ADH;
-    control_signals_o[ctl::O_ADH_0] = 1'b0;
-    control_signals_o[ctl::O_ADH_1_7] = 1'b1;
-    control_signals_o[ctl::ADH_ABH] = 1'b1;
+    adh_src_o = sar65s_ctl::GEN_ADH;
+    control_signals_o[sar65s_ctl::O_ADH_0] = 1'b0;
+    control_signals_o[sar65s_ctl::O_ADH_1_7] = 1'b1;
+    control_signals_o[sar65s_ctl::ADH_ABH] = 1'b1;
 
     bus_req_valid_o = 1'b1;
     bus_req_write_o = write;
 endfunction
 
 function void decrease_sp();
-    db_src_o = ctl::O_DB;
-    alu_b_src_o = ctl::DBB_ADD;
-    sb_src_o = ctl::S_SB;
-    alu_op_o = ctl::SUMS;
+    db_src_o = sar65s_ctl::O_DB;
+    alu_b_src_o = sar65s_ctl::DBB_ADD;
+    sb_src_o = sar65s_ctl::S_SB;
+    alu_op_o = sar65s_ctl::SUMS;
 
-    control_signals_o[ctl::DAA] = 1'b0;
-    control_signals_o[ctl::I_ADDC] = 1'b0;
+    control_signals_o[sar65s_ctl::DAA] = 1'b0;
+    control_signals_o[sar65s_ctl::I_ADDC] = 1'b0;
 endfunction
 
 function void increase_sp();
-    alu_b_src_o = ctl::ADL_ADD;
-    sb_src_o = ctl::O_SB;
-    alu_op_o = ctl::SUMS;
+    alu_b_src_o = sar65s_ctl::ADL_ADD;
+    sb_src_o = sar65s_ctl::O_SB;
+    alu_op_o = sar65s_ctl::SUMS;
 
-    control_signals_o[ctl::DAA] = 1'b0;
-    control_signals_o[ctl::I_ADDC] = 1'b1;
+    control_signals_o[sar65s_ctl::DAA] = 1'b0;
+    control_signals_o[sar65s_ctl::I_ADDC] = 1'b1;
 endfunction
 
 always_ff@(posedge clock_i) begin

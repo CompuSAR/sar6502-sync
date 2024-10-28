@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-package ctl;
+package sar65s_ctl;
 
 /*
 typedef enum {
