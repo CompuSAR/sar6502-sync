@@ -30,7 +30,7 @@ module sar65s_register#(Width = 8)
     output [Width-1:0] data_o
 );
 
-reg [Width-1:0] data;
+reg [Width-1:0] data = 8'h00;
 
 assign data_o = data;
 
