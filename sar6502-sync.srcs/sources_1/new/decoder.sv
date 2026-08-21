@@ -292,6 +292,7 @@ function void handle_op();
         8'h9d: begin handle_addr_abs_x(1); handle_op_sta(); end
         8'h9e: begin if( CPU_VARIANT>=2 ) begin handle_addr_abs_x(1'b0); handle_op_stz(); end else set_invalid_state(); end
         8'ha0: begin handle_addr_imm(); handle_op_ldy(); end
+        8'ha1: begin handle_addr_zp_x_ind(); handle_op_lda(); end
         8'ha2: begin handle_addr_imm(); handle_op_ldx(); end
         8'ha4: begin handle_addr_zp(); handle_op_ldy(); end
         8'ha5: begin handle_addr_zp(); handle_op_lda(); end
