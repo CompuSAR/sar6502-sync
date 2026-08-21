@@ -38,7 +38,13 @@ module sar6502_sync#( CPU_VARIANT=0 )(
 
     output sync_o,
     output vector_pull_o,
-    output memory_lock_o
+    output memory_lock_o,
+
+    output [7:0] dbg_reg_a,
+    output [7:0] dbg_reg_x,
+    output [7:0] dbg_reg_y,
+    output [7:0] dbg_reg_s,
+    output [7:0] dbg_reg_p
     );
 
 typedef enum {
@@ -317,5 +323,11 @@ assign abl_out = control_signals[sar65s_ctl::ADL_ABL] ? addr_bus_low : abl_out_l
 
 assign bus_req_data_o = data_bus;
 assign bus_req_address_o = { abh_out, abl_out };
+
+assign dbg_reg_a = regs[RegA].data_out;
+assign dbg_reg_x = regs[RegX].data_out;
+assign dbg_reg_y = regs[RegY].data_out;
+assign dbg_reg_s = regs[RegS].data_out;
+assign dbg_reg_p = regP_latched;
 
 endmodule
